@@ -1,0 +1,101 @@
+campaign_id,campaign_name,start_date,end_date,marketing_channel,target_models,target_audience,discount_percent,expected_sales,actual_sales
+CAMN-1,Festive Offer,2024-10-08,2025-05-28,Social Media,SUV ,Eco-conscious Buyers,30%,436,176
+CAMN-2,End of Year Bonanza,2024-04-03,2025-04-11,TV,Electric ,Budget Buyers,25%,125,293
+CAMN-3,End of Year Bonanza,2024-05-27,2025-05-03,Email,Sedan,Eco-conscious Buyers,30%,149,218
+CAMN-4,Summer Sale 2025,2024-07-01,2025-04-03,Email,Electric ,Budget Buyers,5%,380,295
+CAMN-5,Festive Offer,2024-05-18,2025-04-10,Social Media,Luxury ,Luxury Car Owners,30%,321,67
+CAMN-6,Festive Offer,2024-08-25,2025-05-31,TV,Electric ,Young Professionals,20%,392,252
+CAMN-7,Festive Offer,2025-03-17,2025-05-02,SMS,Luxury ,Luxury Car Owners,15%,320,218
+CAMN-8,Exclusive VIP Deal,2024-05-24,2025-05-05,TV,Electric ,Eco-conscious Buyers,10%,305,512
+CAMN-9,Festive Offer,2025-02-02,2025-06-29,SMS,SUV ,Luxury Car Owners,25%,447,333
+CAMN-10,Exclusive VIP Deal,2025-01-19,2025-05-14,TV,Sedan,Eco-conscious Buyers,30%,309,385
+CAMN-11,Exclusive VIP Deal,2024-05-28,2025-06-05,Social Media,SUV ,Young Professionals,20%,125,213
+CAMN-12,Summer Sale 2025,2024-08-07,2025-05-18,Email,SUV ,Luxury Car Owners,20%,414,459
+CAMN-13,Summer Sale 2025,2025-01-13,2025-06-14,Email,Luxury ,Young Professionals,25%,299,248
+CAMN-14,Festive Offer,2024-08-08,2025-05-24,Social Media,Sedan,Budget Buyers,30%,205,419
+CAMN-15,Festive Offer,2024-10-29,2025-06-14,SMS,Electric ,Budget Buyers,10%,173,102
+CAMN-16,Summer Sale 2025,2024-10-18,2025-05-20,SMS,SUV ,Budget Buyers,10%,439,487
+CAMN-17,Exclusive VIP Deal,2025-02-27,2025-05-28,Email,SUV ,Budget Buyers,10%,176,162
+CAMN-18,End of Year Bonanza,2024-10-17,2025-05-23,Social Media,Luxury ,Budget Buyers,25%,122,504
+CAMN-19,Summer Sale 2025,2024-08-14,2025-05-18,Email,SUV ,Young Professionals,25%,138,412
+CAMN-20,End of Year Bonanza,2024-08-21,2025-04-26,SMS,Sedan,Luxury Car Owners,25%,175,415
+CAMN-21,Summer Sale 2025,2024-05-25,2025-05-28,SMS,SUV ,Budget Buyers,10%,115,477
+CAMN-22,New Launch Discount,2024-09-03,2025-06-18,Social Media,Electric ,Budget Buyers,25%,215,93
+CAMN-23,Summer Sale 2025,2024-12-22,2025-05-10,SMS,Convertible,Budget Buyers,5%,451,130
+CAMN-24,Festive Offer,2024-04-07,2025-04-28,SMS,Sedan,Eco-conscious Buyers,20%,161,165
+CAMN-25,New Launch Discount,2024-09-30,2025-04-27,SMS,Electric ,Luxury Car Owners,25%,296,179
+CAMN-26,New Launch Discount,2024-04-18,2025-05-08,Social Media,SUV ,Luxury Car Owners,30%,231,97
+CAMN-27,End of Year Bonanza,2024-10-02,2025-05-18,TV,Convertible,Young Professionals,5%,422,197
+CAMN-28,Exclusive VIP Deal,2024-07-14,2025-05-13,Email,SUV ,Eco-conscious Buyers,10%,274,446
+CAMN-29,End of Year Bonanza,2024-07-04,2025-04-06,Email,SUV ,Luxury Car Owners,10%,369,352
+CAMN-30,End of Year Bonanza,2024-12-09,2025-04-12,Social Media,Electric ,Budget Buyers,30%,354,268
+CAMN-31,Summer Sale 2025,2024-05-21,2025-05-21,SMS,Electric ,Young Professionals,30%,311,333
+CAMN-32,New Launch Discount,2024-05-06,2025-05-17,TV,Convertible,Luxury Car Owners,25%,317,411
+CAMN-33,End of Year Bonanza,2024-04-20,2025-05-23,SMS,Luxury ,Budget Buyers,5%,296,416
+CAMN-34,End of Year Bonanza,2025-02-20,2025-04-26,Social Media,Sedan,Budget Buyers,25%,342,406
+CAMN-35,Exclusive VIP Deal,2024-12-22,2025-05-30,SMS,Sedan,Luxury Car Owners,20%,229,438
+CAMN-36,Exclusive VIP Deal,2024-04-07,2025-06-01,TV,SUV ,Luxury Car Owners,30%,251,67
+CAMN-37,Summer Sale 2025,2024-10-19,2025-04-06,TV,Electric ,Eco-conscious Buyers,25%,255,414
+CAMN-38,New Launch Discount,2024-09-06,2025-05-02,SMS,Convertible,Eco-conscious Buyers,25%,388,227
+CAMN-39,Exclusive VIP Deal,2025-02-23,2025-04-15,SMS,SUV ,Young Professionals,25%,136,315
+CAMN-40,End of Year Bonanza,2024-05-29,2025-04-18,Social Media,SUV ,Budget Buyers,10%,250,94
+CAMN-41,New Launch Discount,2025-03-05,2025-05-09,Social Media,SUV ,Eco-conscious Buyers,30%,126,445
+CAMN-42,Summer Sale 2025,2024-06-03,2025-06-08,Email,Sedan,Young Professionals,5%,347,478
+CAMN-43,Summer Sale 2025,2024-10-07,2025-05-12,TV,Electric ,Budget Buyers,20%,410,374
+CAMN-44,Festive Offer,2024-06-04,2025-04-24,Email,Sedan,Luxury Car Owners,25%,339,236
+CAMN-45,Festive Offer,2024-08-07,2025-05-08,Social Media,Sedan,Budget Buyers,20%,140,457
+CAMN-46,Festive Offer,2024-12-19,2025-06-02,TV,Convertible,Young Professionals,25%,105,248
+CAMN-47,Summer Sale 2025,2024-05-04,2025-04-02,Social Media,Sedan,Eco-conscious Buyers,15%,125,353
+CAMN-48,Summer Sale 2025,2025-03-12,2025-06-11,Social Media,Luxury ,Luxury Car Owners,30%,158,242
+CAMN-49,New Launch Discount,2025-03-18,2025-06-02,Email,Luxury ,Budget Buyers,15%,174,458
+CAMN-50,Exclusive VIP Deal,2024-11-10,2025-04-09,SMS,Sedan,Eco-conscious Buyers,10%,411,60
+CAMN-51,Exclusive VIP Deal,2024-06-01,2025-05-16,Email,Luxury ,Young Professionals,20%,340,505
+CAMN-52,Festive Offer,2024-10-26,2025-04-10,TV,SUV ,Budget Buyers,30%,209,414
+CAMN-53,Summer Sale 2025,2024-04-04,2025-05-17,TV,Sedan,Budget Buyers,20%,269,367
+CAMN-54,Exclusive VIP Deal,2024-08-20,2025-04-25,TV,Electric ,Young Professionals,20%,169,388
+CAMN-55,Summer Sale 2025,2025-02-16,2025-06-14,Email,Electric ,Eco-conscious Buyers,5%,441,310
+CAMN-56,New Launch Discount,2024-04-13,2025-05-14,Email,SUV ,Young Professionals,15%,479,82
+CAMN-57,End of Year Bonanza,2024-07-31,2025-05-06,Email,Convertible,Luxury Car Owners,10%,475,98
+CAMN-58,Summer Sale 2025,2024-06-13,2025-05-21,SMS,SUV ,Luxury Car Owners,10%,235,220
+CAMN-59,End of Year Bonanza,2025-03-08,2025-04-19,Social Media,Convertible,Young Professionals,10%,395,213
+CAMN-60,End of Year Bonanza,2024-10-09,2025-05-29,SMS,Luxury ,Eco-conscious Buyers,25%,348,273
+CAMN-61,Festive Offer,2024-06-18,2025-05-26,Email,Convertible,Budget Buyers,20%,427,60
+CAMN-62,New Launch Discount,2025-02-27,2025-04-14,TV,SUV ,Eco-conscious Buyers,25%,253,220
+CAMN-63,End of Year Bonanza,2024-08-14,2025-04-04,TV,SUV ,Eco-conscious Buyers,25%,415,219
+CAMN-64,New Launch Discount,2025-01-08,2025-06-11,Email,Luxury ,Luxury Car Owners,10%,197,325
+CAMN-65,Summer Sale 2025,2024-07-01,2025-04-28,TV,Electric ,Budget Buyers,30%,307,362
+CAMN-66,Exclusive VIP Deal,2024-12-03,2025-06-08,Email,Electric ,Budget Buyers,5%,373,302
+CAMN-67,Summer Sale 2025,2024-07-01,2025-04-23,Social Media,Electric ,Budget Buyers,20%,307,462
+CAMN-68,New Launch Discount,2025-01-04,2025-06-01,Social Media,SUV ,Young Professionals,30%,465,296
+CAMN-69,Exclusive VIP Deal,2024-09-18,2025-04-06,Email,Electric ,Luxury Car Owners,10%,203,101
+CAMN-70,Festive Offer,2024-05-03,2025-05-06,TV,Luxury ,Luxury Car Owners,5%,479,135
+CAMN-71,Festive Offer,2024-10-10,2025-04-15,SMS,SUV ,Eco-conscious Buyers,30%,356,294
+CAMN-72,Festive Offer,2025-02-25,2025-05-07,TV,SUV ,Budget Buyers,5%,187,81
+CAMN-73,Summer Sale 2025,2024-04-28,2025-05-09,SMS,Sedan,Luxury Car Owners,5%,187,283
+CAMN-74,Festive Offer,2024-08-29,2025-06-05,Social Media,Convertible,Budget Buyers,10%,187,179
+CAMN-75,Summer Sale 2025,2025-01-05,2025-04-07,Email,SUV ,Young Professionals,15%,388,424
+CAMN-76,End of Year Bonanza,2025-03-29,2025-06-22,TV,SUV ,Luxury Car Owners,20%,436,344
+CAMN-77,New Launch Discount,2025-01-11,2025-04-07,TV,SUV ,Luxury Car Owners,15%,498,458
+CAMN-78,Festive Offer,2025-02-07,2025-06-15,TV,Electric ,Young Professionals,30%,323,432
+CAMN-79,Summer Sale 2025,2024-11-26,2025-05-31,Social Media,Convertible,Young Professionals,25%,447,179
+CAMN-80,Exclusive VIP Deal,2024-05-03,2025-04-06,SMS,Luxury ,Eco-conscious Buyers,25%,430,218
+CAMN-81,Festive Offer,2024-04-06,2025-04-29,Social Media,Sedan,Budget Buyers,30%,459,325
+CAMN-82,End of Year Bonanza,2024-12-11,2025-04-06,Social Media,Sedan,Luxury Car Owners,25%,257,523
+CAMN-83,New Launch Discount,2024-05-27,2025-06-08,Email,SUV ,Budget Buyers,25%,411,74
+CAMN-84,New Launch Discount,2025-03-20,2025-04-07,SMS,Electric ,Budget Buyers,25%,356,423
+CAMN-85,Festive Offer,2025-01-09,2025-06-19,Email,SUV ,Eco-conscious Buyers,25%,462,124
+CAMN-86,Exclusive VIP Deal,2025-01-21,2025-05-12,SMS,Electric ,Budget Buyers,10%,131,115
+CAMN-87,Exclusive VIP Deal,2024-09-02,2025-05-10,Social Media,Convertible,Luxury Car Owners,20%,121,294
+CAMN-88,Exclusive VIP Deal,2024-10-19,2025-06-06,SMS,Electric ,Budget Buyers,10%,234,324
+CAMN-89,Summer Sale 2025,2024-10-01,2025-05-20,Social Media,Sedan,Luxury Car Owners,10%,299,449
+CAMN-90,Festive Offer,2024-07-11,2025-04-11,TV,Convertible,Young Professionals,25%,257,498
+CAMN-91,End of Year Bonanza,2024-12-22,2025-04-21,TV,Luxury ,Eco-conscious Buyers,25%,480,323
+CAMN-92,End of Year Bonanza,2024-10-29,2025-04-21,TV,Convertible,Luxury Car Owners,10%,462,118
+CAMN-93,New Launch Discount,2024-10-20,2025-06-28,TV,Luxury ,Young Professionals,10%,381,350
+CAMN-94,End of Year Bonanza,2024-10-06,2025-05-21,SMS,Sedan,Luxury Car Owners,25%,246,65
+CAMN-95,Exclusive VIP Deal,2024-05-14,2025-06-19,TV,SUV ,Luxury Car Owners,20%,292,300
+CAMN-96,Summer Sale 2025,2024-11-26,2025-05-31,Social Media,Luxury ,Eco-conscious Buyers,10%,222,465
+CAMN-97,Summer Sale 2025,2024-06-20,2025-04-14,SMS,Electric ,Budget Buyers,15%,381,130
+CAMN-98,End of Year Bonanza,2025-01-15,2025-04-23,Social Media,Sedan,Young Professionals,15%,488,280
+CAMN-99,Summer Sale 2025,2025-01-02,2025-06-12,TV,Convertible,Eco-conscious Buyers,30%,162,159
+CAMN-100,Summer Sale 2025,2024-08-04,2025-05-04,TV,SUV ,Eco-conscious Buyers,15%,298,309
