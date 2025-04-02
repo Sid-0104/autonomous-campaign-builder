@@ -1,0 +1,21 @@
+campaign_id,campaign_name,start_date,end_date,marketing_channel,target_models,target_audience,discount_percent,expected_sales,actual_sales
+CAMPAIGN001,Summer Sale 2025,2025-01-25,2025-10-15,Social Media,Maruti Baleno,Luxury Car Owners,15,63,238
+CAMPAIGN002,Monsoon Discount,2025-03-05,2025-10-24,Email,Tata Nexon,SUV Enthusiasts,25,142,373
+CAMPAIGN003,Year-End Bonanza,2025-05-09,2025-08-21,Email,Hyundai Creta,First-time Buyers,5,462,148
+CAMPAIGN004,Summer Sale 2025,2025-05-10,2025-08-26,Email,Toyota Fortuner,SUV Enthusiasts,10,304,36
+CAMPAIGN005,Festive Offer,2025-02-17,2025-07-03,Social Media,Kia Seltos,SUV Enthusiasts,15,125,348
+CAMPAIGN006,Summer Sale 2025,2025-03-11,2025-12-25,Email,Toyota Fortuner,Budget Buyers,10,221,108
+CAMPAIGN007,Year-End Bonanza,2025-02-12,2025-09-16,Social Media,Mahindra Thar,First-time Buyers,10,102,163
+CAMPAIGN008,Diwali Dhamaka,2025-02-04,2025-10-28,SMS,Maruti Baleno,Luxury Car Owners,10,218,349
+CAMPAIGN009,Festive Offer,2025-01-23,2025-08-15,TV,Maruti Swift,Luxury Car Owners,20,411,181
+CAMPAIGN010,Diwali Dhamaka,2025-05-02,2025-07-14,SMS,Toyota Fortuner,First-time Buyers,15,306,156
+CAMPAIGN011,Festive Offer,2025-04-11,2025-11-01,Social Media,Tata Harrier,Luxury Car Owners,25,161,69
+CAMPAIGN012,Monsoon Discount,2025-01-14,2025-09-02,TV,Honda City,Luxury Car Owners,5,126,47
+CAMPAIGN013,Monsoon Discount,2025-04-24,2025-07-03,SMS,Hyundai Creta,SUV Enthusiasts,20,480,71
+CAMPAIGN014,Diwali Dhamaka,2025-04-09,2025-07-09,Email,Maruti Swift,Budget Buyers,5,262,160
+CAMPAIGN015,Year-End Bonanza,2025-01-03,2025-11-20,Social Media,Hyundai Creta,First-time Buyers,25,171,210
+CAMPAIGN016,Summer Sale 2025,2025-04-21,2025-09-21,TV,Maruti Baleno,SUV Enthusiasts,25,401,101
+CAMPAIGN017,Monsoon Discount,2025-06-10,2025-10-06,SMS,Maruti Swift,Budget Buyers,15,384,391
+CAMPAIGN018,Monsoon Discount,2025-05-09,2025-08-01,Email,Maruti Baleno,Budget Buyers,25,91,277
+CAMPAIGN019,Diwali Dhamaka,2025-02-09,2025-12-16,Social Media,Kia Seltos,Luxury Car Owners,15,459,369
+CAMPAIGN020,Monsoon Discount,2025-06-03,2025-08-14,TV,Hyundai Creta,SUV Enthusiasts,15,458,240
