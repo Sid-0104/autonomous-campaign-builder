@@ -1,0 +1,101 @@
+customer_id,car_model,car_category,purchase_type
+4768360,Tata Nexon,SUV,new
+8438579,MG Hector,SUV,new
+2388306,Maruti Suzuki Ciaz,Sedan,new
+6431030,MG ZS EV,Electric,existing
+4123399,Renault Kwid,Hatchback,existing
+8487835,Audi A6,Luxury,new
+1641179,Mahindra XUV400 EV,Electric,new
+9979517,Hyundai Kona Electric,Electric,new
+3064409,Mahindra XUV700,SUV,existing
+3813278,Jaguar F-Pace,Luxury,new
+8740785,Tata Altroz,Hatchback,existing
+8766893,Mahindra XUV400 EV,Electric,new
+3799586,Mahindra XUV400 EV,Electric,new
+5547232,Volvo XC90,Luxury,new
+1508849,Audi A6,Luxury,existing
+6431030,Mahindra XUV400 EV,Electric,existing
+9266735,Maruti Swift,Hatchback,existing
+7332073,Toyota Glanza,Hatchback,new
+2353658,Tata Nexon EV,Electric,existing
+1400504,MG ZS EV,Electric,new
+2262705,Mercedes-Benz E-Class,Luxury,existing
+1795961,Hyundai Creta,SUV,existing
+2212511,MG Hector,SUV,new
+5442147,Maruti Swift,Hatchback,new
+1508849,Hyundai Creta,SUV,existing
+1797502,BMW X5,Luxury,new
+8740785,Skoda Slavia,Sedan,new
+1627525,Toyota Glanza,Hatchback,new
+2248081,Tata Nexon EV,Electric,new
+5400861,Volkswagen Virtus,Sedan,new
+4183657,Hyundai i20,Hatchback,existing
+9979517,MG ZS EV,Electric,existing
+9437379,Volvo XC90,Luxury,existing
+3073887,Tata Nexon EV,Electric,existing
+1164385,MG ZS EV,Electric,existing
+1400504,Volvo XC90,Luxury,new
+7627182,Mahindra XUV400 EV,Electric,existing
+6424638,Tata Nexon,SUV,existing
+8728802,Skoda Slavia,Sedan,existing
+7344038,MG ZS EV,Electric,new
+1400504,Tata Altroz,Hatchback,existing
+2833171,BMW X5,Luxury,new
+1144887,Hyundai Kona Electric,Electric,new
+3068651,Hyundai Verna,Sedan,new
+1400504,Toyota Glanza,Hatchback,existing
+3104011,Skoda Slavia,Sedan,new
+9712992,Tata Tiago EV,Electric,existing
+5696325,Maruti Swift,Hatchback,new
+9633221,Tata Nexon,SUV,new
+3088116,Tata Tiago EV,Electric,existing
+5486187,Hyundai Kona Electric,Electric,new
+8832536,Toyota Glanza,Hatchback,existing
+5421864,Honda City,Sedan,existing
+6911214,Jaguar F-Pace,Luxury,existing
+3732775,Tata Nexon,SUV,existing
+9172655,MG ZS EV,Electric,new
+2379368,Hyundai Creta,SUV,existing
+3851724,Maruti Suzuki Ciaz,Sedan,existing
+5797660,Renault Kwid,Hatchback,new
+4014344,Tata Tiago EV,Electric,new
+2983591,Kia Seltos,SUV,new
+5788090,Hyundai i20,Hatchback,new
+7639590,Kia Seltos,SUV,existing
+3013288,Tata Nexon EV,Electric,existing
+2014387,Hyundai i20,Hatchback,existing
+7103937,Honda City,Sedan,existing
+6854873,Mercedes-Benz E-Class,Luxury,new
+3314678,Toyota Glanza,Hatchback,existing
+3390483,Hyundai Creta,SUV,existing
+6530981,Mahindra XUV700,SUV,new
+9026607,Maruti Suzuki Ciaz,Sedan,new
+8633017,Kia Seltos,SUV,existing
+9179535,Jaguar F-Pace,Luxury,existing
+2264849,Tata Nexon EV,Electric,existing
+6620449,Volkswagen Virtus,Sedan,new
+4957003,Honda City,Sedan,existing
+5157898,Volkswagen Virtus,Sedan,new
+4304923,Tata Tiago EV,Electric,existing
+8029964,Tata Altroz,Hatchback,existing
+2966233,Tata Nexon,SUV,new
+2893357,Hyundai Creta,SUV,new
+5876524,Hyundai Verna,Sedan,existing
+8894053,Maruti Swift,Hatchback,new
+3172443,Jaguar F-Pace,Luxury,existing
+3048344,Tata Nexon,SUV,existing
+5012650,MG Hector,SUV,new
+6163245,Mercedes-Benz E-Class,Luxury,new
+3695496,Hyundai Creta,SUV,new
+3984146,Tata Tiago EV,Electric,new
+3398429,Audi A6,Luxury,existing
+1957197,Hyundai i20,Hatchback,new
+3450277,Skoda Slavia,Sedan,new
+9552378,Tata Altroz,Hatchback,new
+6178435,Volvo XC90,Luxury,new
+9389511,Volvo XC90,Luxury,existing
+3804668,MG Hector,SUV,existing
+8858391,Honda City,Sedan,new
+5189821,Toyota Glanza,Hatchback,new
+3650738,Mahindra XUV400 EV,Electric,existing
+3367846,Honda City,Sedan,existing

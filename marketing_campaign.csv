@@ -1,0 +1,101 @@
+campaign_id,campaign_name,start_date,end_date,marketing_channel,target_models,target_audience,discount_percent,expected_sales,actual_sales
+1599,Summer Sale 2025,2025-02-02,2025-02-07,Social Media,Hatchback,Budget Buyers,16%,1249,802
+6461,Summer Sale 2025,2024-12-29,2025-01-19,Social Media,Electric,Luxury Car Owners,21%,635,805
+4175,Festive Offer,2025-02-14,2025-02-14,SMS,Luxury,Luxury Car Owners,32%,1162,1257
+2877,Year-End Bonanza,2025-01-21,2025-01-30,Social Media,Sedan,Budget Buyers,30%,1645,115
+2150,Festive Offer,2024-10-27,2025-03-14,Social Media,Sedan,Budget Buyers,38%,413,1823
+6254,Summer Sale 2025,2024-12-03,2025-03-27,Email,Electric,Luxury Car Owners,46%,718,1553
+2469,Year-End Bonanza,2025-02-18,2025-05-25,Email,Hatchback,Luxury Car Owners,5%,1817,1505
+1838,Festive Offer,2025-03-02,2025-04-06,SMS,Sedan,Budget Buyers,6%,836,143
+5919,Year-End Bonanza,2025-01-05,2025-05-15,TV,Hatchback,Budget Buyers,50%,1982,1823
+3427,Year-End Bonanza,2024-12-27,2025-01-01,Email,Sedan,Budget Buyers,49%,1046,1374
+3762,Year-End Bonanza,2025-01-02,2025-03-07,TV,Hatchback,Budget Buyers,20%,1026,106
+6652,Festive Offer,2025-03-05,2025-05-29,TV,Sedan,Luxury Car Owners,39%,1811,608
+8489,Summer Sale 2025,2025-01-25,2025-03-30,TV,Hatchback,Luxury Car Owners,39%,361,234
+1927,Festive Offer,2025-03-21,2025-05-09,SMS,Electric,Budget Buyers,18%,1097,341
+9781,Festive Offer,2024-11-06,2025-02-20,Email,SUV,Budget Buyers,40%,474,692
+2079,Summer Sale 2025,2025-01-06,2025-03-31,Email,Hatchback,Luxury Car Owners,48%,749,1228
+9906,Festive Offer,2024-10-06,2025-03-22,Email,SUV,Luxury Car Owners,39%,116,1390
+6174,Summer Sale 2025,2024-10-26,2024-11-26,Social Media,SUV,Luxury Car Owners,45%,293,1912
+3052,Year-End Bonanza,2024-12-18,2025-03-06,SMS,Luxury,Budget Buyers,18%,1048,428
+8423,Festive Offer,2025-02-15,2025-04-23,Social Media,Sedan,Luxury Car Owners,19%,1715,1038
+5898,Summer Sale 2025,2024-12-23,2025-03-24,SMS,Electric,Budget Buyers,25%,1724,378
+4163,Year-End Bonanza,2025-02-11,2025-05-12,SMS,Electric,Budget Buyers,12%,366,416
+8209,Festive Offer,2025-01-06,2025-04-17,Social Media,SUV,Budget Buyers,39%,816,1269
+7445,Festive Offer,2025-01-20,2025-02-07,TV,Hatchback,Luxury Car Owners,11%,256,418
+1018,Summer Sale 2025,2024-12-09,2025-03-18,Social Media,SUV,Luxury Car Owners,46%,638,174
+9848,Year-End Bonanza,2025-03-30,2025-04-04,Email,Luxury,Luxury Car Owners,32%,1924,1672
+3662,Summer Sale 2025,2025-03-07,2025-04-11,SMS,Sedan,Budget Buyers,48%,871,171
+2716,Year-End Bonanza,2024-11-04,2025-03-17,TV,SUV,Luxury Car Owners,39%,388,892
+7816,Festive Offer,2025-03-03,2025-04-10,TV,Hatchback,Luxury Car Owners,37%,1935,596
+9976,Year-End Bonanza,2024-10-29,2024-11-20,Email,Sedan,Budget Buyers,36%,1611,1661
+8298,Year-End Bonanza,2025-03-18,2025-04-19,Social Media,Electric,Luxury Car Owners,21%,1661,893
+6041,Festive Offer,2024-11-27,2025-03-09,Social Media,Electric,Luxury Car Owners,17%,1511,1866
+2557,Festive Offer,2025-03-10,2025-04-27,Email,Electric,Budget Buyers,42%,1783,1058
+5887,Year-End Bonanza,2025-01-20,2025-02-14,TV,Sedan,Luxury Car Owners,45%,1142,371
+7244,Year-End Bonanza,2024-10-13,2024-12-12,SMS,SUV,Luxury Car Owners,49%,1401,1392
+6682,Festive Offer,2024-12-04,2025-02-11,TV,Hatchback,Luxury Car Owners,15%,473,123
+2707,Summer Sale 2025,2025-02-07,2025-05-03,Email,SUV,Luxury Car Owners,9%,230,1973
+7602,Festive Offer,2024-12-17,2025-05-13,TV,Sedan,Luxury Car Owners,36%,786,896
+1965,Festive Offer,2025-03-30,2025-05-20,SMS,SUV,Luxury Car Owners,30%,624,535
+2267,Summer Sale 2025,2024-11-21,2025-01-11,Social Media,Hatchback,Budget Buyers,42%,1237,847
+8996,Summer Sale 2025,2024-10-08,2024-11-10,SMS,Hatchback,Budget Buyers,17%,476,1211
+4831,Summer Sale 2025,2025-02-17,2025-05-26,Social Media,Sedan,Budget Buyers,31%,483,1005
+9832,Festive Offer,2024-11-04,2024-12-17,SMS,Sedan,Budget Buyers,38%,1159,1246
+5352,Festive Offer,2024-12-06,2025-01-24,SMS,Luxury,Budget Buyers,9%,1241,216
+8232,Summer Sale 2025,2025-01-24,2025-05-05,SMS,Electric,Luxury Car Owners,34%,1567,235
+3555,Summer Sale 2025,2025-02-21,2025-04-15,TV,Electric,Budget Buyers,7%,1574,616
+2596,Festive Offer,2024-10-08,2024-12-16,Email,Luxury,Luxury Car Owners,37%,1543,1919
+9446,Year-End Bonanza,2025-04-01,2025-04-28,SMS,Sedan,Budget Buyers,36%,1584,137
+2541,Summer Sale 2025,2025-02-21,2025-04-09,SMS,Sedan,Luxury Car Owners,5%,1934,752
+2189,Summer Sale 2025,2025-02-13,2025-02-18,SMS,Electric,Budget Buyers,21%,1004,745
+2917,Year-End Bonanza,2025-01-23,2025-01-29,TV,SUV,Luxury Car Owners,31%,505,1419
+4236,Summer Sale 2025,2024-12-01,2025-01-14,Email,Electric,Budget Buyers,29%,1562,211
+3776,Summer Sale 2025,2024-10-03,2024-10-19,TV,Luxury,Budget Buyers,23%,100,1379
+8491,Year-End Bonanza,2024-12-27,2025-04-19,Social Media,Electric,Luxury Car Owners,48%,1980,1954
+3187,Summer Sale 2025,2025-01-10,2025-04-16,TV,Sedan,Luxury Car Owners,14%,1034,933
+3525,Summer Sale 2025,2024-10-10,2025-04-05,SMS,Electric,Budget Buyers,41%,1684,1995
+1184,Festive Offer,2024-10-05,2025-02-23,Social Media,Sedan,Luxury Car Owners,29%,1697,1049
+5947,Festive Offer,2025-01-29,2025-02-16,Social Media,Sedan,Luxury Car Owners,33%,1492,362
+9592,Year-End Bonanza,2024-12-07,2025-03-08,TV,Luxury,Budget Buyers,13%,1617,1468
+5294,Festive Offer,2024-10-01,2024-12-02,Email,Luxury,Budget Buyers,32%,1641,813
+7741,Year-End Bonanza,2024-11-23,2025-04-24,SMS,Luxury,Luxury Car Owners,8%,1080,970
+2287,Year-End Bonanza,2025-01-21,2025-04-08,SMS,Electric,Luxury Car Owners,22%,987,1074
+6010,Festive Offer,2025-01-09,2025-04-02,Social Media,Hatchback,Luxury Car Owners,17%,961,600
+1014,Summer Sale 2025,2025-01-15,2025-01-15,TV,Luxury,Luxury Car Owners,40%,757,1456
+2358,Summer Sale 2025,2025-03-01,2025-03-30,Social Media,SUV,Luxury Car Owners,44%,383,1991
+1216,Year-End Bonanza,2024-10-05,2025-03-17,Social Media,Sedan,Budget Buyers,6%,1442,1261
+8206,Festive Offer,2025-01-30,2025-05-22,SMS,Electric,Budget Buyers,39%,331,1926
+8124,Festive Offer,2024-10-27,2024-10-27,Email,SUV,Budget Buyers,17%,1252,1882
+6470,Festive Offer,2024-11-05,2025-02-07,SMS,Sedan,Budget Buyers,46%,1668,258
+9239,Festive Offer,2024-12-07,2025-04-17,Social Media,Luxury,Budget Buyers,36%,1528,744
+5597,Year-End Bonanza,2024-11-21,2024-12-28,Email,Hatchback,Luxury Car Owners,35%,1542,910
+3877,Festive Offer,2024-10-26,2025-04-12,Social Media,Hatchback,Luxury Car Owners,9%,240,1969
+3850,Summer Sale 2025,2024-12-26,2025-03-05,SMS,Luxury,Budget Buyers,15%,1573,1475
+4215,Summer Sale 2025,2025-02-13,2025-04-23,Email,Hatchback,Luxury Car Owners,11%,1533,639
+8210,Summer Sale 2025,2025-02-21,2025-04-14,SMS,Luxury,Budget Buyers,27%,1871,910
+8333,Year-End Bonanza,2024-12-17,2025-02-19,Email,Luxury,Luxury Car Owners,16%,736,1082
+5153,Festive Offer,2025-03-19,2025-05-03,Email,Luxury,Budget Buyers,13%,1130,645
+1192,Summer Sale 2025,2025-01-08,2025-04-03,Email,Electric,Budget Buyers,48%,420,906
+8662,Year-End Bonanza,2024-12-24,2025-05-22,Social Media,SUV,Budget Buyers,12%,1935,1569
+4332,Year-End Bonanza,2025-03-16,2025-05-08,Email,Sedan,Luxury Car Owners,11%,330,575
+6265,Summer Sale 2025,2024-11-11,2025-04-11,Email,Luxury,Luxury Car Owners,27%,1733,1327
+1954,Festive Offer,2024-12-28,2025-01-28,SMS,Hatchback,Luxury Car Owners,24%,558,295
+2065,Year-End Bonanza,2024-12-12,2025-02-02,Email,Hatchback,Budget Buyers,45%,562,1860
+8603,Summer Sale 2025,2025-03-12,2025-04-02,SMS,Luxury,Budget Buyers,31%,1063,320
+2425,Summer Sale 2025,2025-01-27,2025-04-25,TV,Sedan,Luxury Car Owners,12%,1679,382
+9646,Festive Offer,2024-11-16,2025-05-28,Email,Hatchback,Luxury Car Owners,37%,1157,1177
+8646,Festive Offer,2024-12-08,2025-04-07,Email,Luxury,Budget Buyers,48%,1212,1037
+9461,Summer Sale 2025,2024-10-03,2024-12-24,TV,Luxury,Luxury Car Owners,11%,886,371
+2562,Festive Offer,2024-10-03,2024-10-11,Social Media,Sedan,Luxury Car Owners,31%,376,403
+1890,Year-End Bonanza,2025-03-28,2025-04-16,Social Media,Sedan,Budget Buyers,16%,714,636
+7307,Festive Offer,2025-02-15,2025-03-09,Social Media,Sedan,Budget Buyers,32%,1323,421
+6468,Year-End Bonanza,2025-02-15,2025-05-09,Social Media,Luxury,Luxury Car Owners,47%,1795,1460
+2605,Summer Sale 2025,2024-11-16,2025-03-30,Social Media,Electric,Luxury Car Owners,11%,416,1323
+6983,Year-End Bonanza,2024-11-01,2025-02-14,Social Media,Sedan,Budget Buyers,42%,819,867
+2370,Year-End Bonanza,2024-11-04,2024-11-04,Social Media,Hatchback,Budget Buyers,38%,1199,1898
+4083,Year-End Bonanza,2025-03-06,2025-03-10,TV,SUV,Budget Buyers,19%,1654,792
+3327,Festive Offer,2024-12-17,2025-02-05,SMS,Hatchback,Luxury Car Owners,36%,1055,897
+9449,Summer Sale 2025,2024-12-30,2025-05-22,Email,Luxury,Luxury Car Owners,42%,1013,413
+7682,Festive Offer,2025-03-03,2025-05-07,Email,Electric,Luxury Car Owners,29%,1131,1515
+4191,Summer Sale 2025,2024-12-10,2024-12-20,Social Media,Sedan,Budget Buyers,27%,1043,918
