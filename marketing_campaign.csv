@@ -1,21 +1,51 @@
-campaign_id,campaign_name,start_date,end_date,marketing_channel,target_models,target_audience,discount_percent,expected_sales,actual_sales
-CAMPAIGN001,Summer Sale 2025,2025-01-25,2025-10-15,Social Media,Maruti Baleno,Luxury Car Owners,15,63,238
-CAMPAIGN002,Monsoon Discount,2025-03-05,2025-10-24,Email,Tata Nexon,SUV Enthusiasts,25,142,373
-CAMPAIGN003,Year-End Bonanza,2025-05-09,2025-08-21,Email,Hyundai Creta,First-time Buyers,5,462,148
-CAMPAIGN004,Summer Sale 2025,2025-05-10,2025-08-26,Email,Toyota Fortuner,SUV Enthusiasts,10,304,36
-CAMPAIGN005,Festive Offer,2025-02-17,2025-07-03,Social Media,Kia Seltos,SUV Enthusiasts,15,125,348
-CAMPAIGN006,Summer Sale 2025,2025-03-11,2025-12-25,Email,Toyota Fortuner,Budget Buyers,10,221,108
-CAMPAIGN007,Year-End Bonanza,2025-02-12,2025-09-16,Social Media,Mahindra Thar,First-time Buyers,10,102,163
-CAMPAIGN008,Diwali Dhamaka,2025-02-04,2025-10-28,SMS,Maruti Baleno,Luxury Car Owners,10,218,349
-CAMPAIGN009,Festive Offer,2025-01-23,2025-08-15,TV,Maruti Swift,Luxury Car Owners,20,411,181
-CAMPAIGN010,Diwali Dhamaka,2025-05-02,2025-07-14,SMS,Toyota Fortuner,First-time Buyers,15,306,156
-CAMPAIGN011,Festive Offer,2025-04-11,2025-11-01,Social Media,Tata Harrier,Luxury Car Owners,25,161,69
-CAMPAIGN012,Monsoon Discount,2025-01-14,2025-09-02,TV,Honda City,Luxury Car Owners,5,126,47
-CAMPAIGN013,Monsoon Discount,2025-04-24,2025-07-03,SMS,Hyundai Creta,SUV Enthusiasts,20,480,71
-CAMPAIGN014,Diwali Dhamaka,2025-04-09,2025-07-09,Email,Maruti Swift,Budget Buyers,5,262,160
-CAMPAIGN015,Year-End Bonanza,2025-01-03,2025-11-20,Social Media,Hyundai Creta,First-time Buyers,25,171,210
-CAMPAIGN016,Summer Sale 2025,2025-04-21,2025-09-21,TV,Maruti Baleno,SUV Enthusiasts,25,401,101
-CAMPAIGN017,Monsoon Discount,2025-06-10,2025-10-06,SMS,Maruti Swift,Budget Buyers,15,384,391
-CAMPAIGN018,Monsoon Discount,2025-05-09,2025-08-01,Email,Maruti Baleno,Budget Buyers,25,91,277
-CAMPAIGN019,Diwali Dhamaka,2025-02-09,2025-12-16,Social Media,Kia Seltos,Luxury Car Owners,15,459,369
-CAMPAIGN020,Monsoon Discount,2025-06-03,2025-08-14,TV,Hyundai Creta,SUV Enthusiasts,15,458,240
+campaign_id,campaign_name,start_date,end_date,marketing_channel,target_cartype,target_audience,discount_percent,expected_sales,actual_sales
+CAMPAIGN001,Summer Sale,2023-10-19,2023-11-14,SMS,Sedan,Luxury Car Owners,20,261,1139
+CAMPAIGN002,Dussehra Deals,2023-08-11,2023-08-28,SMS,SUV,First-Time Buyers,30,1316,531
+CAMPAIGN003,Republic Day Offers,2023-08-10,2023-08-25,Email,Sedan,Family Buyers,25,358,1233
+CAMPAIGN004,Navratri Specials,2023-05-11,2023-05-22,SMS,Sedan,First-Time Buyers,15,1131,459
+CAMPAIGN005,Dussehra Deals,2023-08-02,2023-08-17,Email,SUV,Budget Buyers,20,1551,1463
+CAMPAIGN006,Monsoon Bonanza,2023-07-02,2023-07-10,Social Media,Sedan,Luxury Car Owners,25,1809,807
+CAMPAIGN007,Navratri Specials,2023-06-10,2023-07-10,Newspaper Ads,SUV,Family Buyers,20,582,713
+CAMPAIGN008,Navratri Specials,2023-03-03,2023-03-14,Email,Sedan,Family Buyers,20,1346,534
+CAMPAIGN009,Independence Day Discounts,2023-05-22,2023-06-08,Social Media,Sedan,Family Buyers,30,1574,696
+CAMPAIGN010,Republic Day Offers,2023-05-27,2023-06-14,TV,Coupe,First-Time Buyers,10,1947,589
+CAMPAIGN011,New Year Celebration,2023-11-17,2023-12-04,Newspaper Ads,Sedan,Budget Buyers,10,549,451
+CAMPAIGN012,Independence Day Discounts,2023-11-10,2023-11-17,SMS,Sedan,Luxury Car Owners,25,445,658
+CAMPAIGN013,Independence Day Discounts,2023-01-06,2023-01-16,Email,SUV,Luxury Car Owners,5,276,678
+CAMPAIGN014,Navratri Specials,2023-05-19,2023-06-15,Newspaper Ads,Sedan,First-Time Buyers,10,356,208
+CAMPAIGN015,Summer Sale,2023-09-18,2023-10-10,Email,Coupe,Family Buyers,15,1035,750
+CAMPAIGN016,Dussehra Deals,2023-02-26,2023-03-15,Email,Coupe,First-Time Buyers,5,687,865
+CAMPAIGN017,Dussehra Deals,2023-12-14,2024-01-08,Newspaper Ads,SUV,Luxury Car Owners,5,365,801
+CAMPAIGN018,Navratri Specials,2023-10-16,2023-10-21,SMS,Sedan,Budget Buyers,25,397,1554
+CAMPAIGN019,Summer Sale,2023-07-23,2023-08-21,Social Media,Coupe,Budget Buyers,20,1459,946
+CAMPAIGN020,Summer Sale,2023-12-04,2024-01-02,SMS,Sedan,Budget Buyers,20,1808,226
+CAMPAIGN021,Diwali Dhamaka,2023-11-22,2023-12-05,Email,Sedan,First-Time Buyers,10,312,1776
+CAMPAIGN022,Monsoon Bonanza,2023-11-08,2023-11-25,Newspaper Ads,Sedan,First-Time Buyers,5,206,367
+CAMPAIGN023,Festive Bonanza,2023-11-30,2023-12-12,TV,Coupe,Budget Buyers,25,959,647
+CAMPAIGN024,New Year Celebration,2023-08-26,2023-09-21,Newspaper Ads,Sedan,Family Buyers,10,1003,141
+CAMPAIGN025,Independence Day Discounts,2023-12-31,2024-01-13,SMS,Sedan,First-Time Buyers,30,1958,1000
+CAMPAIGN026,New Year Celebration,2023-05-23,2023-06-01,Newspaper Ads,Sedan,Budget Buyers,30,1221,1217
+CAMPAIGN027,Dussehra Deals,2023-11-22,2023-11-29,Newspaper Ads,Coupe,Budget Buyers,20,1342,481
+CAMPAIGN028,New Year Celebration,2023-10-09,2023-10-14,Email,Sedan,Luxury Car Owners,5,330,1219
+CAMPAIGN029,Summer Sale,2023-03-07,2023-03-15,TV,Coupe,First-Time Buyers,30,649,1076
+CAMPAIGN030,Festive Bonanza,2023-02-16,2023-03-02,TV,Coupe,Budget Buyers,30,505,1746
+CAMPAIGN031,Navratri Specials,2023-05-18,2023-06-04,Social Media,SUV,Family Buyers,10,942,790
+CAMPAIGN032,Dussehra Deals,2023-08-27,2023-09-21,TV,SUV,Luxury Car Owners,5,1074,994
+CAMPAIGN033,Winter Specials,2023-08-25,2023-09-07,Email,Sedan,Luxury Car Owners,20,947,269
+CAMPAIGN034,Republic Day Offers,2023-10-06,2023-10-26,Social Media,Sedan,Budget Buyers,20,1946,1653
+CAMPAIGN035,Monsoon Bonanza,2023-11-10,2023-11-23,Social Media,Sedan,Family Buyers,30,944,1319
+CAMPAIGN036,Festive Bonanza,2023-06-05,2023-06-16,Newspaper Ads,SUV,Budget Buyers,10,760,1260
+CAMPAIGN037,Independence Day Discounts,2023-01-09,2023-02-03,TV,SUV,Family Buyers,25,394,682
+CAMPAIGN038,New Year Celebration,2023-05-04,2023-05-10,Social Media,Sedan,Luxury Car Owners,25,531,1060
+CAMPAIGN039,Independence Day Discounts,2023-01-29,2023-02-06,SMS,SUV,First-Time Buyers,20,511,733
+CAMPAIGN040,Winter Specials,2023-01-12,2023-02-01,Email,Coupe,Luxury Car Owners,5,317,857
+CAMPAIGN041,Republic Day Offers,2023-10-09,2023-10-19,TV,SUV,Budget Buyers,10,771,1148
+CAMPAIGN042,Festive Bonanza,2023-06-06,2023-06-28,TV,Coupe,Luxury Car Owners,20,483,714
+CAMPAIGN043,Republic Day Offers,2023-09-24,2023-10-05,TV,Coupe,Luxury Car Owners,10,480,542
+CAMPAIGN044,Winter Specials,2023-07-22,2023-08-01,SMS,Coupe,First-Time Buyers,15,273,1213
+CAMPAIGN045,Monsoon Bonanza,2023-06-28,2023-07-12,Social Media,Coupe,First-Time Buyers,30,1146,1839
+CAMPAIGN046,Summer Sale,2023-08-17,2023-09-04,Newspaper Ads,Coupe,Budget Buyers,15,1772,406
+CAMPAIGN047,Monsoon Bonanza,2023-03-01,2023-03-25,Email,Coupe,Budget Buyers,20,946,1384
+CAMPAIGN048,Diwali Dhamaka,2023-10-08,2023-10-30,Newspaper Ads,SUV,Luxury Car Owners,30,513,202
+CAMPAIGN049,Monsoon Bonanza,2023-01-05,2023-01-25,SMS,Coupe,Family Buyers,30,1821,1644
+CAMPAIGN050,Winter Specials,2023-07-11,2023-07-18,Social Media,SUV,Family Buyers,10,664,1284
