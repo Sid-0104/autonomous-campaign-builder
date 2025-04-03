@@ -1,101 +1,101 @@
-customer_id,car_model,car_category,purchase_type
-4766,Hyundai,Sedan,existing
-7582,Mahindra,SUV,existing
-3656,Volkswagen,Luxury,new
-2155,Tata,Convertible,existing
-6397,Tata,Sedan,new
-2994,Nissan,Electric,existing
-7458,Nissan,Convertible,existing
-2147,Hyundai,Luxury,new
-9859,Nissan,Luxury,new
-7549,Mahindra,SUV,existing
-9635,Tata,Electric,existing
-9871,Mahindra,SUV,existing
-4052,Tata,Luxury,existing
-9487,Hyundai,Luxury,existing
-8456,Volkswagen,SUV,existing
-5078,Hyundai,Convertible,new
-5636,Mahindra,SUV,new
-2575,Nissan,SUV,new
-1750,Tata,Sedan,existing
-1141,Tata,Electric,existing
-8205,Nissan,Luxury,existing
-6575,Hyundai,Convertible,new
-5947,Nissan,Electric,existing
-2752,Hyundai,SUV,existing
-6468,Volkswagen,Electric,existing
-6460,Hyundai,Sedan,existing
-1154,Hyundai,SUV,existing
-5441,Volkswagen,Convertible,new
-6554,Volkswagen,Electric,new
-8655,Mahindra,Electric,existing
-3419,Volkswagen,Sedan,existing
-3774,Hyundai,Sedan,existing
-1388,Hyundai,Luxury,existing
-2880,Hyundai,Sedan,new
-9534,Mahindra,Sedan,new
-8546,Hyundai,Electric,new
-9927,Tata,Convertible,existing
-2506,Tata,Convertible,existing
-4191,Nissan,Electric,new
-7733,Tata,SUV,existing
-9522,Hyundai,Convertible,new
-1334,Volkswagen,Sedan,existing
-8871,Tata,SUV,existing
-9991,Hyundai,SUV,new
-2349,Hyundai,Electric,existing
-7477,Volkswagen,Electric,existing
-5320,Volkswagen,Sedan,existing
-3961,Volkswagen,Convertible,existing
-5685,Nissan,Sedan,new
-2993,Tata,Sedan,new
-9221,Tata,Convertible,existing
-2699,Nissan,Luxury,new
-2405,Hyundai,Luxury,new
-9756,Volkswagen,Sedan,existing
-3679,Volkswagen,Electric,new
-3133,Hyundai,SUV,new
-4624,Nissan,Sedan,new
-3272,Hyundai,Luxury,new
-5668,Tata,SUV,new
-5203,Hyundai,SUV,new
-8620,Hyundai,Convertible,new
-1286,Mahindra,Convertible,new
-9568,Tata,Electric,existing
-7250,Mahindra,Electric,new
-5861,Nissan,Convertible,existing
-2919,Nissan,Electric,new
-8165,Hyundai,Electric,new
-5319,Volkswagen,SUV,new
-5904,Tata,SUV,new
-5583,Tata,Luxury,existing
-6875,Tata,Convertible,existing
-3674,Volkswagen,Electric,existing
-8657,Volkswagen,Luxury,new
-4906,Tata,SUV,existing
-4558,Nissan,Sedan,new
-5401,Hyundai,Convertible,new
-5564,Mahindra,Luxury,existing
-6278,Mahindra,Luxury,new
-9507,Tata,Convertible,new
-3895,Mahindra,Electric,new
-2044,Nissan,SUV,existing
-3757,Mahindra,SUV,existing
-2300,Mahindra,Convertible,existing
-1911,Volkswagen,SUV,existing
-9492,Nissan,Convertible,new
-5424,Mahindra,Convertible,new
-6147,Nissan,Luxury,new
-5054,Mahindra,Electric,existing
-9426,Volkswagen,SUV,existing
-4732,Nissan,SUV,existing
-4564,Mahindra,Convertible,existing
-7727,Volkswagen,Sedan,new
-9268,Hyundai,SUV,existing
-6815,Tata,Convertible,existing
-1798,Nissan,Luxury,existing
-1973,Hyundai,Sedan,new
-3337,Tata,Luxury,existing
-7446,Nissan,Convertible,existing
-7950,Tata,Electric,new
-5060,Volkswagen,Electric,existing
+customer_id,age,gender,preferred_model,preferred_model_variant,preferred_cartype,preferred_fuel_variant,purchase_type
+CUST-0001,48,Female,MG Hector,Mid,SUV,Diesel,Existing
+CUST-0002,62,Female,Toyota Fortuner,Top,SUV,Petrol,New
+CUST-0003,21,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0004,43,Male,Hyundai Creta,Mid,SUV,Petrol,New
+CUST-0005,39,Female,Ford Mustang,Top,Coupe,Petrol,New
+CUST-0006,42,Female,Kia Seltos,Top,SUV,Diesel,New
+CUST-0007,33,Male,Kia Seltos,Base,SUV,Petrol,Existing
+CUST-0008,18,Female,Honda City,Top,Sedan,Petrol,New
+CUST-0009,38,Male,Toyota Fortuner,Base,SUV,Diesel,Existing
+CUST-0010,40,Male,Ford Mustang,Mid,Coupe,Petrol,New
+CUST-0011,47,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST-0012,50,Female,Kia Seltos,Mid,SUV,Petrol,Existing
+CUST-0013,54,Male,Tata Nexon,Top,SUV,EV,New
+CUST-0014,59,Female,Maruti Swift,Mid,Hatchback,CNG,New
+CUST-0015,58,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0016,47,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0017,50,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST-0018,44,Male,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST-0019,42,Male,Ford Mustang,Top,Coupe,Petrol,New
+CUST-0020,22,Female,Honda City,Mid,Sedan,Diesel,Existing
+CUST-0021,68,Male,Honda City,Mid,Sedan,Diesel,Existing
+CUST-0022,39,Male,Honda City,Base,Sedan,Petrol,Existing
+CUST-0023,69,Male,Hyundai Creta,Mid,SUV,Diesel,New
+CUST-0024,44,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST-0025,31,Male,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST-0026,48,Female,Kia Seltos,Mid,SUV,Diesel,New
+CUST-0027,62,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST-0028,42,Female,Maruti Swift,Mid,Hatchback,Petrol,Existing
+CUST-0029,28,Female,Ford Mustang,Mid,Coupe,Petrol,New
+CUST-0030,32,Male,Toyota Fortuner,Mid,SUV,Diesel,Existing
+CUST-0031,33,Female,Kia Seltos,Top,SUV,Petrol,Existing
+CUST-0032,28,Male,Ford Mustang,Mid,Coupe,Petrol,Existing
+CUST-0033,48,Male,Toyota Fortuner,Base,SUV,Diesel,New
+CUST-0034,23,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST-0035,57,Male,MG Hector,Top,SUV,Petrol,New
+CUST-0036,52,Female,MG Hector,Base,SUV,Petrol,New
+CUST-0037,28,Male,Toyota Fortuner,Mid,SUV,Diesel,New
+CUST-0038,69,Male,Kia Seltos,Base,SUV,Petrol,Existing
+CUST-0039,36,Male,Tata Nexon,Mid,SUV,EV,Existing
+CUST-0040,42,Female,Ford Mustang,Top,Coupe,Petrol,Existing
+CUST-0041,49,Male,Tata Nexon,Base,SUV,Petrol,Existing
+CUST-0042,20,Male,Kia Seltos,Top,SUV,Diesel,New
+CUST-0043,48,Male,Kia Seltos,Mid,SUV,Diesel,New
+CUST-0044,63,Male,Honda City,Base,Sedan,Petrol,Existing
+CUST-0045,62,Male,Toyota Fortuner,Mid,SUV,Petrol,Existing
+CUST-0046,37,Female,Maruti Swift,Mid,Hatchback,Petrol,Existing
+CUST-0047,34,Female,Honda City,Mid,Sedan,Petrol,New
+CUST-0048,24,Female,Hyundai Creta,Base,SUV,Diesel,Existing
+CUST-0049,58,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0050,66,Female,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST-0051,54,Male,Ford Mustang,Mid,Coupe,Petrol,New
+CUST-0052,48,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0053,53,Male,Tata Nexon,Mid,SUV,Petrol,Existing
+CUST-0054,69,Female,Hyundai Creta,Mid,SUV,Petrol,Existing
+CUST-0055,60,Female,MG Hector,Top,SUV,Diesel,New
+CUST-0056,18,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST-0057,53,Female,MG Hector,Top,SUV,Petrol,New
+CUST-0058,67,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST-0059,56,Male,Ford Mustang,Top,Coupe,Petrol,New
+CUST-0060,24,Female,Tata Nexon,Base,SUV,EV,Existing
+CUST-0061,31,Female,Hyundai Creta,Base,SUV,Diesel,New
+CUST-0062,48,Male,Ford Mustang,Mid,Coupe,Petrol,New
+CUST-0063,25,Male,Tata Nexon,Mid,SUV,Diesel,Existing
+CUST-0064,64,Female,Honda City,Mid,Sedan,Diesel,New
+CUST-0065,63,Female,Tata Nexon,Base,SUV,Petrol,New
+CUST-0066,40,Male,Tata Nexon,Base,SUV,Petrol,Existing
+CUST-0067,57,Female,Maruti Swift,Base,Hatchback,CNG,New
+CUST-0068,45,Male,Kia Seltos,Base,SUV,Petrol,New
+CUST-0069,50,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0070,56,Female,Maruti Swift,Top,Hatchback,Petrol,New
+CUST-0071,61,Male,Tata Nexon,Top,SUV,EV,New
+CUST-0072,31,Male,Honda City,Base,Sedan,Petrol,New
+CUST-0073,60,Female,Toyota Fortuner,Mid,SUV,Petrol,New
+CUST-0074,20,Male,MG Hector,Base,SUV,Diesel,Existing
+CUST-0075,64,Male,Maruti Swift,Top,Hatchback,Petrol,Existing
+CUST-0076,52,Male,MG Hector,Base,SUV,Diesel,Existing
+CUST-0077,33,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0078,70,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0079,62,Female,Toyota Fortuner,Mid,SUV,Diesel,New
+CUST-0080,34,Female,Tata Nexon,Top,SUV,EV,New
+CUST-0081,65,Female,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST-0082,21,Female,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST-0083,58,Male,Toyota Fortuner,Base,SUV,Diesel,Existing
+CUST-0084,47,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST-0085,59,Female,Hyundai Creta,Top,SUV,Diesel,Existing
+CUST-0086,58,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST-0087,44,Female,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST-0088,44,Female,Ford Mustang,Mid,Coupe,Petrol,Existing
+CUST-0089,49,Female,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST-0090,49,Male,Honda City,Mid,Sedan,Petrol,New
+CUST-0091,28,Female,Hyundai Creta,Base,SUV,Petrol,Existing
+CUST-0092,37,Female,Honda City,Mid,Sedan,Diesel,Existing
+CUST-0093,29,Male,Honda City,Top,Sedan,Petrol,Existing
+CUST-0094,42,Male,Toyota Fortuner,Mid,SUV,Diesel,Existing
+CUST-0095,20,Male,Ford Mustang,Mid,Coupe,Petrol,Existing
+CUST-0096,46,Male,MG Hector,Base,SUV,Diesel,Existing
+CUST-0097,61,Male,Hyundai Creta,Top,SUV,Diesel,Existing
+CUST-0098,26,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST-0099,34,Male,Honda City,Mid,Sedan,Diesel,Existing
+CUST-0100,26,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
