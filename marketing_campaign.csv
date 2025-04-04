@@ -1,0 +1,51 @@
+campaign_id,campaign_name,start_date,end_date,marketing_channel,target_cartype,target_audience,discount_percent,expected_sales,actual_sales
+CAMP001,Exclusive VIP Deal,2025-01-10,2025-02-13,Social Media,Coupe,Budget Buyers,20,793,908
+CAMP002,End of Year Bonanza,2024-12-16,2025-01-06,Email,Coupe,Budget Buyers,30,633,310
+CAMP003,Festive Offer,2024-09-25,2024-11-05,Email,Coupe,Budget Buyers,30,413,650
+CAMP004,Festive Offer,2025-02-11,2025-03-10,SMS,Sedan,Luxury Car Owners,5,356,359
+CAMP005,Exclusive VIP Deal,2025-03-06,2025-04-25,TV,SUV,Eco-conscious Buyers,5,952,170
+CAMP006,Exclusive VIP Deal,2024-11-19,2024-12-03,TV,SUV,Eco-conscious Buyers,10,650,937
+CAMP007,End of Year Bonanza,2025-03-19,2025-03-29,Social Media,SUV,Eco-conscious Buyers,15,736,229
+CAMP008,Festive Offer,2024-10-06,2024-10-28,Social Media,SUV,Eco-conscious Buyers,5,631,348
+CAMP009,End of Year Bonanza,2024-12-16,2025-01-22,SMS,Coupe,Luxury Car Owners,10,145,735
+CAMP010,Summer Sale 2025,2024-11-07,2024-12-01,Email,Sedan,Eco-conscious Buyers,30,925,143
+CAMP011,Exclusive VIP Deal,2025-01-20,2025-02-27,Email,Coupe,Luxury Car Owners,20,288,809
+CAMP012,Festive Offer,2025-01-30,2025-03-11,Social Media,Sedan,Budget Buyers,20,778,518
+CAMP013,End of Year Bonanza,2024-10-19,2024-11-22,Social Media,Coupe,Eco-conscious Buyers,10,545,951
+CAMP014,Summer Sale 2025,2025-01-26,2025-02-21,TV,SUV,Eco-conscious Buyers,30,352,891
+CAMP015,Summer Sale 2025,2024-11-04,2024-11-21,TV,SUV,Eco-conscious Buyers,25,194,241
+CAMP016,End of Year Bonanza,2024-10-31,2024-11-24,Email,Coupe,Luxury Car Owners,20,723,710
+CAMP017,Festive Offer,2025-02-04,2025-03-13,Email,SUV,Eco-conscious Buyers,5,697,267
+CAMP018,Exclusive VIP Deal,2024-09-27,2024-10-16,SMS,Sedan,Budget Buyers,10,903,900
+CAMP019,Festive Offer,2025-01-17,2025-01-28,Email,Sedan,Eco-conscious Buyers,20,672,51
+CAMP020,End of Year Bonanza,2024-12-08,2025-01-11,TV,Sedan,Luxury Car Owners,10,551,443
+CAMP021,Exclusive VIP Deal,2025-03-21,2025-04-18,TV,Sedan,Eco-conscious Buyers,5,644,50
+CAMP022,Summer Sale 2025,2024-12-20,2025-01-09,Social Media,SUV,Budget Buyers,10,180,868
+CAMP023,Festive Offer,2025-01-21,2025-02-09,SMS,Coupe,Budget Buyers,25,277,328
+CAMP024,Exclusive VIP Deal,2025-03-21,2025-04-17,Social Media,Coupe,Eco-conscious Buyers,15,730,979
+CAMP025,End of Year Bonanza,2024-09-24,2024-10-18,Email,Sedan,Eco-conscious Buyers,5,219,343
+CAMP026,Exclusive VIP Deal,2024-09-30,2024-11-19,Email,Coupe,Luxury Car Owners,30,853,775
+CAMP027,Festive Offer,2024-11-08,2024-12-24,SMS,Coupe,Luxury Car Owners,15,933,642
+CAMP028,End of Year Bonanza,2025-02-21,2025-03-11,Social Media,SUV,Eco-conscious Buyers,20,285,989
+CAMP029,Summer Sale 2025,2024-10-21,2024-11-10,TV,Sedan,Eco-conscious Buyers,20,404,466
+CAMP030,End of Year Bonanza,2025-01-30,2025-03-11,TV,Sedan,Eco-conscious Buyers,30,787,968
+CAMP031,Exclusive VIP Deal,2025-03-17,2025-05-06,SMS,Sedan,Eco-conscious Buyers,20,140,119
+CAMP032,Exclusive VIP Deal,2025-03-25,2025-05-05,TV,Coupe,Budget Buyers,30,1000,673
+CAMP033,End of Year Bonanza,2025-01-04,2025-02-15,SMS,Sedan,Luxury Car Owners,25,940,85
+CAMP034,Summer Sale 2025,2024-12-13,2024-12-29,SMS,Coupe,Eco-conscious Buyers,5,115,502
+CAMP035,Festive Offer,2024-12-24,2025-01-20,Social Media,Coupe,Eco-conscious Buyers,30,803,181
+CAMP036,Festive Offer,2024-12-07,2025-01-21,Email,SUV,Budget Buyers,25,805,332
+CAMP037,Summer Sale 2025,2024-11-05,2024-11-22,Social Media,Coupe,Budget Buyers,5,318,357
+CAMP038,End of Year Bonanza,2025-02-22,2025-04-04,Email,Sedan,Eco-conscious Buyers,25,819,817
+CAMP039,Summer Sale 2025,2024-10-06,2024-10-18,TV,Coupe,Luxury Car Owners,5,182,613
+CAMP040,Exclusive VIP Deal,2024-12-21,2025-02-03,Email,SUV,Budget Buyers,25,190,770
+CAMP041,Festive Offer,2025-03-12,2025-04-23,Email,Sedan,Eco-conscious Buyers,25,238,117
+CAMP042,Festive Offer,2024-10-03,2024-10-15,TV,Coupe,Luxury Car Owners,15,156,218
+CAMP043,End of Year Bonanza,2024-12-11,2024-12-25,Email,SUV,Budget Buyers,10,497,971
+CAMP044,End of Year Bonanza,2024-12-05,2025-01-13,Email,SUV,Budget Buyers,20,812,920
+CAMP045,End of Year Bonanza,2025-02-16,2025-03-23,Email,Coupe,Eco-conscious Buyers,10,992,751
+CAMP046,Summer Sale 2025,2024-12-13,2024-12-23,TV,Sedan,Eco-conscious Buyers,20,810,464
+CAMP047,Summer Sale 2025,2025-01-16,2025-02-20,Email,SUV,Luxury Car Owners,5,784,202
+CAMP048,Exclusive VIP Deal,2025-02-06,2025-03-18,TV,Coupe,Eco-conscious Buyers,5,456,524
+CAMP049,Summer Sale 2025,2025-03-19,2025-04-02,TV,Sedan,Eco-conscious Buyers,5,899,251
+CAMP050,Summer Sale 2025,2025-01-11,2025-03-02,Social Media,Coupe,Budget Buyers,10,372,156
