@@ -1,101 +1,101 @@
 campaign_id,campaign_name,start_date,end_date,marketing_channel,target_cartype,target_audience,discount_percent,expected_sales,actual_sales
-CAMGN-1,Festive Offer,2025-03-21,2025-04-16,SMS,Sedan,Young Professionals,25%,411,495
-CAMGN-2,New Launch Discount,2024-08-08,2025-04-30,SMS,SUV ,Budget Buyers,10%,346,293
-CAMGN-3,End of Year Bonanza,2025-03-03,2025-06-07,Social Media,SUV ,Budget Buyers,15%,422,435
-CAMGN-4,Summer Sale 2025,2025-02-05,2025-06-30,SMS,Sedan,Young Professionals,30%,357,355
-CAMGN-5,New Launch Discount,2024-04-08,2025-05-07,TV,Sedan,Eco-conscious Buyers,20%,391,69
-CAMGN-6,Summer Sale 2025,2024-07-21,2025-04-25,TV,Sedan,Eco-conscious Buyers,25%,260,133
-CAMGN-7,Festive Offer,2025-03-06,2025-05-29,TV,Sedan,Budget Buyers,30%,240,321
-CAMGN-8,Summer Sale 2025,2024-09-01,2025-06-14,SMS,Sedan,Luxury Car Owners,5%,479,504
-CAMGN-9,End of Year Bonanza,2024-05-01,2025-04-25,TV,SUV ,Young Professionals,15%,127,239
-CAMGN-10,Festive Offer,2024-11-12,2025-05-30,TV,SUV ,Eco-conscious Buyers,10%,367,391
-CAMGN-11,New Launch Discount,2024-05-13,2025-06-26,SMS,SUV ,Budget Buyers,15%,327,332
-CAMGN-12,End of Year Bonanza,2024-04-22,2025-05-23,SMS,Sedan,Eco-conscious Buyers,10%,170,137
-CAMGN-13,New Launch Discount,2024-07-13,2025-05-16,Social Media,SUV ,Luxury Car Owners,25%,183,372
-CAMGN-14,New Launch Discount,2024-10-23,2025-04-05,TV,Sedan,Young Professionals,15%,412,497
-CAMGN-15,End of Year Bonanza,2025-03-11,2025-05-18,Email,Sedan,Young Professionals,30%,273,478
-CAMGN-16,Exclusive VIP Deal,2024-09-08,2025-04-04,SMS,SUV ,Budget Buyers,5%,347,68
-CAMGN-17,Summer Sale 2025,2025-01-22,2025-06-16,Social Media,SUV ,Eco-conscious Buyers,10%,480,372
-CAMGN-18,Summer Sale 2025,2024-08-09,2025-05-16,Social Media,Sedan,Luxury Car Owners,5%,421,339
-CAMGN-19,Exclusive VIP Deal,2024-05-21,2025-04-25,SMS,Sedan,Young Professionals,5%,354,349
-CAMGN-20,Festive Offer,2025-03-26,2025-06-06,Social Media,Sedan,Budget Buyers,30%,388,372
-CAMGN-21,Summer Sale 2025,2025-03-03,2025-05-13,Email,SUV ,Young Professionals,10%,300,485
-CAMGN-22,Summer Sale 2025,2025-04-02,2025-05-04,Social Media,SUV ,Young Professionals,20%,200,248
-CAMGN-23,New Launch Discount,2025-03-24,2025-04-13,SMS,SUV ,Budget Buyers,5%,300,495
-CAMGN-24,New Launch Discount,2024-08-08,2025-04-19,Email,SUV ,Young Professionals,25%,496,80
-CAMGN-25,Festive Offer,2025-03-27,2025-06-11,Email,SUV ,Young Professionals,5%,384,382
-CAMGN-26,Exclusive VIP Deal,2024-07-02,2025-04-06,SMS,SUV ,Eco-conscious Buyers,15%,142,549
-CAMGN-27,New Launch Discount,2024-06-04,2025-04-15,Social Media,SUV ,Young Professionals,20%,117,237
-CAMGN-28,Exclusive VIP Deal,2024-05-14,2025-04-08,SMS,SUV ,Luxury Car Owners,10%,447,294
-CAMGN-29,Summer Sale 2025,2025-01-04,2025-05-22,Email,SUV ,Budget Buyers,30%,240,414
-CAMGN-30,Festive Offer,2025-03-21,2025-05-14,Social Media,SUV ,Luxury Car Owners,10%,211,202
-CAMGN-31,Festive Offer,2025-01-23,2025-05-06,SMS,Sedan,Luxury Car Owners,10%,187,205
-CAMGN-32,Festive Offer,2024-09-23,2025-05-21,Email,Sedan,Young Professionals,5%,475,95
-CAMGN-33,Summer Sale 2025,2024-12-31,2025-06-19,Email,Sedan,Young Professionals,30%,310,521
-CAMGN-34,End of Year Bonanza,2024-12-22,2025-06-09,Social Media,SUV ,Eco-conscious Buyers,10%,159,329
-CAMGN-35,Exclusive VIP Deal,2024-08-17,2025-04-30,TV,Sedan,Eco-conscious Buyers,25%,444,305
-CAMGN-36,New Launch Discount,2024-07-16,2025-05-12,Social Media,Sedan,Eco-conscious Buyers,30%,137,286
-CAMGN-37,New Launch Discount,2024-05-10,2025-06-11,SMS,SUV ,Eco-conscious Buyers,30%,319,327
-CAMGN-38,End of Year Bonanza,2025-01-17,2025-06-18,SMS,Sedan,Budget Buyers,15%,429,179
-CAMGN-39,Festive Offer,2024-05-10,2025-04-28,SMS,SUV ,Young Professionals,5%,103,69
-CAMGN-40,Summer Sale 2025,2024-10-29,2025-06-13,TV,Sedan,Young Professionals,30%,179,218
-CAMGN-41,Summer Sale 2025,2024-06-27,2025-04-12,SMS,SUV ,Budget Buyers,25%,460,306
-CAMGN-42,Exclusive VIP Deal,2024-10-04,2025-06-23,Email,SUV ,Young Professionals,20%,423,125
-CAMGN-43,Festive Offer,2024-10-20,2025-06-11,Email,Sedan,Luxury Car Owners,5%,248,470
-CAMGN-44,Exclusive VIP Deal,2025-01-12,2025-06-06,Social Media,SUV ,Luxury Car Owners,30%,320,240
-CAMGN-45,End of Year Bonanza,2024-10-05,2025-06-15,Email,Sedan,Young Professionals,5%,316,185
-CAMGN-46,End of Year Bonanza,2025-01-08,2025-05-22,Social Media,SUV ,Eco-conscious Buyers,30%,201,451
-CAMGN-47,Summer Sale 2025,2025-02-20,2025-07-01,SMS,SUV ,Luxury Car Owners,15%,287,435
-CAMGN-48,Festive Offer,2024-07-11,2025-05-14,Social Media,Sedan,Eco-conscious Buyers,10%,118,59
-CAMGN-49,New Launch Discount,2024-10-01,2025-06-02,Email,Sedan,Luxury Car Owners,10%,152,430
-CAMGN-50,End of Year Bonanza,2024-09-02,2025-06-09,TV,SUV ,Budget Buyers,25%,232,193
-CAMGN-51,Exclusive VIP Deal,2024-08-11,2025-04-16,TV,Sedan,Luxury Car Owners,25%,386,325
-CAMGN-52,Festive Offer,2024-12-16,2025-05-03,Email,SUV ,Young Professionals,30%,363,353
-CAMGN-53,New Launch Discount,2025-02-25,2025-04-29,TV,SUV ,Eco-conscious Buyers,20%,269,372
-CAMGN-54,New Launch Discount,2024-05-15,2025-06-14,Social Media,SUV ,Budget Buyers,15%,294,66
-CAMGN-55,Exclusive VIP Deal,2024-06-22,2025-04-05,TV,SUV ,Young Professionals,30%,192,385
-CAMGN-56,End of Year Bonanza,2024-11-03,2025-05-04,SMS,Sedan,Luxury Car Owners,20%,468,403
-CAMGN-57,End of Year Bonanza,2024-10-21,2025-05-22,SMS,SUV ,Eco-conscious Buyers,15%,205,316
-CAMGN-58,Summer Sale 2025,2024-12-10,2025-05-22,Email,SUV ,Luxury Car Owners,5%,202,249
-CAMGN-59,Festive Offer,2025-02-19,2025-05-14,Email,Sedan,Young Professionals,10%,103,52
-CAMGN-60,Exclusive VIP Deal,2024-10-05,2025-04-04,Email,Sedan,Young Professionals,30%,305,546
-CAMGN-61,End of Year Bonanza,2024-07-13,2025-06-21,Email,SUV ,Young Professionals,25%,368,419
-CAMGN-62,New Launch Discount,2024-06-19,2025-05-17,TV,Sedan,Young Professionals,25%,207,262
-CAMGN-63,Summer Sale 2025,2025-01-10,2025-05-08,SMS,SUV ,Young Professionals,25%,444,96
-CAMGN-64,End of Year Bonanza,2024-10-26,2025-06-23,SMS,SUV ,Young Professionals,20%,232,183
-CAMGN-65,End of Year Bonanza,2024-06-11,2025-04-05,TV,Sedan,Eco-conscious Buyers,30%,259,118
-CAMGN-66,Summer Sale 2025,2024-10-17,2025-05-24,Email,Sedan,Luxury Car Owners,15%,157,369
-CAMGN-67,Festive Offer,2025-04-02,2025-04-16,SMS,SUV ,Eco-conscious Buyers,30%,289,60
-CAMGN-68,Exclusive VIP Deal,2024-07-20,2025-06-09,Social Media,SUV ,Budget Buyers,30%,263,86
-CAMGN-69,End of Year Bonanza,2025-02-25,2025-06-20,SMS,SUV ,Budget Buyers,15%,349,219
-CAMGN-70,New Launch Discount,2024-07-10,2025-06-03,SMS,SUV ,Eco-conscious Buyers,5%,333,535
-CAMGN-71,New Launch Discount,2024-04-17,2025-05-22,SMS,Sedan,Budget Buyers,20%,431,171
-CAMGN-72,End of Year Bonanza,2024-12-03,2025-06-01,Email,SUV ,Eco-conscious Buyers,15%,221,221
-CAMGN-73,Exclusive VIP Deal,2024-06-25,2025-05-01,SMS,Sedan,Eco-conscious Buyers,30%,316,391
-CAMGN-74,Summer Sale 2025,2024-04-03,2025-05-27,Social Media,SUV ,Luxury Car Owners,20%,280,72
-CAMGN-75,End of Year Bonanza,2024-10-07,2025-05-05,Email,SUV ,Young Professionals,20%,273,415
-CAMGN-76,Festive Offer,2024-10-25,2025-04-10,TV,SUV ,Young Professionals,10%,308,524
-CAMGN-77,New Launch Discount,2024-06-11,2025-06-01,Social Media,SUV ,Eco-conscious Buyers,30%,354,105
-CAMGN-78,Exclusive VIP Deal,2024-06-22,2025-05-15,Social Media,Sedan,Luxury Car Owners,30%,367,404
-CAMGN-79,Summer Sale 2025,2024-06-12,2025-05-23,TV,SUV ,Luxury Car Owners,10%,497,59
-CAMGN-80,Summer Sale 2025,2025-01-17,2025-06-08,TV,Sedan,Young Professionals,30%,329,402
-CAMGN-81,End of Year Bonanza,2024-08-31,2025-06-05,TV,SUV ,Young Professionals,5%,400,200
-CAMGN-82,Exclusive VIP Deal,2024-07-12,2025-05-13,TV,Sedan,Budget Buyers,15%,232,286
-CAMGN-83,New Launch Discount,2024-10-14,2025-04-10,TV,Sedan,Young Professionals,10%,269,330
-CAMGN-84,Summer Sale 2025,2025-01-18,2025-06-02,TV,Sedan,Budget Buyers,10%,332,223
-CAMGN-85,Festive Offer,2024-04-10,2025-05-18,Social Media,SUV ,Budget Buyers,10%,276,89
-CAMGN-86,Festive Offer,2025-02-21,2025-04-08,TV,SUV ,Young Professionals,25%,142,473
-CAMGN-87,Festive Offer,2024-04-05,2025-06-29,SMS,SUV ,Young Professionals,20%,113,221
-CAMGN-88,End of Year Bonanza,2024-08-11,2025-06-24,TV,Sedan,Eco-conscious Buyers,20%,333,401
-CAMGN-89,Summer Sale 2025,2024-11-14,2025-04-10,Social Media,Sedan,Young Professionals,20%,388,384
-CAMGN-90,Festive Offer,2024-11-30,2025-06-03,Email,Sedan,Eco-conscious Buyers,30%,169,54
-CAMGN-91,Exclusive VIP Deal,2024-11-30,2025-06-04,Social Media,SUV ,Luxury Car Owners,15%,145,209
-CAMGN-92,New Launch Discount,2024-11-01,2025-06-26,TV,SUV ,Eco-conscious Buyers,30%,268,523
-CAMGN-93,Exclusive VIP Deal,2024-09-04,2025-05-25,Social Media,Sedan,Budget Buyers,5%,157,286
-CAMGN-94,Exclusive VIP Deal,2024-06-18,2025-04-12,TV,SUV ,Budget Buyers,25%,270,476
-CAMGN-95,New Launch Discount,2024-06-07,2025-04-17,SMS,Sedan,Luxury Car Owners,20%,387,175
-CAMGN-96,Summer Sale 2025,2024-09-03,2025-06-03,Email,Sedan,Eco-conscious Buyers,15%,270,51
-CAMGN-97,End of Year Bonanza,2024-04-02,2025-07-02,SMS,SUV ,Luxury Car Owners,15%,132,150
-CAMGN-98,Festive Offer,2024-10-11,2025-05-16,Email,SUV ,Luxury Car Owners,20%,212,244
-CAMGN-99,New Launch Discount,2024-06-26,2025-06-18,Email,SUV ,Young Professionals,20%,454,155
-CAMGN-100,End of Year Bonanza,2024-08-22,2025-04-09,Email,Sedan,Young Professionals,10%,347,130
+CAMPAIGN001,Summer Sale 2025,2024-09-23,2025-05-11,SMS,SUV ,Budget Buyers,5%,450,515
+CAMPAIGN002,Exclusive VIP Deal,2024-12-07,2025-06-08,SMS,Sedan,Budget Buyers,25%,332,260
+CAMPAIGN003,End of Year Bonanza,2024-04-19,2025-06-17,Email,SUV ,Young Professionals,30%,163,244
+CAMPAIGN004,End of Year Bonanza,2024-07-11,2025-06-05,TV,Sedan,Eco-conscious Buyers,15%,475,52
+CAMPAIGN005,End of Year Bonanza,2025-02-14,2025-06-24,TV,SUV ,Eco-conscious Buyers,15%,141,139
+CAMPAIGN006,Exclusive VIP Deal,2025-01-13,2025-04-25,TV,SUV ,Young Professionals,5%,250,360
+CAMPAIGN007,New Launch Discount,2025-03-28,2025-05-09,Email,Sedan,Luxury Car Owners,20%,117,188
+CAMPAIGN008,New Launch Discount,2024-04-14,2025-05-24,Email,Sedan,Eco-conscious Buyers,10%,427,293
+CAMPAIGN009,End of Year Bonanza,2024-05-31,2025-04-13,SMS,Sedan,Luxury Car Owners,20%,287,188
+CAMPAIGN010,Summer Sale 2025,2024-12-10,2025-05-28,TV,Sedan,Eco-conscious Buyers,10%,464,119
+CAMPAIGN011,End of Year Bonanza,2024-12-14,2025-06-09,Email,Sedan,Young Professionals,20%,252,396
+CAMPAIGN012,Summer Sale 2025,2024-12-18,2025-06-10,TV,SUV ,Eco-conscious Buyers,20%,291,313
+CAMPAIGN013,Exclusive VIP Deal,2024-04-11,2025-05-19,SMS,SUV ,Young Professionals,15%,342,492
+CAMPAIGN014,Summer Sale 2025,2024-12-14,2025-04-17,TV,SUV ,Eco-conscious Buyers,25%,353,308
+CAMPAIGN015,New Launch Discount,2024-10-16,2025-05-13,TV,Sedan,Budget Buyers,25%,466,299
+CAMPAIGN016,New Launch Discount,2024-04-09,2025-04-25,Email,Sedan,Budget Buyers,10%,333,311
+CAMPAIGN017,Summer Sale 2025,2025-02-27,2025-04-14,Social Media,Sedan,Young Professionals,15%,481,395
+CAMPAIGN018,Summer Sale 2025,2025-01-02,2025-05-14,SMS,SUV ,Young Professionals,10%,301,264
+CAMPAIGN019,End of Year Bonanza,2024-05-25,2025-04-13,SMS,SUV ,Luxury Car Owners,25%,374,409
+CAMPAIGN020,Summer Sale 2025,2024-06-26,2025-06-13,Social Media,Sedan,Luxury Car Owners,30%,459,291
+CAMPAIGN021,New Launch Discount,2024-12-20,2025-06-19,TV,Sedan,Young Professionals,25%,311,114
+CAMPAIGN022,Exclusive VIP Deal,2024-12-15,2025-04-17,SMS,SUV ,Budget Buyers,25%,300,183
+CAMPAIGN023,Summer Sale 2025,2024-07-23,2025-05-06,SMS,Sedan,Eco-conscious Buyers,15%,471,342
+CAMPAIGN024,Exclusive VIP Deal,2024-06-28,2025-04-07,Social Media,Sedan,Luxury Car Owners,25%,233,538
+CAMPAIGN025,End of Year Bonanza,2025-03-28,2025-05-26,TV,Sedan,Luxury Car Owners,15%,435,303
+CAMPAIGN026,New Launch Discount,2024-07-06,2025-06-08,Social Media,Sedan,Eco-conscious Buyers,20%,355,244
+CAMPAIGN027,Summer Sale 2025,2024-08-26,2025-06-02,TV,Sedan,Luxury Car Owners,25%,285,121
+CAMPAIGN028,End of Year Bonanza,2025-01-22,2025-05-24,TV,Sedan,Luxury Car Owners,25%,489,502
+CAMPAIGN029,End of Year Bonanza,2024-04-27,2025-04-04,TV,Sedan,Budget Buyers,10%,174,487
+CAMPAIGN030,Summer Sale 2025,2025-01-06,2025-04-24,Social Media,Sedan,Young Professionals,20%,230,286
+CAMPAIGN031,Exclusive VIP Deal,2024-07-15,2025-05-08,SMS,SUV ,Luxury Car Owners,20%,191,211
+CAMPAIGN032,New Launch Discount,2024-11-21,2025-05-25,SMS,Sedan,Eco-conscious Buyers,10%,277,421
+CAMPAIGN033,New Launch Discount,2025-02-15,2025-04-16,Email,Sedan,Budget Buyers,15%,196,454
+CAMPAIGN034,Exclusive VIP Deal,2024-09-26,2025-04-05,Email,Sedan,Budget Buyers,20%,156,535
+CAMPAIGN035,New Launch Discount,2024-06-20,2025-05-26,Email,SUV ,Eco-conscious Buyers,10%,197,187
+CAMPAIGN036,New Launch Discount,2025-02-05,2025-06-10,Social Media,SUV ,Budget Buyers,20%,127,319
+CAMPAIGN037,Festive Offer,2024-12-26,2025-06-19,TV,SUV ,Luxury Car Owners,5%,140,64
+CAMPAIGN038,Exclusive VIP Deal,2025-02-15,2025-04-12,Email,Sedan,Budget Buyers,30%,206,284
+CAMPAIGN039,Summer Sale 2025,2025-02-21,2025-04-16,Social Media,Sedan,Eco-conscious Buyers,10%,363,394
+CAMPAIGN040,End of Year Bonanza,2025-01-17,2025-05-22,Email,Sedan,Luxury Car Owners,15%,466,79
+CAMPAIGN041,Summer Sale 2025,2024-09-16,2025-04-11,Email,SUV ,Luxury Car Owners,20%,294,192
+CAMPAIGN042,Summer Sale 2025,2025-01-28,2025-04-22,TV,Sedan,Eco-conscious Buyers,10%,208,94
+CAMPAIGN043,Festive Offer,2024-08-03,2025-06-27,Social Media,SUV ,Young Professionals,10%,188,53
+CAMPAIGN044,Summer Sale 2025,2024-07-30,2025-06-19,Social Media,SUV ,Luxury Car Owners,5%,154,482
+CAMPAIGN045,End of Year Bonanza,2024-04-17,2025-04-28,Email,Sedan,Young Professionals,10%,247,111
+CAMPAIGN046,Summer Sale 2025,2024-06-03,2025-06-14,Social Media,Sedan,Luxury Car Owners,30%,304,220
+CAMPAIGN047,New Launch Discount,2024-07-08,2025-04-10,Email,SUV ,Eco-conscious Buyers,20%,266,106
+CAMPAIGN048,End of Year Bonanza,2024-05-30,2025-05-05,Social Media,Sedan,Eco-conscious Buyers,30%,499,135
+CAMPAIGN049,Summer Sale 2025,2024-04-18,2025-06-25,TV,SUV ,Budget Buyers,25%,333,367
+CAMPAIGN050,Festive Offer,2024-12-07,2025-06-01,SMS,SUV ,Eco-conscious Buyers,15%,301,74
+CAMPAIGN051,Summer Sale 2025,2025-01-10,2025-06-04,Email,Sedan,Budget Buyers,25%,194,144
+CAMPAIGN052,Festive Offer,2025-03-07,2025-06-28,Email,SUV ,Eco-conscious Buyers,5%,297,256
+CAMPAIGN053,Summer Sale 2025,2024-09-02,2025-06-22,Email,SUV ,Budget Buyers,30%,218,544
+CAMPAIGN054,Festive Offer,2024-06-08,2025-04-30,Email,Sedan,Luxury Car Owners,5%,131,214
+CAMPAIGN055,Summer Sale 2025,2024-08-05,2025-06-26,Email,SUV ,Eco-conscious Buyers,5%,216,329
+CAMPAIGN056,End of Year Bonanza,2024-07-14,2025-05-02,SMS,Sedan,Young Professionals,5%,142,511
+CAMPAIGN057,Festive Offer,2025-02-27,2025-06-19,Social Media,SUV ,Eco-conscious Buyers,25%,497,493
+CAMPAIGN058,Festive Offer,2024-11-26,2025-05-31,SMS,SUV ,Eco-conscious Buyers,25%,362,294
+CAMPAIGN059,Summer Sale 2025,2025-02-07,2025-06-15,Social Media,Sedan,Eco-conscious Buyers,5%,195,376
+CAMPAIGN060,End of Year Bonanza,2024-04-08,2025-06-20,Email,Sedan,Eco-conscious Buyers,25%,405,182
+CAMPAIGN061,Exclusive VIP Deal,2024-10-18,2025-04-12,SMS,SUV ,Budget Buyers,5%,315,255
+CAMPAIGN062,New Launch Discount,2025-03-13,2025-05-07,TV,SUV ,Luxury Car Owners,20%,239,295
+CAMPAIGN063,Festive Offer,2025-01-26,2025-06-06,Social Media,SUV ,Luxury Car Owners,25%,349,439
+CAMPAIGN064,Exclusive VIP Deal,2024-06-27,2025-04-17,Email,SUV ,Eco-conscious Buyers,15%,409,215
+CAMPAIGN065,Summer Sale 2025,2024-09-19,2025-04-19,Email,SUV ,Budget Buyers,20%,204,350
+CAMPAIGN066,End of Year Bonanza,2024-11-05,2025-05-16,Social Media,Sedan,Budget Buyers,30%,107,449
+CAMPAIGN067,Exclusive VIP Deal,2024-07-31,2025-05-25,SMS,Sedan,Luxury Car Owners,20%,492,324
+CAMPAIGN068,Exclusive VIP Deal,2024-04-27,2025-05-12,TV,Sedan,Eco-conscious Buyers,25%,291,195
+CAMPAIGN069,New Launch Discount,2024-10-15,2025-06-23,Social Media,Sedan,Young Professionals,15%,342,307
+CAMPAIGN070,Festive Offer,2024-11-16,2025-05-22,SMS,SUV ,Eco-conscious Buyers,30%,380,138
+CAMPAIGN071,End of Year Bonanza,2024-06-07,2025-04-25,TV,SUV ,Luxury Car Owners,30%,427,108
+CAMPAIGN072,End of Year Bonanza,2024-04-17,2025-06-10,Social Media,SUV ,Young Professionals,20%,450,356
+CAMPAIGN073,Festive Offer,2024-08-01,2025-04-05,SMS,Sedan,Eco-conscious Buyers,10%,174,53
+CAMPAIGN074,Summer Sale 2025,2024-09-07,2025-06-20,Social Media,SUV ,Luxury Car Owners,25%,344,218
+CAMPAIGN075,Exclusive VIP Deal,2025-03-01,2025-07-01,TV,Sedan,Budget Buyers,15%,397,349
+CAMPAIGN076,New Launch Discount,2024-07-21,2025-06-26,SMS,SUV ,Luxury Car Owners,25%,229,386
+CAMPAIGN077,Summer Sale 2025,2024-05-06,2025-05-03,SMS,SUV ,Luxury Car Owners,30%,174,111
+CAMPAIGN078,New Launch Discount,2025-01-02,2025-05-25,Social Media,SUV ,Luxury Car Owners,20%,312,338
+CAMPAIGN079,Exclusive VIP Deal,2025-01-05,2025-06-02,SMS,Sedan,Eco-conscious Buyers,10%,389,299
+CAMPAIGN080,New Launch Discount,2024-09-08,2025-06-04,Social Media,Sedan,Young Professionals,15%,150,339
+CAMPAIGN081,Summer Sale 2025,2024-05-05,2025-05-12,TV,SUV ,Luxury Car Owners,20%,357,285
+CAMPAIGN082,Festive Offer,2024-10-08,2025-06-08,SMS,Sedan,Budget Buyers,5%,451,249
+CAMPAIGN083,Exclusive VIP Deal,2024-11-14,2025-04-05,Email,SUV ,Young Professionals,30%,190,375
+CAMPAIGN084,New Launch Discount,2024-07-31,2025-04-09,Social Media,Sedan,Budget Buyers,20%,328,52
+CAMPAIGN085,Exclusive VIP Deal,2025-01-26,2025-05-15,TV,Sedan,Luxury Car Owners,30%,185,374
+CAMPAIGN086,Summer Sale 2025,2025-01-31,2025-06-16,SMS,Sedan,Young Professionals,25%,300,428
+CAMPAIGN087,New Launch Discount,2025-01-21,2025-04-11,Social Media,SUV ,Eco-conscious Buyers,10%,209,72
+CAMPAIGN088,End of Year Bonanza,2024-12-24,2025-06-26,Email,Sedan,Luxury Car Owners,25%,419,124
+CAMPAIGN089,Festive Offer,2024-07-30,2025-06-19,Social Media,Sedan,Young Professionals,15%,266,461
+CAMPAIGN090,Festive Offer,2024-12-21,2025-04-16,Social Media,Sedan,Budget Buyers,20%,253,252
+CAMPAIGN091,End of Year Bonanza,2025-01-06,2025-04-13,SMS,Sedan,Young Professionals,30%,256,550
+CAMPAIGN092,Summer Sale 2025,2025-03-03,2025-06-20,SMS,Sedan,Young Professionals,25%,157,546
+CAMPAIGN093,End of Year Bonanza,2025-02-25,2025-05-27,Social Media,Sedan,Eco-conscious Buyers,5%,211,193
+CAMPAIGN094,Festive Offer,2024-10-25,2025-04-15,SMS,SUV ,Young Professionals,30%,376,164
+CAMPAIGN095,Summer Sale 2025,2025-01-06,2025-04-16,Email,Sedan,Luxury Car Owners,5%,357,385
+CAMPAIGN096,End of Year Bonanza,2025-01-31,2025-04-16,Social Media,SUV ,Budget Buyers,10%,340,58
+CAMPAIGN097,New Launch Discount,2025-03-05,2025-06-25,TV,SUV ,Eco-conscious Buyers,30%,101,109
+CAMPAIGN098,Summer Sale 2025,2025-01-30,2025-05-16,TV,Sedan,Young Professionals,25%,259,144
+CAMPAIGN099,Summer Sale 2025,2024-10-22,2025-05-10,SMS,Sedan,Budget Buyers,15%,479,416
+CAMPAIGN100,Summer Sale 2025,2024-06-13,2025-05-08,Social Media,Sedan,Luxury Car Owners,30%,477,197
