@@ -1,0 +1,58 @@
+import os
+import pandas as pd
+from sentence_transformers import SentenceTransformer
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+import chromadb
+from chromadb.config import Settings
+
+# Mount Google Drive
+from google.colab import drive
+drive.mount('/content/drive')
+
+# Set persistent directory
+persist_directory = "/content/drive/MyDrive/chroma_store"
+
+# Load CSVs
+text_customers = pd.read_csv("customers.csv").to_string(index=False)
+text_sales = pd.read_csv("marketing_campaign.csv").to_string(index=False)
+text_campaigns = pd.read_csv("customers.csv").to_string(index=False)
+
+# Text chunking
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+chunks_customers = text_splitter.split_text(text_customers)
+chunks_sales = text_splitter.split_text(text_sales)
+chunks_campaigns = text_splitter.split_text(text_campaigns)
+all_chunks = chunks_customers + chunks_sales + chunks_campaigns
+
+# Load embedding model
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Initialize persistent ChromaDB client
+client = chromadb.Client(Settings(persist_directory=persist_directory, anonymized_telemetry=False))
+
+# Create or get collection
+collection_name = "auto_sales_data"
+if collection_name not in [c.name for c in client.list_collections()]:
+    collection = client.create_collection(name=collection_name)
+else:
+    collection = client.get_collection(name=collection_name)
+
+# Embed and store
+embeddings = model.encode(all_chunks).tolist()
+collection.add(
+    documents=all_chunks,
+    embeddings=embeddings,
+    ids=[f"id_{i}" for i in range(len(all_chunks))]
+)
+
+print("Documents embedded and stored persistently.")
+
+# --- Query Example ---
+query = "Which customer segment prefers SUVs?"
+results = collection.query(query_texts=[query], n_results=3)
+
+print("\n🔍 Query Result:")
+for doc in results['documents'][0]:
+    print(doc)
+    print("-" * 40)
+
