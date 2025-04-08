@@ -1,101 +1,101 @@
-customer_id,age,gender,preferred_model,preferred_model_variant,preferred_cartype,preferred_fuel_variant,purchase_type
-CUST001,50,Female,Hyundai Creta,Top,SUV,Petrol,Existing
-CUST002,40,Male,Tata Nexon,Base,SUV,EV,Existing
-CUST003,40,Male,MG Hector,Top,SUV,Diesel,New
-CUST004,62,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
-CUST005,40,Male,MG Hector,Base,SUV,Diesel,New
-CUST006,40,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
-CUST007,65,Male,Honda City,Base,Sedan,Diesel,Existing
-CUST008,51,Male,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
-CUST009,53,Male,Honda City,Top,Sedan,Petrol,Existing
-CUST010,22,Male,Maruti Swift,Base,Hatchback,Petrol,Existing
-CUST011,59,Male,Tata Nexon,Mid,SUV,Petrol,New
-CUST012,66,Female,MG Hector,Mid,SUV,Petrol,Existing
-CUST013,23,Female,MG Hector,Top,SUV,Diesel,Existing
-CUST014,43,Female,MG Hector,Mid,SUV,Diesel,New
-CUST015,53,Male,Maruti Swift,Top,Hatchback,Petrol,Existing
-CUST016,19,Male,Hyundai Creta,Top,SUV,Diesel,Existing
-CUST017,49,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST018,28,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
-CUST019,51,Male,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
-CUST020,24,Male,Toyota Fortuner,Mid,SUV,Diesel,Existing
-CUST021,19,Female,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
-CUST022,58,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
-CUST023,25,Female,Hyundai Creta,Mid,SUV,Diesel,Existing
-CUST024,66,Male,MG Hector,Top,SUV,Diesel,New
-CUST025,53,Female,Maruti Swift,Top,Hatchback,CNG,New
-CUST026,69,Male,MG Hector,Top,SUV,Petrol,Existing
-CUST027,52,Male,Hyundai Creta,Mid,SUV,Petrol,New
-CUST028,40,Female,Maruti Swift,Mid,Hatchback,CNG,Existing
-CUST029,56,Male,Honda City,Top,Sedan,Petrol,New
-CUST030,37,Female,Tata Nexon,Base,SUV,EV,New
-CUST031,53,Female,Toyota Fortuner,Top,SUV,Petrol,New
-CUST032,28,Female,Toyota Fortuner,Top,SUV,Diesel,New
-CUST033,27,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST034,22,Female,Toyota Fortuner,Base,SUV,Diesel,New
-CUST035,47,Female,Toyota Fortuner,Top,SUV,Petrol,Existing
-CUST036,18,Female,Tata Nexon,Mid,SUV,EV,New
-CUST037,54,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
-CUST038,52,Male,Honda City,Mid,Sedan,Petrol,Existing
-CUST039,28,Male,Hyundai Creta,Base,SUV,Diesel,Existing
-CUST040,40,Female,Audi RS5 Coupe,Top,Coupe,Petrol,New
-CUST041,54,Male,Ford Mustang,Mid,Coupe,Petrol,Existing
-CUST042,57,Female,Kia Seltos,Base,SUV,Petrol,New
-CUST043,56,Male,Tata Nexon,Mid,SUV,EV,Existing
-CUST044,64,Female,Maruti Swift,Base,Hatchback,Petrol,Existing
-CUST045,70,Female,Ford Mustang,Top,Coupe,Petrol,Existing
-CUST046,61,Female,Toyota Fortuner,Top,SUV,Diesel,Existing
-CUST047,35,Male,Kia Seltos,Base,SUV,Petrol,New
-CUST048,59,Female,Honda City,Base,Sedan,Petrol,Existing
-CUST049,19,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST050,21,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST051,39,Female,Hyundai Creta,Top,SUV,Diesel,New
-CUST052,52,Female,Tata Nexon,Base,SUV,Diesel,Existing
-CUST053,50,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
-CUST054,25,Male,Kia Seltos,Top,SUV,Petrol,New
-CUST055,30,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST056,55,Male,Honda City,Top,Sedan,Diesel,Existing
-CUST057,35,Female,Tata Nexon,Top,SUV,Diesel,Existing
-CUST058,26,Male,Hyundai Creta,Base,SUV,Diesel,Existing
-CUST059,22,Male,MG Hector,Top,SUV,Petrol,New
-CUST060,28,Female,Audi RS5 Coupe,Top,Coupe,Petrol,New
-CUST061,48,Male,Maruti Swift,Top,Hatchback,CNG,Existing
-CUST062,70,Male,Hyundai Creta,Mid,SUV,Diesel,Existing
-CUST063,43,Male,Tata Nexon,Top,SUV,EV,Existing
-CUST064,34,Male,Tata Nexon,Base,SUV,EV,New
-CUST065,55,Female,Toyota Fortuner,Mid,SUV,Diesel,Existing
-CUST066,57,Male,Tata Nexon,Base,SUV,Diesel,New
-CUST067,36,Male,Tata Nexon,Base,SUV,Petrol,Existing
-CUST068,63,Male,MG Hector,Mid,SUV,Diesel,Existing
-CUST069,33,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
-CUST070,33,Female,Tata Nexon,Top,SUV,Petrol,New
-CUST071,25,Male,Honda City,Base,Sedan,Petrol,New
-CUST072,49,Female,Maruti Swift,Top,Hatchback,CNG,New
-CUST073,62,Female,Maruti Swift,Top,Hatchback,Petrol,New
-CUST074,52,Male,Ford Mustang,Mid,Coupe,Petrol,New
-CUST075,22,Female,Ford Mustang,Mid,Coupe,Petrol,Existing
-CUST076,29,Female,Ford Mustang,Top,Coupe,Petrol,Existing
-CUST077,68,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
-CUST078,33,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST079,43,Female,Hyundai Creta,Top,SUV,Petrol,Existing
-CUST080,29,Female,Honda City,Top,Sedan,Diesel,New
-CUST081,29,Male,Honda City,Base,Sedan,Petrol,Existing
-CUST082,62,Male,Maruti Swift,Base,Hatchback,CNG,New
-CUST083,40,Male,Tata Nexon,Base,SUV,Petrol,New
-CUST084,50,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST085,70,Male,Toyota Fortuner,Mid,SUV,Petrol,New
-CUST086,49,Male,Tata Nexon,Base,SUV,Petrol,Existing
-CUST087,41,Male,Maruti Swift,Base,Hatchback,Petrol,New
-CUST088,54,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST089,36,Male,Tata Nexon,Base,SUV,Diesel,New
-CUST090,39,Male,Kia Seltos,Top,SUV,Petrol,New
-CUST091,61,Female,Honda City,Top,Sedan,Diesel,Existing
-CUST092,64,Male,Ford Mustang,Top,Coupe,Petrol,New
-CUST093,26,Male,Toyota Fortuner,Mid,SUV,Petrol,Existing
-CUST094,42,Female,Ford Mustang,Top,Coupe,Petrol,New
-CUST095,36,Male,Maruti Swift,Top,Hatchback,CNG,New
-CUST096,20,Male,Ford Mustang,Mid,Coupe,Petrol,Existing
-CUST097,47,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
-CUST098,18,Female,Tata Nexon,Base,SUV,Petrol,New
-CUST099,34,Male,Hyundai Creta,Mid,SUV,Diesel,New
-CUST100,32,Female,MG Hector,Mid,SUV,Diesel,Existing
+customer_id,first_name,last_name,email,age,gender,preferred_model,preferred_model_variant,preferred_cartype,preferred_fuel_variant,purchase_type
+CUST001,chinnu,kurian,chinnu.kurian@infoobjects.com,60,Female,MG Hector,Base,SUV,Diesel,New
+CUST002,sirisha,allarapu,sirisha.allarapu@infoobjects.com,32,Female,Maruti Swift,Base,Hatchback,CNG,Existing
+CUST003,mayuresh,pawashe,mayuresh.pawashe@infoobjects.com,59,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST004,user14,name14,username14@infoobjects.com,40,Female,Toyota Fortuner,Mid,SUV,Petrol,New
+CUST005,user87,name87,username87@infoobjects.com,41,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST006,user93,name93,username93@infoobjects.com,20,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST007,user48,name48,username48@infoobjects.com,61,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST008,user19,name19,username19@infoobjects.com,43,Male,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST009,user91,name91,username91@infoobjects.com,43,Female,Maruti Swift,Mid,Hatchback,CNG,Existing
+CUST010,user77,name77,username77@infoobjects.com,31,Male,Tata Nexon,Mid,SUV,EV,Existing
+CUST011,user9,name9,username9@infoobjects.com,37,Female,Toyota Fortuner,Mid,SUV,Petrol,New
+CUST012,user30,name30,username30@infoobjects.com,68,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST013,user43,name43,username43@infoobjects.com,37,Female,MG Hector,Top,SUV,Petrol,New
+CUST014,user26,name26,username26@infoobjects.com,58,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST015,user64,name64,username64@infoobjects.com,42,Female,Tata Nexon,Top,SUV,Petrol,Existing
+CUST016,user16,name16,username16@infoobjects.com,25,Male,Toyota Fortuner,Base,SUV,Petrol,New
+CUST017,user73,name73,username73@infoobjects.com,68,Male,Tata Nexon,Base,SUV,Petrol,Existing
+CUST018,user13,name13,username13@infoobjects.com,63,Female,Tata Nexon,Top,SUV,Petrol,New
+CUST019,user88,name88,username88@infoobjects.com,26,Female,Hyundai Creta,Top,SUV,Petrol,New
+CUST020,user81,name81,username81@infoobjects.com,33,Male,Kia Seltos,Mid,SUV,Petrol,Existing
+CUST021,user97,name97,username97@infoobjects.com,57,Female,Tata Nexon,Mid,SUV,Petrol,New
+CUST022,user32,name32,username32@infoobjects.com,18,Female,Ford Mustang,Mid,Coupe,Petrol,Existing
+CUST023,user90,name90,username90@infoobjects.com,51,Female,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST024,user44,name44,username44@infoobjects.com,57,Male,Maruti Swift,Base,Hatchback,CNG,New
+CUST025,user98,name98,username98@infoobjects.com,35,Male,Kia Seltos,Base,SUV,Petrol,New
+CUST026,user15,name15,username15@infoobjects.com,55,Female,Honda City,Top,Sedan,Petrol,Existing
+CUST027,user69,name69,username69@infoobjects.com,50,Male,Tata Nexon,Base,SUV,EV,New
+CUST028,user92,name92,username92@infoobjects.com,56,Female,Hyundai Creta,Base,SUV,Diesel,New
+CUST029,user53,name53,username53@infoobjects.com,64,Female,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST030,user96,name96,username96@infoobjects.com,65,Female,Hyundai Creta,Base,SUV,Diesel,New
+CUST031,user66,name66,username66@infoobjects.com,58,Male,Tata Nexon,Mid,SUV,EV,Existing
+CUST032,user8,name8,username8@infoobjects.com,53,Male,MG Hector,Top,SUV,Diesel,New
+CUST033,user49,name49,username49@infoobjects.com,64,Female,MG Hector,Mid,SUV,Petrol,New
+CUST034,user82,name82,username82@infoobjects.com,44,Male,Tata Nexon,Base,SUV,Diesel,Existing
+CUST035,user24,name24,username24@infoobjects.com,65,Male,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST036,user23,name23,username23@infoobjects.com,64,Male,Maruti Swift,Mid,Hatchback,CNG,Existing
+CUST037,user46,name46,username46@infoobjects.com,19,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST038,user60,name60,username60@infoobjects.com,48,Male,Honda City,Top,Sedan,Petrol,New
+CUST039,user72,name72,username72@infoobjects.com,63,Male,Hyundai Creta,Mid,SUV,Diesel,New
+CUST040,user29,name29,username29@infoobjects.com,60,Female,Maruti Swift,Top,Hatchback,Petrol,New
+CUST041,user50,name50,username50@infoobjects.com,20,Male,Kia Seltos,Base,SUV,Diesel,New
+CUST042,user2,name2,username2@infoobjects.com,65,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST043,user95,name95,username95@infoobjects.com,42,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST044,user68,name68,username68@infoobjects.com,33,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST045,user18,name18,username18@infoobjects.com,49,Female,Kia Seltos,Mid,SUV,Petrol,New
+CUST046,user52,name52,username52@infoobjects.com,29,Male,Hyundai Creta,Base,SUV,Petrol,New
+CUST047,user78,name78,username78@infoobjects.com,53,Male,Ford Mustang,Top,Coupe,Petrol,Existing
+CUST048,user80,name80,username80@infoobjects.com,23,Female,Tata Nexon,Top,SUV,Petrol,Existing
+CUST049,user85,name85,username85@infoobjects.com,24,Male,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST050,user71,name71,username71@infoobjects.com,36,Male,Toyota Fortuner,Base,SUV,Petrol,New
+CUST051,user25,name25,username25@infoobjects.com,45,Male,Kia Seltos,Mid,SUV,Diesel,Existing
+CUST052,user10,name10,username10@infoobjects.com,70,Female,Honda City,Top,Sedan,Diesel,New
+CUST053,user11,name11,username11@infoobjects.com,56,Female,Hyundai Creta,Base,SUV,Diesel,Existing
+CUST054,user4,name4,username4@infoobjects.com,22,Male,Ford Mustang,Mid,Coupe,Petrol,New
+CUST055,user6,name6,username6@infoobjects.com,68,Female,Honda City,Mid,Sedan,Diesel,New
+CUST056,user45,name45,username45@infoobjects.com,44,Male,Hyundai Creta,Base,SUV,Petrol,New
+CUST057,user84,name84,username84@infoobjects.com,38,Male,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST058,user79,name79,username79@infoobjects.com,33,Male,Honda City,Base,Sedan,Diesel,Existing
+CUST059,user38,name38,username38@infoobjects.com,22,Male,Tata Nexon,Mid,SUV,Diesel,New
+CUST060,user76,name76,username76@infoobjects.com,19,Female,MG Hector,Mid,SUV,Diesel,Existing
+CUST061,user75,name75,username75@infoobjects.com,18,Male,Hyundai Creta,Mid,SUV,Diesel,New
+CUST062,user12,name12,username12@infoobjects.com,63,Female,MG Hector,Top,SUV,Petrol,Existing
+CUST063,user63,name63,username63@infoobjects.com,19,Male,Hyundai Creta,Mid,SUV,Diesel,New
+CUST064,user83,name83,username83@infoobjects.com,64,Male,Hyundai Creta,Mid,SUV,Diesel,New
+CUST065,user86,name86,username86@infoobjects.com,44,Female,BMW M4 Coupe,Top,Coupe,Petrol,Existing
+CUST066,user89,name89,username89@infoobjects.com,63,Male,Ford Mustang,Top,Coupe,Petrol,New
+CUST067,user41,name41,username41@infoobjects.com,46,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST068,user36,name36,username36@infoobjects.com,56,Male,Maruti Swift,Top,Hatchback,Petrol,New
+CUST069,user5,name5,username5@infoobjects.com,62,Female,Honda City,Top,Sedan,Diesel,Existing
+CUST070,user99,name99,username99@infoobjects.com,53,Male,Honda City,Mid,Sedan,Diesel,New
+CUST071,user7,name7,username7@infoobjects.com,22,Female,MG Hector,Mid,SUV,Diesel,Existing
+CUST072,user59,name59,username59@infoobjects.com,24,Female,Hyundai Creta,Mid,SUV,Diesel,New
+CUST073,user33,name33,username33@infoobjects.com,60,Male,MG Hector,Top,SUV,Diesel,Existing
+CUST074,user47,name47,username47@infoobjects.com,26,Male,Honda City,Base,Sedan,Petrol,New
+CUST075,user34,name34,username34@infoobjects.com,61,Female,Toyota Fortuner,Mid,SUV,Petrol,New
+CUST076,user42,name42,username42@infoobjects.com,47,Male,Audi RS5 Coupe,Top,Coupe,Petrol,Existing
+CUST077,user51,name51,username51@infoobjects.com,70,Female,Toyota Fortuner,Base,SUV,Petrol,Existing
+CUST078,user40,name40,username40@infoobjects.com,37,Male,Ford Mustang,Top,Coupe,Petrol,New
+CUST079,user70,name70,username70@infoobjects.com,20,Female,Toyota Fortuner,Mid,SUV,Petrol,Existing
+CUST080,user54,name54,username54@infoobjects.com,18,Male,Hyundai Creta,Base,SUV,Diesel,New
+CUST081,user27,name27,username27@infoobjects.com,55,Male,Kia Seltos,Top,SUV,Petrol,Existing
+CUST082,user21,name21,username21@infoobjects.com,24,Male,Hyundai Creta,Base,SUV,Petrol,Existing
+CUST083,user31,name31,username31@infoobjects.com,65,Female,Toyota Fortuner,Base,SUV,Diesel,New
+CUST084,user3,name3,username3@infoobjects.com,23,Male,Ford Mustang,Top,Coupe,Petrol,New
+CUST085,user58,name58,username58@infoobjects.com,65,Female,Ford Mustang,Mid,Coupe,Petrol,New
+CUST086,user61,name61,username61@infoobjects.com,35,Male,Kia Seltos,Base,SUV,Petrol,New
+CUST087,user74,name74,username74@infoobjects.com,67,Male,MG Hector,Top,SUV,Diesel,Existing
+CUST088,user56,name56,username56@infoobjects.com,55,Male,Tata Nexon,Base,SUV,EV,New
+CUST089,user39,name39,username39@infoobjects.com,61,Female,Maruti Swift,Mid,Hatchback,CNG,New
+CUST090,user28,name28,username28@infoobjects.com,45,Male,Hyundai Creta,Base,SUV,Diesel,New
+CUST091,user57,name57,username57@infoobjects.com,34,Female,Ford Mustang,Top,Coupe,Petrol,New
+CUST092,user1,name1,username1@infoobjects.com,24,Female,BMW M4 Coupe,Top,Coupe,Petrol,New
+CUST093,user17,name17,username17@infoobjects.com,59,Male,Honda City,Base,Sedan,Diesel,New
+CUST094,user65,name65,username65@infoobjects.com,25,Female,Hyundai Creta,Mid,SUV,Diesel,Existing
+CUST095,user67,name67,username67@infoobjects.com,62,Female,MG Hector,Mid,SUV,Diesel,New
+CUST096,user20,name20,username20@infoobjects.com,55,Female,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST097,user94,name94,username94@infoobjects.com,32,Female,Hyundai Creta,Base,SUV,Petrol,Existing
+CUST098,user55,name55,username55@infoobjects.com,67,Female,Toyota Fortuner,Mid,SUV,Diesel,Existing
+CUST099,user62,name62,username62@infoobjects.com,37,Male,Audi RS5 Coupe,Top,Coupe,Petrol,New
+CUST100,user22,name22,username22@infoobjects.com,61,Female,MG Hector,Mid,SUV,Petrol,Existing
