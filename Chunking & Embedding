@@ -51,7 +51,7 @@ print("Documents embedded and stored persistently.")
 query = "Which customer segment prefers SUVs?"
 results = collection.query(query_texts=[query], n_results=3)
 
-print("\n🔍 Query Result:")
+print("\n Query Result:")
 for doc in results['documents'][0]:
     print(doc)
     print("-" * 40)
