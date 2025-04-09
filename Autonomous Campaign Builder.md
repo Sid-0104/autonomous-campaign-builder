@@ -67,10 +67,15 @@ marketing_campaign.csv → Past campaign types, communication channels, and outc
 
 ## Data Chunking & Embedding Strategy
 Each row from the dataset is transformed into a sentence using Python string formatting. These chunks make it easier for the model to semantically understand and embed the information.
+
+
+
  Example:
 Original Row:
-customer_id,region,gender,car_preference
-C101,North,Female,SUV
+| customer_id | region | gender | car_preference |
+|-------------|--------|--------|----------------|
+| C101        | North  | Female | SUV            |
+
 Chunked Sentence:
 "Customer C101 from North region is a Female who prefers SUV."
 
