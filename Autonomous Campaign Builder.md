@@ -52,6 +52,10 @@ pip install pydantic>=2.0.0
 pip install tenacity>=8.0.0
 pip install streamlit>=1.22
 ```
+Tr run locally:
+```bash
+streamlit run app.py
+```
 
 
 ## Datasets Used:
