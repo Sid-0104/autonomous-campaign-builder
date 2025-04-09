@@ -97,23 +97,24 @@ def research_market_trends(state: CampaignState) -> CampaignState:
         ### 📦 Output Format:
 
         #### 1. Executive Summary
-        - 2–3 brief paragraphs summarizing top findings, actionable insights, and suggested strategic direction.
+        - 1 brief paragraphs summarizing top findings, actionable insights, and suggested strategic direction.
 
-        #### 2. Key Market Insights (Bullet Format)
+        #### 2. Key Market Insights
         - Condense insights into clear bullet points.
         - Each point should include a **stat**, **insight**, and **why it matters**.
         - Filter automatically based on what's relevant to the campaign goal.
+        - Provide only 3 bullet points.
 
         #### 3. Top Opportunities (Ranked)
-        - List top opportunities to improve performance or target growth areas.
+        - List top 3 opportunities to improve performance or target growth areas.
         - Rank by potential impact (High > Medium > Low).
 
-        #### 4. Threats & Risks
-        - Identify challenges based on internal weaknesses or external market dynamics.
-        - Add mitigation strategies for each.
+        #### 4. Key Performance Indicators (KPIs)
+        - List 3 key performance indicators (KPIs) to track campaign success.
+        - Each point should include a **metric**, **target**, and **why it matters**.
 
         #### 5. Recommended Actions
-        - List specific steps to optimize the campaign.
+        - List two specific steps to optimize the campaign.
         - Cite both internal metrics and external sources for support.
 
         ---

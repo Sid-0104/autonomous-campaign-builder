@@ -9,8 +9,8 @@ def generate_content(state: CampaignState) -> CampaignState:
 
     ### INPUTS:
     - CAMPAIGN GOAL: {state.goal}
-    - TARGET AUDIENCE: {state.audience_segments[:300]}... [truncated]
-    - CAMPAIGN STRATEGY: {state.campaign_strategy[:300]}... [truncated]
+    - TARGET AUDIENCE: {state.audience_segments[:100]}... [truncated]
+    - CAMPAIGN STRATEGY: {state.campaign_strategy[:100]}... [truncated]
 
     ### DELIVERABLE:
     Create 3 content examples (one per channel) that align with the strategy:

@@ -16,15 +16,16 @@ from core.vector_db import load_mock_data, initialize_vector_db
 from core.state import CampaignState
 from workflows.campaign_workflow import build_campaign_workflow
 
-# Load environment variables
-load_dotenv()
-
 # Page configuration
 st.set_page_config(
     page_title="Autonomous Campaign Builder",
     page_icon="🛴",
     layout="wide"
 )
+
+# Initialize session state if not already done
+if 'state' not in st.session_state:
+    st.session_state.state = None
 
 # Header
 st.title("🚀 Autonomous Campaign Builder")
@@ -69,7 +70,8 @@ if st.sidebar.button("Generate Campaign"):
         "Campaign Strategy", 
         "Content", 
         "Simulation", 
-        "Final Report"
+        "Final Report",
+        "Email Distribution"  # Added new tab for email distribution
     ])
     
     # Run workflow with progress updates
@@ -105,6 +107,9 @@ if st.sidebar.button("Generate Campaign"):
             elif node == "generate_final_report" and "final_report" in state:
                 with tabs[5]:
                     st.markdown(state["final_report"])
+            elif node == "send_campaign_emails" and "email_status" in state:
+                with tabs[6]:
+                    st.markdown(state["email_status"])
             
             # Add a small delay for UI updates
             time.sleep(0.5)
@@ -116,6 +121,9 @@ if st.sidebar.button("Generate Campaign"):
     # Get final state
     final_state = campaign_workflow.invoke(initial_state)
     
+    # Store the final state in session state for later use
+    st.session_state.state = final_state
+    
     # Display download button for the report
     st.download_button(
         label="Download Report",
@@ -123,6 +131,30 @@ if st.sidebar.button("Generate Campaign"):
         file_name="campaign_report.md",
         mime="text/markdown"
     )
+    
+    # Add email distribution button in the Email Distribution tab
+    with tabs[6]:
+        st.subheader("Campaign Distribution")
+        
+        if st.button("Send Campaign Emails"):
+            with st.spinner("Sending emails to customers..."):
+                # Create a progress bar for email sending
+                email_progress = st.progress(0)
+                email_status = st.empty()
+                
+                # Call the email sending agent
+                email_state = AGENT_REGISTRY["send_campaign_emails"](st.session_state.state)
+                
+                # Update session state
+                st.session_state.state = email_state
+                
+                # Display results
+                if hasattr(email_state, 'email_status'):
+                    if "failed" in email_state.email_status.lower():
+                        st.error(email_state.email_status)
+                    else:
+                        st.success(email_state.email_status)
+                        email_progress.progress(1.0)
 
 else:
     # Display instructions when not running
@@ -140,54 +172,5 @@ else:
     4. **Content Examples** - Email, social media, and landing page content
     5. **Performance Simulation** - Projected results and optimization recommendations
     6. **Final Report** - Complete campaign plan
+    7. **Email Distribution** - Send campaign emails to target customers
     """)
-# Add this to your imports section
-import streamlit as st
-from agents import AGENT_REGISTRY
-from core.state import CampaignState
-import os
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
-
-# Your existing code...
-
-# Add this in your sidebar or main UI section where appropriate
-with st.sidebar.expander("Email Configuration"):
-    st.write("Configure email settings for campaign distribution")
-    
-    # Email configuration inputs
-    sender_email = st.text_input("Sender Email", value=os.getenv("SENDER_EMAIL", ""))
-    email_password = st.text_input("Email Password", type="password", value=os.getenv("EMAIL_APP_PASSWORD", ""))
-    smtp_server = st.text_input("SMTP Server", value=os.getenv("SMTP_SERVER", "smtp.gmail.com"))
-    smtp_port = st.number_input("SMTP Port", value=int(os.getenv("SMTP_PORT", 465)))
-    
-    # Save configuration button
-    if st.button("Save Email Configuration"):
-        os.environ["SENDER_EMAIL"] = sender_email
-        os.environ["EMAIL_APP_PASSWORD"] = email_password
-        os.environ["SMTP_SERVER"] = smtp_server
-        os.environ["SMTP_PORT"] = str(smtp_port)
-        st.success("Email configuration saved!")
-
-# Add this where you want the email sending functionality to appear
-# For example, after the final report is generated
-if hasattr(state, 'final_report') and state.final_report:
-    st.subheader("Campaign Distribution")
-    
-    if st.button("Send Campaign Emails"):
-        with st.spinner("Sending emails to customers..."):
-            # Create a progress bar
-            progress_bar = st.progress(0)
-            status_text = st.empty()
-            
-            # Call the email sending agent
-            state = AGENT_REGISTRY["send_campaign_emails"](state)
-            
-            # Display results
-            if hasattr(state, 'email_status'):
-                if "failed" in state.email_status.lower():
-                    st.error(state.email_status)
-                else:
-                    st.success(state.email_status)

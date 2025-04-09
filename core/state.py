@@ -11,3 +11,4 @@ class CampaignState(BaseModel):
     campaign_content: Optional[str] = None
     simulation_results: Optional[str] = None
     final_report: Optional[str] = None
+    email_status: Optional[str] = None

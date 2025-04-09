@@ -14,9 +14,9 @@ def create_campaign_strategy(state: CampaignState) -> CampaignState:
 
     ### INPUTS:
     - GOAL: {state.goal}
-    - MARKET ANALYSIS: {state.market_analysis[:500]}... [truncated]
-    - TARGET AUDIENCE: {state.audience_segments[:500]}... [truncated]
-    - REFERENCE CAMPAIGNS: {past_campaigns[:500]}... [truncated]
+    - MARKET ANALYSIS: {state.market_analysis[:200]}... [truncated]
+    - TARGET AUDIENCE: {state.audience_segments[:200]}... [truncated]
+    - REFERENCE CAMPAIGNS: {past_campaigns[:200]}... [truncated]
 
     ### DELIVERABLE:
     Create a structured campaign strategy with:
@@ -26,7 +26,7 @@ def create_campaign_strategy(state: CampaignState) -> CampaignState:
     4. KPIs (specific metrics to track success)
     5. Messaging framework (key value propositions)
 
-    Format with clear headings and bullet points.
+    Format with clear headings and bullet points in clear and concise manner(don't elaborate).
     """
     
     response = safe_llm_invoke(llm, prompt)

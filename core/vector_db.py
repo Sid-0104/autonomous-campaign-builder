@@ -9,7 +9,7 @@ GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", "models/text-embedding-004")
 
 def load_mock_data():
-    base_path = 'c:\\Users\\user\\Desktop\\campaign builder'
+    base_path = 'D:\\autonomous-campaign-builder\\autonomous-campaign-builder'
     
     try:
         # Load sales data from CSV
