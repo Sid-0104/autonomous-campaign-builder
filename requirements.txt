@@ -1,0 +1,11 @@
+langchain-community>=0.0.25
+openai>=1.0.0
+chromadb>=0.4.15
+pandas
+python-dotenv
+tiktoken
+google-generativeai
+langchain>=0.2.9
+langchain-chroma>=0.1.0
+chromadb>=0.4.24
+
