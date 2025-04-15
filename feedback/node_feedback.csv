@@ -1,2 +1,26 @@
 id,timestamp,node_name,user_rating
 238b00d2-6502-4182-9bc9-4f9b9e35b9ec,2025-04-14T16:37:48.920960,test_node,5
+8ea8ad7b-a7f3-4c66-aff7-b7aff92899ba,2025-04-15T17:12:09.030326,research_market_trends,Positive Feedback
+31cd1315-8041-4809-9d70-c1e0479e929f,2025-04-15T17:12:34.468400,create_campaign_strategy,Positive Feedback
+a27c3f45-bf92-4b7c-859e-f540b2e1cdb0,2025-04-15T17:12:50.359455,simulate_campaign,Positive Feedback
+969108e8-34ab-4490-b826-f80e3698d4d5,2025-04-15T17:12:59.662805,segment_audience,Negative Feedback
+af486184-e67a-4dbd-bdcc-ea478991207f,2025-04-15T17:16:45.030385,research_market_trends,Negative Feedback
+d486e079-28b8-4f7a-af18-7dd79ffe1d1d,2025-04-15T17:16:47.946182,segment_audience,Negative Feedback
+5a93fefc-24c9-4b9f-a000-f95ead60a529,2025-04-15T17:18:06.525131,create_campaign_strategy,Positive Feedback
+add41151-dbd3-4297-b680-edcb4338e3d5,2025-04-15T17:18:08.716365,generate_content,Positive Feedback
+8ceeaaaa-ca01-46df-ba91-b0b4e781e03d,2025-04-15T17:23:51.987533,create_campaign_strategy,Positive Feedback
+4391953c-319b-4f56-b6a0-b19357257f4c,2025-04-15T17:25:01.441376,segment_audience,Positive Feedback
+1ce2d7b7-89ba-4cd5-b029-0ffc26e85386,2025-04-15T17:25:23.916170,generate_content,Negative Feedback
+d97d196d-f71e-47fb-903a-be732c1bf9d0,2025-04-15T17:25:43.789497,research_market_trends,Positive Feedback
+b25ff315-2cec-480b-b6ba-c0a63d027d3d,2025-04-15T17:26:04.737307,simulate_campaign,Positive Feedback
+a2485ed0-f216-44bf-8363-368fa7dcbbe6,2025-04-15T17:26:19.849999,generate_final_report,Positive Feedback
+836f3662-4675-4443-8f47-b2c73cac03c8,2025-04-15T17:31:07.867684,research_market_trends,Positive Feedback
+c6951d47-192d-4444-bd77-17b4411e6a24,2025-04-15T17:31:59.653693,create_campaign_strategy,Negative Feedback
+e006859d-87df-4001-acc7-453f16c63b16,2025-04-15T17:32:47.444277,generate_content,Positive Feedback
+9d523985-13fd-4c43-9199-1855185b3c50,2025-04-15T17:33:26.863020,generate_final_report,Positive Feedback
+a362a066-8af1-47e2-9787-eadff6352e17,2025-04-15T17:52:53.610718,research_market_trends,Negative Feedback
+ce116867-d17f-43c8-8af0-88efe9f99a3f,2025-04-15T18:04:37.317623,segment_audience,Positive Feedback
+e471702a-3dd1-47aa-a0b7-db6d2f52b4b1,2025-04-15T18:05:03.797500,create_campaign_strategy,Negative Feedback
+79bae751-f82a-4577-9b71-170a8f43f8d3,2025-04-15T18:05:24.551050,generate_content,Positive Feedback
+af7c8d8d-3e0b-45bd-83c3-3842c0b9585f,2025-04-15T18:12:18.428346,research_market_trends,Positive Feedback
+3d08ef08-3e86-4dfe-b7bd-e2e8b567ad0c,2025-04-15T18:14:03.378386,simulate_campaign,Positive Feedback
