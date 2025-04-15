@@ -40,14 +40,6 @@ wheels/
 .DS_Store
 Thumbs.db
 
-# Local development
-feedback/
-data/
-assets/
-*.pdf
-*.csv
-*.xlsx
-
 # Virtual environment
 venv/
 ENV/

@@ -1,0 +1,101 @@
+campaign_id,name,start_date,end_date,target_segment,budget,channel,area_type
+HC001,Wellness Drive,2025-02-11,2025-02-19,Elderly,3247,"Flyers, Email",Semi-Urban
+HC002,Vaccination Week,2025-03-22,2025-04-15,Children,31131,Community Events,Rural
+HC003,Stay Healthy Campaign,2024-11-12,2024-12-04,Children,15457,Social Media,Rural
+HC004,Hypertension Awareness,2024-03-07,2024-03-14,Pregnant Women,2120,Social Media,Urban
+HC005,Elderly Care Awareness,2024-01-26,2024-02-18,Adults,25265,TV & Radio,Semi-Urban
+HC006,Child Nutrition Campaign,2024-09-27,2024-10-17,General Public,21937,"Flyers, Email",Rural
+HC007,Health Awareness Drive,2024-03-29,2024-04-03,General Public,32933,Hospitals & Clinics,Semi-Urban
+HC008,Diabetes Prevention Camp,2024-04-25,2024-05-12,Adults,30235,Community Events,Semi-Urban
+HC009,Hypertension Awareness,2024-10-10,2024-11-02,General Public,41652,Social Media,Urban
+HC010,Hypertension Awareness,2024-09-02,2024-09-19,Elderly,46134,Social Media,Rural
+HC011,Health Awareness Drive,2024-07-31,2024-08-10,Children,29195,Social Media,Urban
+HC012,Child Nutrition Campaign,2024-08-06,2024-08-21,General Public,26145,Social Media,Semi-Urban
+HC013,Immunization Program,2024-08-06,2024-08-24,Elderly,2048,Community Events,Rural
+HC014,Mental Wellness Month,2024-09-18,2024-10-01,Pregnant Women,44958,Hospitals & Clinics,Semi-Urban
+HC015,Diabetes Prevention Camp,2024-04-11,2024-05-10,Adults,11918,Community Events,Semi-Urban
+HC016,Free Check-up Week,2024-11-21,2024-12-09,Adults,20365,Social Media,Urban
+HC017,Free Check-up Week,2024-09-21,2024-10-14,Pregnant Women,25569,Community Events,Semi-Urban
+HC018,Flu Shot Campaign,2024-10-09,2024-10-22,Adults,48851,Hospitals & Clinics,Rural
+HC019,Free Check-up Week,2024-02-28,2024-03-07,Pregnant Women,8782,Hospitals & Clinics,Urban
+HC020,Immunization Program,2024-07-06,2024-08-02,Elderly,23578,Hospitals & Clinics,Urban
+HC021,Immunization Program,2024-08-11,2024-09-06,Adults,45876,Community Events,Rural
+HC022,COVID-19 Vaccination Drive,2024-11-23,2024-12-09,Pregnant Women,15781,Community Events,Urban
+HC023,Hypertension Awareness,2024-06-09,2024-07-04,Children,7849,Social Media,Semi-Urban
+HC024,Diabetes Prevention Camp,2024-07-16,2024-07-25,Adults,30925,Social Media,Urban
+HC025,Elderly Care Awareness,2024-05-28,2024-06-08,Pregnant Women,24670,Community Events,Semi-Urban
+HC026,Hypertension Awareness,2024-02-23,2024-03-12,Elderly,40641,TV & Radio,Semi-Urban
+HC027,Cancer Screening Week,2024-02-20,2024-03-07,Pregnant Women,14947,TV & Radio,Semi-Urban
+HC028,COVID-19 Vaccination Drive,2024-12-26,2025-01-06,Adults,16927,Social Media,Semi-Urban
+HC029,Immunization Program,2024-10-07,2024-11-06,General Public,25196,Social Media,Rural
+HC030,Child Nutrition Campaign,2024-08-25,2024-09-15,General Public,22476,Community Events,Rural
+HC031,Flu Shot Campaign,2024-02-10,2024-03-09,General Public,44827,Community Events,Semi-Urban
+HC032,Health Awareness Drive,2024-09-03,2024-10-02,Pregnant Women,24456,"Flyers, Email",Semi-Urban
+HC033,Elderly Care Awareness,2024-09-25,2024-10-20,Elderly,49390,Community Events,Semi-Urban
+HC034,Immunization Program,2024-08-20,2024-09-04,Adults,9477,Community Events,Semi-Urban
+HC035,Free Check-up Week,2024-01-23,2024-02-16,Children,41733,Community Events,Semi-Urban
+HC036,Free Check-up Week,2024-02-05,2024-02-25,Elderly,48121,"Flyers, Email",Rural
+HC037,Hypertension Awareness,2024-08-27,2024-09-01,Children,24637,Hospitals & Clinics,Rural
+HC038,COVID-19 Vaccination Drive,2024-10-31,2024-11-15,Children,43050,Social Media,Semi-Urban
+HC039,Diabetes Prevention Camp,2024-09-09,2024-09-16,Pregnant Women,11158,Hospitals & Clinics,Semi-Urban
+HC040,Diabetes Prevention Camp,2024-11-28,2024-12-08,Elderly,16726,Hospitals & Clinics,Urban
+HC041,Free Check-up Week,2024-10-05,2024-10-30,Pregnant Women,15672,Community Events,Semi-Urban
+HC042,Flu Shot Campaign,2024-12-03,2024-12-14,Adults,9682,Community Events,Rural
+HC043,Cancer Screening Week,2024-10-01,2024-10-09,Elderly,12659,Hospitals & Clinics,Rural
+HC044,Heart Health Initiative,2024-10-10,2024-10-20,Adults,41883,Community Events,Rural
+HC045,Child Nutrition Campaign,2024-04-21,2024-05-09,Children,39870,TV & Radio,Semi-Urban
+HC046,Heart Health Initiative,2024-06-17,2024-06-25,Adults,47542,Hospitals & Clinics,Semi-Urban
+HC047,Immunization Program,2024-08-26,2024-09-07,General Public,31463,Hospitals & Clinics,Rural
+HC048,Cancer Screening Week,2024-07-25,2024-08-04,Pregnant Women,47389,Community Events,Urban
+HC049,Child Nutrition Campaign,2024-04-20,2024-04-28,General Public,49299,"Flyers, Email",Rural
+HC050,Diabetes Prevention Camp,2024-01-23,2024-02-05,Adults,22647,TV & Radio,Semi-Urban
+HC051,Elderly Care Awareness,2024-06-08,2024-07-02,General Public,20929,TV & Radio,Urban
+HC052,Diabetes Prevention Camp,2024-09-22,2024-10-05,Children,34301,Community Events,Urban
+HC053,Health Awareness Drive,2024-06-09,2024-06-28,Pregnant Women,4605,TV & Radio,Semi-Urban
+HC054,Free Check-up Week,2024-11-06,2024-12-05,General Public,11113,Hospitals & Clinics,Urban
+HC055,Immunization Program,2024-06-26,2024-07-11,Adults,25592,"Flyers, Email",Urban
+HC056,Free Check-up Week,2024-06-05,2024-06-30,General Public,17966,Community Events,Rural
+HC057,Mental Wellness Month,2024-10-06,2024-10-12,Children,39142,"Flyers, Email",Semi-Urban
+HC058,Hypertension Awareness,2024-10-24,2024-11-22,Pregnant Women,7272,"Flyers, Email",Semi-Urban
+HC059,Free Check-up Week,2024-06-28,2024-07-05,Children,34473,"Flyers, Email",Semi-Urban
+HC060,COVID-19 Vaccination Drive,2024-02-23,2024-03-08,Children,42795,"Flyers, Email",Semi-Urban
+HC061,Immunization Program,2024-11-07,2024-12-02,Children,2652,"Flyers, Email",Urban
+HC062,Free Check-up Week,2024-07-01,2024-07-11,Adults,31503,"Flyers, Email",Rural
+HC063,Mental Wellness Month,2024-08-21,2024-09-13,Elderly,42695,Community Events,Semi-Urban
+HC064,Flu Shot Campaign,2024-04-24,2024-05-22,General Public,10641,Community Events,Urban
+HC065,Health Awareness Drive,2024-02-20,2024-03-02,Children,8641,TV & Radio,Rural
+HC066,Immunization Program,2024-03-20,2024-04-10,Adults,49812,Community Events,Rural
+HC067,Heart Health Initiative,2024-02-04,2024-03-05,Children,26299,Social Media,Urban
+HC068,Diabetes Prevention Camp,2024-04-08,2024-04-18,Adults,14410,Social Media,Semi-Urban
+HC069,Child Nutrition Campaign,2024-10-01,2024-10-10,General Public,2964,Hospitals & Clinics,Rural
+HC070,Immunization Program,2024-12-08,2024-12-20,Pregnant Women,4120,"Flyers, Email",Urban
+HC071,Child Nutrition Campaign,2024-10-04,2024-11-03,Children,36828,Hospitals & Clinics,Semi-Urban
+HC072,Child Nutrition Campaign,2024-05-12,2024-05-23,Pregnant Women,29260,"Flyers, Email",Rural
+HC073,Flu Shot Campaign,2024-04-22,2024-05-22,Elderly,48799,TV & Radio,Semi-Urban
+HC074,Free Check-up Week,2024-06-27,2024-07-17,Children,35885,Hospitals & Clinics,Urban
+HC075,COVID-19 Vaccination Drive,2024-07-01,2024-07-22,General Public,29168,Hospitals & Clinics,Rural
+HC076,Diabetes Prevention Camp,2024-11-15,2024-12-10,General Public,16070,"Flyers, Email",Semi-Urban
+HC077,Heart Health Initiative,2024-05-29,2024-06-27,General Public,30716,Social Media,Rural
+HC078,Mental Wellness Month,2024-02-14,2024-02-22,Children,11868,Social Media,Urban
+HC079,Child Nutrition Campaign,2024-01-23,2024-01-29,Elderly,39843,Community Events,Urban
+HC080,Diabetes Prevention Camp,2024-01-31,2024-02-28,Adults,35280,TV & Radio,Rural
+HC081,COVID-19 Vaccination Drive,2024-02-07,2024-02-17,General Public,12675,Hospitals & Clinics,Rural
+HC082,Free Check-up Week,2024-06-27,2024-07-22,Pregnant Women,44815,TV & Radio,Urban
+HC083,Immunization Program,2024-01-03,2024-01-26,Children,40671,TV & Radio,Rural
+HC084,Free Check-up Week,2024-09-03,2024-09-13,General Public,49401,TV & Radio,Semi-Urban
+HC085,Immunization Program,2024-05-02,2024-05-07,General Public,38626,Social Media,Semi-Urban
+HC086,Mental Wellness Month,2024-04-12,2024-05-08,Pregnant Women,5742,Community Events,Urban
+HC087,Immunization Program,2024-05-08,2024-05-14,Elderly,12190,Hospitals & Clinics,Semi-Urban
+HC088,Cancer Screening Week,2024-04-30,2024-05-24,Pregnant Women,30196,Hospitals & Clinics,Rural
+HC089,Flu Shot Campaign,2024-11-21,2024-12-01,Pregnant Women,31449,Hospitals & Clinics,Semi-Urban
+HC090,Hypertension Awareness,2024-05-04,2024-05-28,Elderly,46294,"Flyers, Email",Urban
+HC091,Child Nutrition Campaign,2024-12-10,2024-12-26,Adults,2636,Hospitals & Clinics,Semi-Urban
+HC092,Free Check-up Week,2024-09-30,2024-10-09,Pregnant Women,44911,Social Media,Rural
+HC093,Child Nutrition Campaign,2024-04-24,2024-05-14,Adults,48543,Hospitals & Clinics,Urban
+HC094,Child Nutrition Campaign,2024-11-30,2024-12-13,Elderly,21184,Community Events,Rural
+HC095,Immunization Program,2024-11-17,2024-12-13,Children,32809,"Flyers, Email",Urban
+HC096,Immunization Program,2024-05-01,2024-05-09,General Public,36306,Hospitals & Clinics,Semi-Urban
+HC097,Immunization Program,2024-10-07,2024-10-26,Adults,15355,Social Media,Rural
+HC098,Health Awareness Drive,2024-05-04,2024-05-31,General Public,35476,"Flyers, Email",Semi-Urban
+HC099,Mental Wellness Month,2024-04-18,2024-05-16,General Public,20721,TV & Radio,Rural
+HC100,Child Nutrition Campaign,2024-02-14,2024-02-19,General Public,17917,"Flyers, Email",Rural
