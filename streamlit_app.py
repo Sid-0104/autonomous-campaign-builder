@@ -4,6 +4,8 @@ import os
 import re
 import pandas as pd
 import traceback
+import uuid
+from datetime import datetime
 from dotenv import load_dotenv
 from core.vector_db import initialize_vector_db, load_documents_by_domain
 from core.state import CampaignState
@@ -21,6 +23,13 @@ load_dotenv(env_path)
 
 # Configuration
 STEP_DELAY = int(os.environ.get("STEP_DELAY", 5))
+
+# Default prompts for each industry
+DEFAULT_PROMPTS = {
+    "automotives": "Boost Q2 SUV sales in the Western region by 15%",
+    "healthcare": "Increase patient enrollment in our preventative care program by 25% in Q3",
+    "powerenergy": "Increase residential solar panel installations by 35% in the Southern region this summer"
+}
 
 # Configure logging
 def setup_logging():
@@ -52,7 +61,49 @@ def generate_pdf(section_title, content):
     pdf.multi_cell(0, 10, txt=f"{section_title}\n\n{clean_content}")
     return pdf.output(dest='S').encode('latin-1')
 
-# ===== Section Renderer + Feedback =====
+# Save feedback to CSV file without triggering rerun
+# Replace the existing feedback functions with these implementations
+
+def save_feedback_to_csv(node_name, rating):
+    """Save feedback directly to CSV file"""
+    try:
+        feedback_dir = os.path.join(script_dir, 'feedback')
+        os.makedirs(feedback_dir, exist_ok=True)
+        feedback_file = os.path.join(feedback_dir, 'node_feedback.csv')
+        
+        # Create new feedback entry
+        feedback_id = str(uuid.uuid4())
+        timestamp = datetime.now().isoformat()
+        rating_value = 5 if rating == "positive" else 1
+        
+        # Create DataFrame for new entry
+        new_feedback = pd.DataFrame({
+            'id': [feedback_id],
+            'timestamp': [timestamp],
+            'node_name': [node_name],
+            'user_rating': [rating_value]
+        })
+        
+        # Check if file exists and append or create new
+        if os.path.exists(feedback_file):
+            try:
+                existing_feedback = pd.read_csv(feedback_file)
+                updated_feedback = pd.concat([existing_feedback, new_feedback], ignore_index=True)
+                updated_feedback.to_csv(feedback_file, index=False)
+            except Exception as csv_error:
+                logger.error(f"Error reading existing CSV: {str(csv_error)}")
+                # If there's an error with the existing file, just write the new entry
+                new_feedback.to_csv(feedback_file, index=False)
+        else:
+            new_feedback.to_csv(feedback_file, index=False)
+            
+        logger.info(f"Feedback saved for node {node_name}: {rating} (value: {rating_value})")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to save feedback: {str(e)}\n{traceback.format_exc()}")
+        return False
+
+# Modify the render_section function to use direct feedback handling
 def render_section(title, content, filename, node_name, key_prefix):
     logger.debug(f"Rendering section: {title}")
     try:
@@ -75,29 +126,32 @@ def render_section(title, content, filename, node_name, key_prefix):
         # Create columns for feedback buttons with proper spacing
         cols = st.columns([1, 1, 4])
         
-        # Use unique keys for each feedback button
-        positive_key = f"{feedback_key}_positive"
-        negative_key = f"{feedback_key}_negative"
-        
         # Check if feedback already given
-        if feedback_key in st.session_state.feedback:
-            st.info("✅ Feedback already recorded for this section")
+        if feedback_key in st.session_state:
+            feedback_value = st.session_state[feedback_key]
+            with cols[2]:
+                if feedback_value == "positive":
+                    st.success("👍 Thanks for your positive feedback!")
+                else:
+                    st.warning("👎 Thanks for your feedback. We'll improve this section.")
         else:
-            # Add feedback buttons with unique keys
+            # Use direct button clicks instead of callbacks
             with cols[0]:
-                if st.button("👍", key=positive_key):
-                    st.session_state.feedback[feedback_key] = "positive"
-                    st.rerun()  # Refresh to update the feedback status
+                if st.button("👍", key=f"{feedback_key}_pos"):
+                    st.session_state[feedback_key] = "positive"
+                    save_feedback_to_csv(node_name, "positive")
+                    st.experimental_rerun()
             
             with cols[1]:
-                if st.button("👎", key=negative_key):
-                    st.session_state.feedback[feedback_key] = "negative"
-                    st.rerun()  # Refresh to update the feedback status
+                if st.button("👎", key=f"{feedback_key}_neg"):
+                    st.session_state[feedback_key] = "negative"
+                    save_feedback_to_csv(node_name, "negative")
+                    st.experimental_rerun()
 
     except Exception as e:
         logger.error(f"Failed to render section {title}: {str(e)}\n{traceback.format_exc()}")
         st.error("Error generating this section. Please check logs.")
-        
+
 # Function for vector db initialization with caching
 @st.cache_resource
 def cached_initialize_vector_db(domain, model_provider):
@@ -168,6 +222,8 @@ if 'tab_contents' not in st.session_state:
     st.session_state.tab_contents = {}
 if 'generated' not in st.session_state:
     st.session_state.generated = False
+if 'generation_complete' not in st.session_state:
+    st.session_state.generation_complete = False
 
 # Page configuration
 st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter:", layout="wide")
@@ -261,24 +317,32 @@ def main():
                 domain_value = industry.lower()
                 if st.button(industry, type="primary" if st.session_state.selected_domain == domain_value else "secondary", use_container_width=True):
                     st.session_state.selected_domain = domain_value
+                    # Set the default prompt for the selected industry
+                    if "goal_input" not in st.session_state or not st.session_state.goal_input:
+                        st.session_state.goal_input = DEFAULT_PROMPTS.get(domain_value, "")
                     st.rerun()
             st.markdown(f"**Industry: {st.session_state.selected_domain.upper()}**")
     
         # Main content
         col1, col2 = st.columns([2, 3])
         with col1:
+            # Use the default prompt for the selected industry if no input yet
+            default_goal = DEFAULT_PROMPTS.get(st.session_state.selected_domain, "")
+            
             # Add variable assignment here
             goal = st.text_area(
                 label="Campaign Goal",
                 placeholder="Enter your request", 
                 height=68,
-                key="goal_input"
+                key="goal_input",
+                value=st.session_state.get("goal_input", default_goal)
             )
         with col2:
             st.markdown("<br>", unsafe_allow_html=True)
     
             if st.button("Generate", use_container_width=True, key="generate_button"):
                 st.session_state.generated = True
+                st.session_state.generation_complete = False
                 st.session_state.stop_requested = False
                 st.session_state.tab_contents = {}
                 st.rerun()
@@ -287,6 +351,7 @@ def main():
                 st.rerun()
             if st.button("Back", use_container_width=True, key="back_button"):
                 st.session_state.generated = False
+                st.session_state.generation_complete = False
                 st.session_state.stop_requested = False
                 st.session_state.tab_contents = {}
                 st.session_state.active_tab = 0
@@ -294,182 +359,188 @@ def main():
                 st.rerun()
     
         if st.session_state.generated and goal.strip():
-            with st.spinner("Generating campaign..."):
-                progress_bar = st.progress(0)
-                status_text = st.empty()
-    
-                try:
-                    if not st.session_state.tab_contents:
-                        status_text.text("Initializing campaign builder...")
-                        progress_bar.progress(0.1)
-                        if st.session_state.stop_requested:
-                            status_text.text("⛔ Process stopped by user.")
-                            st.session_state.generated = False
-                            st.stop()
-    
-                        # Use run_autonomous_campaign_builder from main.py
-                        campaign_workflow, initial_state = run_autonomous_campaign_builder(
-                            goal=goal,
-                            domain=st.session_state.selected_domain,
-                            model_provider=st.session_state.selected_llm
-                        )
-                        
-                        progress_bar.progress(0.2)
-                        if st.session_state.stop_requested:
-                            status_text.text("⛔ Process stopped by user.")
-                            st.session_state.generated = False
-                            st.stop()
-    
-                        # Display tabs first so they can be updated during processing
-                        tab_labels = ["📊 Market Analysis", "🎯 Target Audience", "📈 Campaign Strategy", "✍️ Content", "🔬 Simulation", "📄 Final Report", "📬 Email Distribution"]
-                        tabs = st.tabs(tab_labels)
-    
-                        # Get steps from the workflow
-                        from agents import AGENT_REGISTRY
-                        steps = list(AGENT_REGISTRY.keys())
-                        total_steps = len(steps)
-                        
-                        # Process the workflow stream with dictionary access
-                        for i, output in enumerate(campaign_workflow.stream(initial_state)):
+            # Display tabs first so they can be updated during processing
+            tab_labels = ["📊 Market Analysis", "🎯 Target Audience", "📈 Campaign Strategy", "✍️ Content", "🔬 Simulation", "📄 Final Report", "📬 Email Distribution"]
+            tabs = st.tabs(tab_labels)
+            
+            # Only start or continue processing if generation is not complete
+            if not st.session_state.generation_complete:
+                with st.spinner("Generating campaign..."):
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
+        
+                    try:
+                        if not st.session_state.tab_contents:
+                            status_text.text("Initializing campaign builder...")
+                            progress_bar.progress(0.1)
                             if st.session_state.stop_requested:
                                 status_text.text("⛔ Process stopped by user.")
                                 st.session_state.generated = False
                                 st.stop()
-                                
-                            node = list(output.keys())[0] if output else None
-                            if node:
-                                # Update progress - calculate based on current step
-                                # Using a range from 0.2 to 0.9 for the workflow steps
-                                current_progress = 0.2 + ((i + 1) / total_steps * 0.7)
-                                progress_bar.progress(current_progress)
-                                step_name = node.replace("_", " ").title()
-                                status_text.text(f"Step {i+1}/{total_steps}: {step_name}")
-                                
-                                # Update state
-                                state = output[node]
-                                for key, value in state.items():
-                                    setattr(initial_state, key, value)
-                                
-                                # Update corresponding tab
-                                if node == "research_market_trends" and "market_analysis" in state:
-                                    with tabs[0]:
-                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
-                                        render_section("Research Market Trends", state["market_analysis"], "market_analysis.pdf", node, "tab0")
-                                        st.markdown("</div>", unsafe_allow_html=True)
+        
+                            # Use run_autonomous_campaign_builder from main.py
+                            campaign_workflow, initial_state = run_autonomous_campaign_builder(
+                                goal=goal,
+                                domain=st.session_state.selected_domain,
+                                model_provider=st.session_state.selected_llm
+                            )
+                            
+                            progress_bar.progress(0.2)
+                            if st.session_state.stop_requested:
+                                status_text.text("⛔ Process stopped by user.")
+                                st.session_state.generated = False
+                                st.stop()
+        
+                            # Get steps from the workflow
+                            from agents import AGENT_REGISTRY
+                            steps = list(AGENT_REGISTRY.keys())
+                            total_steps = len(steps)
+                            
+                            # Process the workflow stream with dictionary access
+                            for i, output in enumerate(campaign_workflow.stream(initial_state)):
+                                if st.session_state.stop_requested:
+                                    status_text.text("⛔ Process stopped by user.")
+                                    st.session_state.generated = False
+                                    st.stop()
+                                    
+                                node = list(output.keys())[0] if output else None
+                                if node:
+                                    # Update progress - calculate based on current step
+                                    # Using a range from 0.2 to 0.9 for the workflow steps
+                                    current_progress = 0.2 + ((i + 1) / total_steps * 0.7)
+                                    progress_bar.progress(current_progress)
+                                    step_name = node.replace("_", " ").title()
+                                    status_text.text(f"Step {i+1}/{total_steps}: {step_name}")
+                                    
+                                    # Update state
+                                    state = output[node]
+                                    for key, value in state.items():
+                                        setattr(initial_state, key, value)
+                                    
+                                    # Update corresponding tab - content is saved to session state
+                                    # but the rendering is done separately to avoid conflicts with feedback
+                                    if node == "research_market_trends" and "market_analysis" in state:
                                         st.session_state.tab_contents[0] = {"node": node, "content": state["market_analysis"]}
                                         st.session_state.active_tab = 0
-                                elif node == "segment_audience" and "audience_segments" in state:
-                                    with tabs[1]:
-                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
-                                        render_section("Segment Audience", state["audience_segments"], "audience_segments.pdf", node, "tab1")
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                    elif node == "segment_audience" and "audience_segments" in state:
                                         st.session_state.tab_contents[1] = {"node": node, "content": state["audience_segments"]}
                                         st.session_state.active_tab = 1
-                                elif node == "create_campaign_strategy" and "campaign_strategy" in state:
-                                    with tabs[2]:
-                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
-                                        render_section("Create Campaign Strategy", state["campaign_strategy"], "campaign_strategy.pdf", node, "tab2")
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                    elif node == "create_campaign_strategy" and "campaign_strategy" in state:
                                         st.session_state.tab_contents[2] = {"node": node, "content": state["campaign_strategy"]}
                                         st.session_state.active_tab = 2
-                                elif node == "generate_content" and "campaign_content" in state:
-                                    with tabs[3]:
-                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
-                                        render_section("Generate Content", state["campaign_content"], "campaign_content.pdf", node, "tab3")
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                    elif node == "generate_content" and "campaign_content" in state:
                                         st.session_state.tab_contents[3] = {"node": node, "content": state["campaign_content"]}
                                         st.session_state.active_tab = 3
-                                elif node == "simulate_campaign" and "simulation_results" in state:
-                                    with tabs[4]:
-                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
-                                        render_section("Simulate Campaign", state["simulation_results"], "simulation_results.pdf", node, "tab4")
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                    elif node == "simulate_campaign" and "simulation_results" in state:
                                         st.session_state.tab_contents[4] = {"node": node, "content": state["simulation_results"]}
                                         st.session_state.active_tab = 4
-                                elif node == "generate_final_report" and "final_report" in state:
-                                    with tabs[5]:
-                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
-                                        render_section("Final Report", state["final_report"], "final_report.pdf", node, "tab5")
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                    elif node == "generate_final_report" and "final_report" in state:
                                         st.session_state.tab_contents[5] = {"node": node, "content": state["final_report"]}
                                         st.session_state.active_tab = 5
-                                elif node == "send_campaign_emails" and "email_status" in state:
-                                    with tabs[6]:
-                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
-                                        render_section("Email Distribution", state["email_status"], "email_status.pdf", node, "tab6")
-                                        st.markdown("</div>", unsafe_allow_html=True)
+                                    elif node == "send_campaign_emails" and "email_status" in state:
                                         st.session_state.tab_contents[6] = {"node": node, "content": state["email_status"]}
                                         st.session_state.active_tab = 6
+                                        
+                                        # Store the final state in session state for later use
+                                        st.session_state.state = initial_state
+                                        st.session_state.generation_complete = True
+                                        
+                                        # Update progress to 100% only after all nodes are processed
+                                        progress_bar.progress(1.0)
+                                        status_text.text("Campaign generation complete!")
                                     
-                                    # Store the final state in session state for later use
-                                    st.session_state.state = initial_state
+                                    # Render the current tab content after updating session state
+                                    # This ensures feedback doesn't interrupt the current step
+                                    with tabs[st.session_state.active_tab]:
+                                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
+                                        content_data = st.session_state.tab_contents[st.session_state.active_tab]
+                                        render_section(
+                                            title=content_data["node"].replace("_", " ").title(),
+                                            content=content_data["content"],
+                                            filename=f"{content_data['node']}.pdf",
+                                            node_name=content_data["node"],
+                                            key_prefix=f"tab{st.session_state.active_tab}"
+                                        )
+                                        st.markdown("</div>", unsafe_allow_html=True)
                                     
-                                    # Update progress to 100% only after all nodes are processed
-                                    progress_bar.progress(1.0)
-                                    status_text.text("Campaign generation complete!")
-                                
-                                # Add a small delay for UI updates
-                                time.sleep(STEP_DELAY)
+                                    # Add a small delay for UI updates
+                                    time.sleep(STEP_DELAY)
+                    
+                    except Exception as e:
+                        logger.error(f"Workflow error: {str(e)}\n{traceback.format_exc()}")
+                        st.error(f"An error occurred: {str(e)}")
+                        st.session_state.generated = False
+                        st.stop()
+            
+            # Display previously generated content when returning to the page or after providing feedback
+            if st.session_state.tab_contents:
+                for tab_index, content_data in st.session_state.tab_contents.items():
+                    tab_index = int(tab_index)
+                    with tabs[tab_index]:
+                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
+                        render_section(
+                            title=content_data["node"].replace("_", " ").title(), 
+                            content=content_data["content"], 
+                            filename=f"{content_data['node']}.pdf", 
+                            node_name=content_data["node"], 
+                            key_prefix=f"tab{tab_index}"
+                        )
+                        st.markdown("</div>", unsafe_allow_html=True)
+                
+                # Add Email Distribution tab content if generation is complete
+                if st.session_state.generation_complete and st.session_state.state:
+                    with tabs[6]:
+                        st.subheader("Campaign Distribution")
+                        
+                        # Show who will receive emails
+                        customer_data_path = os.path.join(script_dir, 'data', 'filtered_customers.csv')
+                        try:
+                            customer_data = pd.read_csv(customer_data_path)
+                            valid_emails = customer_data[customer_data['email'].notna()]
                             
-                        # Add Email Distribution tab content
-                        with tabs[6]:
-                            st.subheader("Campaign Distribution")
+                            st.markdown("### Recipients")
+                            st.dataframe(valid_emails[['full_name', 'email']].head(10),
+                                       column_config={
+                                           "full_name": "Name",
+                                           "email": "Email"
+                                       })
                             
-                            # Show who will receive emails
-                            customer_data_path = os.path.join(script_dir, 'data', 'filtered_customers.csv')
-                            try:
-                                customer_data = pd.read_csv(customer_data_path)
-                                valid_emails = customer_data[customer_data['email'].notna()]
+                            if len(valid_emails) > 10:
+                                st.caption(f"Showing first 10 of {len(valid_emails)} recipients")
                                 
-                                st.markdown("### Recipients")
-                                st.dataframe(valid_emails[['full_name', 'email']].head(10),
-                                           column_config={
-                                               "full_name": "Name",
-                                               "email": "Email"
-                                           })
+                            # Email templates section
+                            st.markdown("### Email Templates")
+                            if hasattr(st.session_state.state, 'email_templates') and st.session_state.state.email_templates:
+                                for i, template in enumerate(st.session_state.state.email_templates):
+                                    with st.expander(f"Template {i+1}"):
+                                        st.write(template.get('content', 'No content available'))
+                            else:
+                                st.info("Email templates will be generated when you send the campaign")
                                 
-                                if len(valid_emails) > 10:
-                                    st.caption(f"Showing first 10 of {len(valid_emails)} recipients")
-                                    
-                                # Email templates section
-                                st.markdown("### Email Templates")
-                                if hasattr(st.session_state.state, 'email_templates') and st.session_state.state.email_templates:
-                                    for i, template in enumerate(st.session_state.state.email_templates):
-                                        with st.expander(f"Template {i+1}"):
-                                            st.write(template.get('content', 'No content available'))
-                                else:
-                                    st.info("Email templates will be generated when you send the campaign")
-                                    
-                                # Manual email sending button
-                                if st.button("📧 Send Campaign Emails", key="send_emails_button"):
-                                    with st.spinner("Sending emails to customers..."):
-                                        if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
-                                            # Call send_campaign_emails directly
-                                            updated_state = send_campaign_emails(st.session_state.state)
-                                            st.session_state.state = updated_state
+                            # Manual email sending button
+                            if st.button("📧 Send Campaign Emails", key="send_emails_button"):
+                                with st.spinner("Sending emails to customers..."):
+                                    if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
+                                        # Call send_campaign_emails directly
+                                        updated_state = send_campaign_emails(st.session_state.state)
+                                        st.session_state.state = updated_state
+                                        
+                                        if updated_state.email_status and "Email Campaign Summary" in updated_state.email_status:
+                                            st.success("✅ Emails sent successfully!")
+                                            st.markdown(updated_state.email_status)
                                             
-                                            if updated_state.email_status and "Email Campaign Summary" in updated_state.email_status:
-                                                st.success("✅ Emails sent successfully!")
-                                                st.markdown(updated_state.email_status)
-                                                
-                                                # Show sent emails
-                                                if updated_state.sent_emails:
-                                                    st.markdown("### Sent Emails")
-                                                    sent_df = pd.DataFrame(updated_state.sent_emails)
-                                                    st.dataframe(sent_df[['name', 'email', 'subject']])
-                                            else:
-                                                st.error(updated_state.email_status or "Failed to send emails")
+                                            # Show sent emails
+                                            if updated_state.sent_emails:
+                                                st.markdown("### Sent Emails")
+                                                sent_df = pd.DataFrame(updated_state.sent_emails)
+                                                st.dataframe(sent_df[['name', 'email', 'subject']])
                                         else:
-                                            st.error("Campaign not fully generated yet")
-                                            
-                            except FileNotFoundError:
-                                st.warning("No customer data found. Please ensure filtered_customers.csv exists in the data directory.")
-
-                except Exception as e:
-                    logger.error(f"Workflow error: {str(e)}\n{traceback.format_exc()}")
-                    st.error(f"An error occurred: {str(e)}")
-                    st.session_state.generated = False
-                    st.stop()
+                                            st.error(updated_state.email_status or "Failed to send emails")
+                                    else:
+                                        st.error("Campaign not fully generated yet")
+                                        
+                        except FileNotFoundError:
+                            st.warning("No customer data found. Please ensure filtered_customers.csv exists in the data directory.")
 
         else:
             st.info("Enter your campaign goal and click 'Generate' to start.")
