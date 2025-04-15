@@ -1,7 +1,7 @@
 import os
 import pandas as pd
-# Use FAISS instead of Chroma
-from langchain_community.vectorstores import FAISS
+# Use Chroma instead of FAISS
+from langchain_community.vectorstores import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain_core.documents import Document
@@ -241,9 +241,13 @@ def initialize_vector_db(campaign_data=None, customer_segments=None, domain="aut
     
     print(f"Using {len(all_docs)} documents for vector database")
     
-    # Use FAISS instead of Chroma
+    # Use Chroma instead of FAISS
     try:
-        print("Creating FAISS vector store...")
+        print("Creating Chroma vector store...")
+        
+        # Define persistent directory for Chroma
+        chroma_path = os.path.join(script_dir, f"chroma_db_{domain}")
+        os.makedirs(chroma_path, exist_ok=True)
         
         # Process documents in smaller batches to avoid memory issues
         batch_size = 50
@@ -252,8 +256,15 @@ def initialize_vector_db(campaign_data=None, customer_segments=None, domain="aut
         first_batch = all_docs[:min(batch_size, len(all_docs))]
         print(f"Initializing with first batch of {len(first_batch)} documents...")
         
-        # Create FAISS vector store with first batch
-        vector_store = FAISS.from_documents(first_batch, embeddings)
+        # Create Chroma vector store with first batch
+        vector_store = Chroma.from_documents(
+            documents=first_batch,
+            embedding=embeddings,
+            persist_directory=chroma_path
+        )
+        
+        # Make sure to persist after first batch
+        vector_store.persist()
         
         # Add remaining documents in batches
         if len(all_docs) > batch_size:
@@ -266,33 +277,27 @@ def initialize_vector_db(campaign_data=None, customer_segments=None, domain="aut
                 print(f"Processing batch {batch_num}/{total_batches} ({len(batch)} documents)...")
                 
                 try:
-                    # Create temporary store with current batch
-                    temp_store = FAISS.from_documents(batch, embeddings)
-                    
-                    # Merge with main store
-                    vector_store.merge_from(temp_store)
-                    print(f"Batch {batch_num}/{total_batches} completed and merged")
+                    # Add current batch to existing store
+                    vector_store.add_documents(documents=batch)
+                    vector_store.persist()  # Save after each batch
+                    print(f"Batch {batch_num}/{total_batches} completed and persisted")
                 except Exception as batch_error:
                     print(f"Error processing batch {batch_num}: {batch_error}")
                     # Try one by one if batch fails
                     for j, doc in enumerate(batch):
                         try:
-                            temp_store = FAISS.from_documents([doc], embeddings)
-                            vector_store.merge_from(temp_store)
+                            vector_store.add_documents(documents=[doc])
+                            vector_store.persist()
                         except Exception as doc_error:
                             print(f"Error with document {j} in batch {batch_num}: {str(doc_error)[:100]}...")
                             continue
         
-        # Save the FAISS index
-        faiss_path = os.path.join(script_dir, f"faiss_index_{domain}")
-        os.makedirs(faiss_path, exist_ok=True)
-        vector_store.save_local(faiss_path)
-        print(f"Successfully created FAISS vector store and saved to {faiss_path}")
+        print(f"Successfully created Chroma vector store and saved to {chroma_path}")
         
         return vector_store
         
-    except Exception as faiss_error:
-        print(f"Error creating FAISS store: {faiss_error}")
+    except Exception as chroma_error:
+        print(f"Error creating Chroma store: {chroma_error}")
         
         # Create a simple in-memory store as last resort
         print("Creating simple in-memory store as fallback")
