@@ -246,7 +246,7 @@ def initialize_vector_db(campaign_data=None, customer_segments=None, domain="aut
         print("Creating Chroma vector store...")
         
         # Define persistent directory for Chroma
-        chroma_path = os.path.join(script_dir, f"chroma_db_{domain}")
+        chroma_path = os.path.join(script_dir, f"chroma_db_{domain}_{model_provider}")
         os.makedirs(chroma_path, exist_ok=True)
         
         # Process documents in smaller batches to avoid memory issues
@@ -256,11 +256,15 @@ def initialize_vector_db(campaign_data=None, customer_segments=None, domain="aut
         first_batch = all_docs[:min(batch_size, len(all_docs))]
         print(f"Initializing with first batch of {len(first_batch)} documents...")
         
-        # Create Chroma vector store with first batch
+        # Create Chroma vector store with first batch - add collection_metadata to specify embedding dimension
+        embedding_dimension = 1536 if model_provider.lower() == "openai" else 768
+        print(f"Using embedding dimension: {embedding_dimension} for {model_provider}")
+        
         vector_store = Chroma.from_documents(
             documents=first_batch,
             embedding=embeddings,
-            persist_directory=chroma_path
+            persist_directory=chroma_path,
+            collection_metadata={"hnsw:space": "cosine", "dimension": embedding_dimension}
         )
         
         # Make sure to persist after first batch
