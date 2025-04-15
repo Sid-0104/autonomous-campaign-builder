@@ -7,6 +7,7 @@ from email.message import EmailMessage
 from core.llm import get_llm, safe_llm_invoke
 from core.state import CampaignState
 from typing import Dict
+import datetime
 
 # Load environment variables
 script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -195,6 +196,10 @@ def send_campaign_emails(state: CampaignState) -> CampaignState:
                     server.send_message(msg)
                     sent_count += 1
                     
+                    if not hasattr(state, 'email_templates') or not isinstance(state.email_templates, list):
+                        state.email_templates = []
+
+
                     # Store template if first email
                     if not state.email_templates:
                         state.email_templates.append({

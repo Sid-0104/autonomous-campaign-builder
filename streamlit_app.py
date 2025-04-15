@@ -337,6 +337,55 @@ def main():
                     st.session_state.state = initial_state
                     progress_bar.progress(1.0)
                     status_text.text("Campaign generation complete!")
+                    with tabs[6]:
+                        st.subheader("📬 Campaign Distribution")
+                        customer_data_path = os.path.join(script_dir, 'data', 'filtered_customers.csv')
+                        if os.path.exists(customer_data_path):
+                            customer_df = pd.read_csv(customer_data_path)
+                            email_df = customer_df[customer_df["email"].notna()]
+                            if not email_df.empty:
+                                st.markdown("### Recipients")
+                                st.dataframe(email_df[['full_name', 'email']].head(10))
+                                if len(email_df) > 7:
+                                    st.caption(f"Showing first 10 of {len(email_df)} recipients")
+                                else:
+                                    st.warning("No valid email addresses found.")
+
+                        # Show email templates (if previously generated)
+                        st.markdown("### Email Templates")
+                        if hasattr(initial_state, 'email_templates') and initial_state.email_templates:
+                            for i, template in enumerate(initial_state.email_templates):
+                                with st.expander(f"Template {i+1}"):
+                                    st.markdown(template.get('content', 'No content available'))
+
+                        else:
+                            st.info("Templates will be generated once emails are sent.")
+
+                        if st.button("📧 Send Campaign Emails", key="send_emails_btn"):
+                            with st.spinner("Sending emails..."):
+                                # from agents.send_emails import send_campaign_emails
+                                # updated_state = send_campaign_emails(initial_state)
+                                # st.session_state.state = updated_state
+                                if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
+                                    updated_state = send_campaign_emails(st.session_state.state)
+                                    st.session_state.state = updated_state
+
+                                if hasattr(updated_state, "email_status") and "Email Campaign Summary" in updated_state.email_status:
+                                    st.success("✅ Emails sent successfully!")
+                                    st.markdown(updated_state.email_status)
+                                    # ✅ Update Tab Content after sending emails
+                                    st.session_state.tab_contents[6] = {
+                                        "node": "send_campaign_emails",
+                                        "content": updated_state.email_status
+                                        }
+                                    st.session_state.active_tab = 6
+                                else:
+                                    st.error("❌ Email sending failed.")
+                                    st.markdown(updated_state.email_status or "No additional info available.")
+
+
+
+                    
 
                 except Exception as e:
                     logger.error(f"Workflow error: {str(e)}\n{traceback.format_exc()}")
