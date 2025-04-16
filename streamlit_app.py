@@ -14,7 +14,6 @@ from logging.handlers import RotatingFileHandler
 from agents.send_emails import send_campaign_emails
 from core.feedback import save_node_feedback
 from agents import AGENT_REGISTRY
-from datetime import datetime
 
 # Load environment variables
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -31,7 +30,7 @@ def setup_logging():
     log_file = os.path.join(log_dir, 'campaign_builder.log')
     
     logging.basicConfig(
-        level=logging.INFO,
+        level=logging.WARNING,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         handlers=[
             RotatingFileHandler(log_file, maxBytes=1024*1024, backupCount=5),
@@ -43,103 +42,118 @@ def setup_logging():
 logger = setup_logging()
 
 # --- PDF Generator ---
-def sanitize_text(text):
-    if text is None:
-        return ""
-    text = str(text)
-    text = ''.join(char if 32 <= ord(char) <= 126 else ' ' for char in text)
-    text = text.replace("**", "").replace("*", "").replace("-", " ").replace("•", " ").replace("#", "").replace("`", "")
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
+import os
+import re
+from fpdf import FPDF
 
-def generate_pdf(title, content, pdf_path="market_insights.pdf"):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Helvetica", size=12)
-    margin_left = 10
-    margin_right = 10
-    margin_top = 15
-    pdf.set_left_margin(margin_left)
-    pdf.set_right_margin(margin_right)
-    page_width = pdf.w - margin_left - margin_right
-    line_height = 7
+def strip_emojis(content):
+    # Replace curly quotes and em-dashes with ASCII equivalents
+    content = re.sub(r"[‘’]", "'", content)
+    content = re.sub(r"[“”]", '"', content)
+    content = content.replace("–", "-").replace("—", "-")
+    # Remove remaining non-ASCII characters
+    return re.sub(r'[^\x00-\x7F]+', '', content)
+import os
+from io import BytesIO
+from fpdf import FPDF
 
-    def add_heading():
-        pdf.set_font("Helvetica", "B", 16)
-        pdf.set_text_color(30, 30, 30)
-        clean_title = sanitize_text(title)
-        pdf.cell(0, 10, f"Market Insights: {clean_title}", ln=True)
-        pdf.set_font("Helvetica", "", 10)
-        pdf.set_text_color(100, 100, 100)
-        pdf.cell(0, 10, f"Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", ln=True)
-        pdf.ln(5)
-
-    add_heading()
-
-    bullet = "-"
-    clean_content = sanitize_text(content)
-    paragraphs = re.split(r'\n\s*\n', clean_content) if clean_content else []
-
-    for para in paragraphs:
-        lines = para.split('\n')
-        for line in lines:
-            line = line.strip()
-            if not line:
-                continue
-            is_bullet = line.startswith("-") or line.startswith(".")
-            content_line = line.lstrip("-.").strip()
-            if content_line[:40].lower().startswith('top') or ':' in content_line[:40]:
-                pdf.set_font("Helvetica", "B", 12)
-            else:
-                pdf.set_font("Helvetica", "", 12)
-            formatted = f"{bullet} {content_line}" if is_bullet else f"  {content_line}"
-            words = formatted.split()
-            current_line = ""
-            for word in words:
-                test_line = current_line + word + " "
-                if pdf.get_string_width(test_line) > page_width:
-                    pdf.set_x(margin_left)
-                    pdf.multi_cell(page_width, line_height, text=current_line.strip(), align='L')
-                    current_line = word + " "
-                    if pdf.get_y() + line_height > 277:
-                        pdf.add_page()
-                        add_heading()
-                        pdf.set_y(margin_top)
-                else:
-                    current_line = test_line
-            if current_line:
-                pdf.set_x(margin_left)
-                pdf.multi_cell(page_width, line_height, text=current_line.strip(), align='L')
-                if pdf.get_y() + line_height > 277:
-                    pdf.add_page()
-                    add_heading()
-                    pdf.set_y(margin_top)
-            pdf.ln(line_height)
-
-    try:
-        pdf.output(pdf_path)
-        if os.path.exists(pdf_path):
-            file_size = os.path.getsize(pdf_path)
-            if file_size == 0:
-                raise ValueError("PDF is empty")
+class PDFWithLogo(FPDF):
+    def header(self):
+        # Dynamically get the absolute path of the image
+        base_path = os.path.dirname(__file__)  # directory where script is located
+        logo_path = os.path.join(base_path, "assets", "info.png")
+        
+        # Check if the logo file exists
+        if os.path.exists(logo_path):
+            self.image(logo_path, x=180, y=10, w=10)  # Adjust the logo size and position as needed
         else:
-            raise FileNotFoundError(f"PDF not found at {pdf_path}")
-    except Exception as e:
-        raise
+            print(f"Warning: Logo file not found at {logo_path}")
+        
+        self.set_y(40)  # Adjust the position after the header
 
-    with open(pdf_path, "rb") as f:
-        return f.read()
+def generate_pdf(section_title, content):
+    clean_content = strip_emojis(content)
+    
+    # Use the custom class with the logo
+    pdf = PDFWithLogo()
+    pdf.add_page()
+    
+    # Use Helvetica font instead of Arial
+    pdf.set_font("Helvetica", size=12)
+    
+    # Update 'txt' to 'text' as per the new version
+    pdf.multi_cell(0, 10, text=f"{section_title}\n\n{clean_content}")
+    
+    # Write the PDF to a BytesIO object
+    pdf_output = BytesIO()
+    pdf.output(pdf_output)
+    
+    # Get the byte content of the PDF
+    pdf_output.seek(0)  # Ensure we're reading from the start
+    return pdf_output.getvalue()  # Return as byte data
+
+
+# ===== Section Renderer + Feedback =====
+def render_section(title, content, filename, node_name, key_prefix, state_obj):
+    st.markdown(f"### {title}")
+    st.write(content)
+
+    # Download PDF
+    st.download_button(
+        label="📥 Download PDF",
+        data=generate_pdf(title, content),
+        file_name=filename,
+        key=f"download_{key_prefix}_{node_name}"
+    )
+
+    # --- Feedback Section ---
+
+    st.markdown("**Give Your Feedback**")
+    feedback_key = f"{key_prefix}_feedback"
+
+    # Button container
+    with st.container():
+        st.markdown('<div class="feedback-btns">', unsafe_allow_html=True)
+        # Use container instead of columns to control layout
+        if feedback_key not in st.session_state:
+            # Place buttons side by side with minimal gap
+            col1, col2 = st.columns([1, 1])  # Keep columns but minimize their impact
+            with col1:
+                if st.button("👍", key=f"{key_prefix}_positive"):
+                    msg = save_node_feedback(node_name, "Positive Feedback")
+                    feedback_placeholder = st.empty()
+                    feedback_placeholder.success(msg)
+                    time.sleep(2)
+                    feedback_placeholder.empty()
+                    st.session_state[feedback_key] = True
+            with col2:
+                if st.button("👎", key=f"{key_prefix}_negative"):
+                    msg = save_node_feedback(node_name, "Negative Feedback")
+                    feedback_placeholder = st.empty()
+                    feedback_placeholder.success(msg)
+                    time.sleep(2)
+                    feedback_placeholder.empty()
+                    st.session_state[feedback_key] = True
+        else:
+            st.info("✅ Feedback already recorded.")
+        st.markdown('</div>', unsafe_allow_html=True)
+
+
+
 
 # Function for vector db initialization with caching
 @st.cache_resource
 def cached_initialize_vector_db(domain, model_provider):
+    """Cache the vector db initialization to avoid redundant loading"""
     return initialize_vector_db(domain=domain, model_provider=model_provider)
 
 def run_autonomous_campaign_builder(goal: str, domain: str = "automotives", model_provider: str = "gemini"):
     logger.info(f"Initializing campaign builder for {domain} domain using {model_provider}")
     try:
+        # Add retry logic for API quota errors
         max_retries = 3
         retry_count = 0
+        
         while retry_count < max_retries:
             try:
                 vector_db = cached_initialize_vector_db(domain=domain, model_provider=model_provider)
@@ -150,17 +164,21 @@ def run_autonomous_campaign_builder(goal: str, domain: str = "automotives", mode
                 if "ResourceExhausted" in str(e) and retry_count < max_retries:
                     logger.warning(f"Gemini API quota exceeded, retrying ({retry_count}/{max_retries}): {str(e)}")
                     model_provider = "openai"
-                    time.sleep(5)
+                    time.sleep(5)  # Short delay before retry
                 elif retry_count >= max_retries:
                     logger.error(f"Failed to initialize vector DB after {max_retries} attempts")
                     raise
                 else:
                     logger.error(f"Error initializing vector DB: {str(e)}")
                     raise
+
         sales_data, _, _, _ = load_documents_by_domain(domain)
         logger.debug(f"Loaded {len(sales_data)} sales records")
+        
         campaign_workflow = build_campaign_workflow()
         logger.debug("Campaign workflow built")
+        
+        # Update model provider in state if changed
         initial_state = CampaignState(
             goal=goal,
             vector_db=vector_db,
@@ -168,7 +186,9 @@ def run_autonomous_campaign_builder(goal: str, domain: str = "automotives", mode
             selected_domain=domain,
             selected_llm=model_provider if model_provider == "gemini" else "openai"
         )
+        
         return campaign_workflow, initial_state
+        
     except Exception as e:
         logger.error(f"Failed to initialize campaign builder: {str(e)}")
         st.error(f"API Error: {str(e)}")
@@ -191,8 +211,6 @@ if 'tab_contents' not in st.session_state:
     st.session_state.tab_contents = {}
 if 'generated' not in st.session_state:
     st.session_state.generated = False
-if 'sidebar_collapsed' not in st.session_state:
-    st.session_state.sidebar_collapsed = True
 
 # Page configuration
 st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter:", layout="wide")
@@ -251,7 +269,14 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+
+logger = logging.getLogger(__name__)
+
 def main():
+    # Initialize session state variable if it doesn't exist
+    if 'sidebar_collapsed' not in st.session_state:
+        st.session_state.sidebar_collapsed = False  # Default value
+
     logger.info(f"Starting application - sidebar_collapsed = {st.session_state.sidebar_collapsed}")
 
     try:
@@ -278,10 +303,11 @@ def main():
                     unsafe_allow_html=True
                 )
 
+                
             st.markdown("---")
             st.subheader("Switch LLM")
             for llm in ["Gemini", "OpenAI"]:
-                if st.button(llm, key=f"llm_{llm.lower()}", use_container_width=True, type="primary" if st.session_state.selected_llm == llm.lower() else "secondary"):
+                if st.button(llm, type="primary" if st.session_state.selected_llm == llm.lower() else "secondary", use_container_width=True):
                     st.session_state.selected_llm = llm.lower()
                     st.rerun()
             st.markdown(f"**Using: {st.session_state.selected_llm.upper()}**")
@@ -289,7 +315,7 @@ def main():
             st.subheader("Select Industry")
             for industry in ["Automotives", "Healthcare", "Powerenergy"]:
                 domain_value = industry.lower()
-                if st.button(industry, key=f"industry_{domain_value}", use_container_width=True, type="primary" if st.session_state.selected_domain == domain_value else "secondary"):
+                if st.button(industry, type="primary" if st.session_state.selected_domain == domain_value else "secondary", use_container_width=True):
                     st.session_state.selected_domain = domain_value
                     st.rerun()
             st.markdown(f"**Industry: {st.session_state.selected_domain.upper()}**")
@@ -297,8 +323,7 @@ def main():
         col1, col2 = st.columns([2, 3])
 
         with col1:
-            goal = st.text_area("", placeholder="Enter your campaign request", height=120)
-
+           goal = st.text_area("Campaign Goal", placeholder="Enter your campaign request", height=120, label_visibility="hidden")
         with col2:
             st.markdown('<div class="horizontal-buttons">', unsafe_allow_html=True)
 
@@ -330,6 +355,24 @@ def main():
                 st.rerun()
 
             st.markdown('</div>', unsafe_allow_html=True)
+        # ✅ Render from existing session state if available
+        if st.session_state.generated:
+            tab_labels = ["📊 Market Analysis", "🎯 Target Audience", "📈 Campaign Strategy", "✍️ Content", "🔬 Simulation", "📄 Final Report", "📬 Email Distribution"]
+            tabs = st.tabs(tab_labels)
+
+            # 🧠 Just re-render tabs if already generated (e.g., feedback clicked)
+            if st.session_state.tab_contents:
+                for tab_index, tab in enumerate(tabs):
+                    if tab_index in st.session_state.tab_contents:
+                        with tab:
+                            content_info = st.session_state.tab_contents[tab_index]
+                            node = content_info["node"]
+                            content = content_info["content"]
+                            section_title = node.replace("_", " ").title()
+                            st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
+                            render_section(section_title, content, f"{node}.pdf", node, f"tab{tab_index}", st.session_state.state)
+                            st.markdown("</div>", unsafe_allow_html=True)
+                return  # ✅ prevent rerun of workflow
 
         if st.session_state.generated and goal.strip():
             with st.spinner("Generating campaign..."):
@@ -401,93 +444,143 @@ def main():
             st.session_state.generated = False
 
         else:
+            # Custom CSS
             st.markdown("""
-            <style>
-                .usecase-container {
-                    font-size: 18px;
-                    line-height: 1;
-                    color: #333;
-                }
-                .usecase-container h2 {
-                    font-size: 26px;
-                    margin-bottom: 10px;
-                }
-            </style>
-            <div class="usecase-container">
-                <h2>Usecase</h2>
-                <p>The campaign builder will generate:</p>
-                <ol>
-                    <li><strong>Market Analysis</strong> – Trends, opportunities, and competitive landscape</li>
-                    <li><strong>Target Audience</strong> – Primary and secondary segments with messaging points</li>
-                    <li><strong>Campaign Strategy</strong> – Timeline, channels, budget, and KPIs</li>
-                    <li><strong>Content Examples</strong> – Email, social media, and landing page content</li>
-                    <li><strong>Performance Simulation</strong> – Projected results and optimization recommendations</li>
-                    <li><strong>Final Report</strong> – Complete campaign plan</li>
-                    <li><strong>Email Distribution</strong> – Send campaign emails to target customers</li>
-                </ol>
-            </div>
+                <style>
+                    :root {
+                        --background-color: rgba(255, 255, 255, 1.0);
+                        --text-color: #1c1c1c;
+                        --card-bg: white;
+                        --border-color: #e6e6e6;
+                        --heading-color: #2c3e50;
+                        --shadow-color: rgba(0, 0, 0, 0.1);
+                        --tab-bg: #f1f5f9;
+                        --tab-selected-bg: white;
+                        --usecase-text-color: #333;
+                    }
+                    @media (prefers-color-scheme: dark) {
+                        :root {
+                            --background-color: rgba(30, 30, 30, 0.95);
+                            --text-color: #f1f1f1;
+                            --card-bg: #2d2d2d;
+                            --border-color: #444444;
+                            --heading-color: #8ab4f8;
+                            --shadow-color: rgba(0, 0, 0, 0.3);
+                            --tab-bg: #383838;
+                            --tab-selected-bg: #2d2d2d;
+                            --usecase-text-color: #f1f1f1;
+                        }
+                    }
+                    body {
+                        background: linear-gradient(var(--background-color), var(--background-color)), url('https://images.unsplash.com/photo-1551836022-4c4c79ecde16?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+                        background-size: cover;
+                        color: var(--text-color);
+                        font-family: 'Segoe UI', sans-serif;
+                    }
+                    #MainMenu, footer, header, .stDeployButton {visibility: hidden;}
+                    .stApp {
+                        background-color: var(--background-color);
+                        padding: 0 !important;
+                        border-radius: 0 !important;
+                        box-shadow: none !important;
+                        max-width: 100% !important;
+                        margin: 0 !important;
+                    }
+                    .stTabs [role="tab"] {
+                        font-size: 16px;
+                        padding: 10px 20px;
+                        margin-right: 5px;
+                        border: 1px solid var(--border-color);
+                        background-color: var(--tab-bg);
+                        border-radius: 6px 6px 0 0;
+                        color: var(--text-color);
+                    }
+                    .stTabs [aria-selected="true"] {
+                        background-color: var(--tab-selected-bg);
+                        border-bottom: none;
+                        font-weight: bold;
+                    }
+                    .tab-content {
+                        animation: fadein 0.6s ease-in;
+                        background-color: var(--card-bg);
+                        padding: 20px;
+                        border-radius: 0 0 10px 10px;
+                        box-shadow: 0 2px 4px var(--shadow-color);
+                        margin-top: -1px;
+                        border: 1px solid var(--border-color);
+                        border-top: none;
+                    }
+                    .stTextArea textarea {
+                        border: 1px solid var(--border-color);
+                        border-radius: 8px;
+                        padding: 10px;
+                        font-size: 16px;
+                        background-color: var(--card-bg);
+                        color: var(--text-color);
+                    }
+                    .stButton button {
+                        border-radius: 8px;
+                        font-weight: 500;
+                        transition: all 0.3s ease;
+                    }
+                    .stButton button:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 8px var(--shadow-color);
+                    }
+                    h1, h2, h3 {
+                        color: var(--heading-color);
+                        font-weight: 600;
+                    }
+                    .stTabs [data-baseweb="tab-panel"] {
+                        background-color: var(--card-bg);
+                        padding: 15px;
+                        border-radius: 0 0 10px 10px;
+                        border: 1px solid var(--border-color);
+                        border-top: none;
+                        color: var(--text-color);
+                    }
+                    .stProgress > div > div {
+                        background-color: #4CAF50;
+                    }
+                    @keyframes fadein {
+                        from {opacity: 0; transform: translateY(10px);}
+                        to {opacity: 1; transform: translateY(0);}
+                    }
+                    /* Custom style for feedback section */
+                    .feedback-header {font-size: 14px !important;}
+                    /* Custom style for usecase section */
+                    .usecase-container {
+                        font-size: 18px;
+                        line-height: 1;
+                        color: var(--usecase-text-color);
+                    }
+                    .usecase-container h2 {
+                        font-size: 26px;
+                        margin-bottom: 10px;
+                    }
+                </style>
             """, unsafe_allow_html=True)
+
+            # Insert Usecase HTML into the main content
+            st.markdown("""
+                <div class="usecase-container">
+                    <h2>Usecase</h2>
+                    <p>The campaign builder will generate:</p>
+                    <ol>
+                        <li><strong>Market Analysis</strong> – Trends, opportunities, and competitive landscape</li>
+                        <li><strong>Target Audience</strong> – Primary and secondary segments with messaging points</li>
+                        <li><strong>Campaign Strategy</strong> – Timeline, channels, budget, and KPIs</li>
+                        <li><strong>Content Examples</strong> – Email, social media, and landing page content</li>
+                        <li><strong>Performance Simulation</strong> – Projected results and optimization recommendations</li>
+                        <li><strong>Final Report</strong> – Complete campaign plan</li>
+                        <li><strong>Email Distribution</strong> – Send campaign emails to target customers</li>
+                    </ol>
+                </div>
+            """, unsafe_allow_html=True)
+
 
     except Exception as e:
         logger.error(f"Top-level error: {str(e)}\n{traceback.format_exc()}")
         st.error(f"Top-level error: {str(e)}. Please check the logs.")
-
-def render_section(title, content, filename, node_name, key_prefix, state_obj):
-    st.markdown(f"### {title}")
-    st.write(content)
-    try:
-        pdf_data = generate_pdf(title, content)
-        st.download_button(
-            label="📥 Download PDF",
-            data=pdf_data,
-            file_name=filename,
-            key=f"download_{key_prefix}_{node_name}_{datetime.now().timestamp()}"
-        )
-    except Exception as e:
-        logger.error(f"Failed to generate PDF for {title}: {str(e)}")
-        st.warning("PDF download is unavailable due to an error. Check logs for details.")
-    st.markdown("#### 🗳️ How would you rate this section?")
-    feedback_key = f"{node_name}_recorded"
-    col1, col2 = st.columns(2)
-    if feedback_key not in st.session_state:
-        with col1:
-            if st.button("👍", key=f"{key_prefix}_positive", help="Like"):
-                st.session_state[feedback_key] = "positive"
-                st.toast("👍 Positive feedback recorded!", icon="✅")
-                time.sleep(2)
-                st.rerun()
-        with col2:
-            if st.button("👎", key=f"{key_prefix}_negative", help="Dislike"):
-                st.session_state[feedback_key] = "negative"
-                st.toast("👎 Negative feedback recorded!", icon="⚠️")
-                time.sleep(2)
-                st.rerun()
-    else:
-        feedback = st.session_state[feedback_key]
-        if feedback == "positive":
-            st.success("feedback already recorded.")
-        else:
-            st.info("feedback already recorded.")
-    st.markdown("#### 🔄 Want to improve this section?")
-    if st.button("♻️ Regenerate", key=f"{key_prefix}_regen"):
-        with st.spinner("Regenerating..."):
-            new_state = AGENT_REGISTRY[node_name](state_obj)
-            node_to_content = {
-                "research_market_trends": "market_analysis",
-                "segment_audience": "audience_segments",
-                "create_campaign_strategy": "campaign_strategy",
-                "generate_content": "campaign_content",
-                "simulate_campaign": "simulation_results",
-                "generate_final_report": "final_report",
-                "send_campaign_emails": "email_status"
-            }
-            if node_name in node_to_content:
-                content_key = node_to_content[node_name]
-                if content_key in new_state:
-                    st.session_state.tab_contents[st.session_state.active_tab]["content"] = new_state[content_key]
-                    st.session_state.state = new_state
-                    st.success("✅ Section regenerated!")
-                    st.rerun()
-
 if __name__ == "__main__":
     main()
