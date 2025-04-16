@@ -255,11 +255,10 @@ def main():
     logger.info(f"Starting application - sidebar_collapsed = {st.session_state.sidebar_collapsed}")
 
     try:
-        # Display heading only when sidebar_collapsed is True
-        if st.session_state.sidebar_collapsed:
-            with st.container():
-                st.markdown("<h1 style='font-size: 20px;'>Autonomous Campaign Builder</h1>", unsafe_allow_html=True)
-            logger.debug("Main heading displayed due to sidebar_collapsed = True")
+        # Display heading unconditionally on the main page
+        with st.container():
+            st.markdown("<h1 style='font-size: 20px;'>Autonomous Campaign Builder</h1>", unsafe_allow_html=True)
+        logger.debug("Main heading displayed")
 
         # Sidebar configuration
         with st.sidebar:
@@ -293,49 +292,44 @@ def main():
                 if st.button(industry, key=f"industry_{domain_value}", use_container_width=True, type="primary" if st.session_state.selected_domain == domain_value else "secondary"):
                     st.session_state.selected_domain = domain_value
                     st.rerun()
-
             st.markdown(f"**Industry: {st.session_state.selected_domain.upper()}**")
 
         col1, col2 = st.columns([2, 3])
 
         with col1:
-            goal = st.text_area("", placeholder="Enter your campaign request", height=68)
+            goal = st.text_area("", placeholder="Enter your campaign request", height=120)
 
         with col2:
-            with st.container():
-                st.markdown('<div class="button-row">', unsafe_allow_html=True)
-                col_a, col_b, col_c = st.columns([1, 1, 1], gap="small")
-                with col_a:
-                    if st.button("Generate", key="go_button"):
-                        if goal.strip():
-                            st.session_state.generated = True
-                            st.session_state.stop_requested = False
-                            st.session_state.tab_contents = {}
-                            st.session_state.sidebar_collapsed = False
-                            logger.debug("Generate clicked, setting sidebar_collapsed to False")
-                            time.sleep(0.2)
-                            st.rerun()
-                        else:
-                            st.error("Please enter a request before generating.")
+            st.markdown('<div class="horizontal-buttons">', unsafe_allow_html=True)
 
-                with col_b:
-                    if st.button("Stop", key="stop_button"):
-                        st.session_state.stop_requested = True
-                        st.rerun()
+            if st.button("➡️", key="go_button"):
+                if goal.strip():
+                    st.session_state.generated = True
+                    st.session_state.stop_requested = False
+                    st.session_state.tab_contents = {}
+                    # Removed sidebar_collapsed = False to preserve heading
+                    logger.debug("Generate clicked")
+                    time.sleep(0.2)
+                    st.rerun()
+                else:
+                    st.error("Please enter a request before generating.")
 
-                with col_c:
-                    if st.button("Back", key="back_button"):
-                        st.session_state.generated = False
-                        st.session_state.stop_requested = False
-                        st.session_state.tab_contents = {}
-                        st.session_state.active_tab = 0
-                        st.session_state.feedback = {}
-                        st.session_state.sidebar_collapsed = True
-                        logger.debug("Back button clicked, setting sidebar_collapsed to True")
-                        time.sleep(0.2)
-                        st.rerun()
+            if st.button("🚫", key="stop_button"):
+                st.session_state.stop_requested = True
+                st.rerun()
 
-                st.markdown('</div>', unsafe_allow_html=True)
+            if st.button("↩️", key="back_button"):
+                st.session_state.generated = False
+                st.session_state.stop_requested = False
+                st.session_state.tab_contents = {}
+                st.session_state.active_tab = 0
+                st.session_state.feedback = {}
+                st.session_state.sidebar_collapsed = True
+                logger.debug("Back button clicked, setting sidebar_collapsed to True")
+                time.sleep(0.2)
+                st.rerun()
+
+            st.markdown('</div>', unsafe_allow_html=True)
 
         if st.session_state.generated and goal.strip():
             with st.spinner("Generating campaign..."):
@@ -345,6 +339,7 @@ def main():
                 try:
                     if not st.session_state.tab_contents:
                         status_text.text("Initializing campaign builder...")
+                        progress_bar.progress(0.1)
                         campaign_workflow, initial_state = run_autonomous_campaign_builder(
                             goal=goal,
                             domain=st.session_state.selected_domain,
@@ -382,7 +377,7 @@ def main():
                                 progress = min(step_counter / total_steps, 0.9)
                                 progress_bar.progress(progress)
                                 status_text.text(f"Step {step_counter}/{total_steps}: Processing {node}...")
-                                time.sleep(STEP_DELAY / 2)  # Reduced delay to 2.5 seconds for responsiveness
+                                time.sleep(STEP_DELAY / 2)
                                 state = output[node]
                                 for key, value in state.items():
                                     setattr(initial_state, key, value)
@@ -410,11 +405,11 @@ def main():
             <style>
                 .usecase-container {
                     font-size: 18px;
-                    line-height: 1.6;
+                    line-height: 1;
                     color: #333;
                 }
                 .usecase-container h2 {
-                    font-size: 24px;
+                    font-size: 26px;
                     margin-bottom: 10px;
                 }
             </style>
@@ -461,14 +456,12 @@ def render_section(title, content, filename, node_name, key_prefix, state_obj):
                 st.toast("👍 Positive feedback recorded!", icon="✅")
                 time.sleep(2)
                 st.rerun()
-
         with col2:
             if st.button("👎", key=f"{key_prefix}_negative", help="Dislike"):
                 st.session_state[feedback_key] = "negative"
                 st.toast("👎 Negative feedback recorded!", icon="⚠️")
                 time.sleep(2)
                 st.rerun()
-
     else:
         feedback = st.session_state[feedback_key]
         if feedback == "positive":
