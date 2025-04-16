@@ -155,7 +155,7 @@ def send_campaign_emails(state: CampaignState) -> CampaignState:
         
         # For testing/development, limit to first few customers
         # Remove this line in production
-        customer_data = customer_data.head(3)
+        customer_data = customer_data.head(4)
         
         # Connect to SMTP server
         with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:

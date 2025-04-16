@@ -279,6 +279,57 @@ def main():
                         st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
                         render_section(section_title, content, f"{node}.pdf", node, f"tab{tab_index}", st.session_state.state)
                         st.markdown("</div>", unsafe_allow_html=True)
+            
+            # Special handling for email tab if not populated yet
+            with tabs[6]:
+                if 6 not in st.session_state.tab_contents:
+                    st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
+                    st.subheader("📬 Campaign Distribution")
+                    customer_data_path = os.path.join(script_dir, 'data', 'filtered_customers.csv')
+                    if os.path.exists(customer_data_path):
+                        customer_df = pd.read_csv(customer_data_path)
+                        email_df = customer_df[customer_df["email"].notna()]
+                        if not email_df.empty:
+                            st.markdown("### Recipients")
+                            st.dataframe(email_df[['full_name', 'email']].head(10))
+                            if len(email_df) > 10:
+                                st.caption(f"Showing first 10 of {len(email_df)} recipients")
+                        else:
+                            st.warning("No valid email addresses found.")
+
+                    # Show email templates (if previously generated)
+                    st.markdown("### Email Templates")
+                    if st.session_state.state and hasattr(st.session_state.state, 'email_templates') and st.session_state.state.email_templates:
+                        for i, template in enumerate(st.session_state.state.email_templates):
+                            with st.expander(f"Template {i+1}"):
+                                st.markdown(template.get('content', 'No content available'))
+                    else:
+                        st.info("Templates will be generated once emails are sent.")
+
+                    if st.button("📧 Send Campaign Emails", key="send_emails_btn"):
+                        with st.spinner("Sending emails..."):
+                            if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
+                                # Direct function call instead of using AGENT_REGISTRY
+                                updated_state = send_campaign_emails(st.session_state.state)
+                                
+                                # Update session state
+                                st.session_state.state = updated_state
+
+                                if hasattr(updated_state, "email_status"):
+                                    if "failed" in updated_state.email_status.lower():
+                                        st.error("❌ " + updated_state.email_status)
+                                    else:
+                                        st.success("✅ Emails sent successfully!")
+                                        st.markdown(updated_state.email_status)
+                                        # Update Tab Content after sending emails
+                                        st.session_state.tab_contents[6] = {
+                                            "node": "send_campaign_emails",
+                                            "content": updated_state.email_status
+                                        }
+                            else:
+                                st.error("❌ Campaign data not available. Please generate a campaign first.")
+                    st.markdown("</div>", unsafe_allow_html=True)
+            
             return  # 🛑 Stop here — no need to regenerate
 
         # ✅ Start fresh generation if goal is set
@@ -346,7 +397,10 @@ def main():
                     st.session_state.state = initial_state
                     progress_bar.progress(1.0)
                     status_text.text("Campaign generation complete!")
+                    
+                    # Email tab shown after workflow completion
                     with tabs[6]:
+                        st.markdown("<div class='tab-content'>", unsafe_allow_html=True)
                         st.subheader("📬 Campaign Distribution")
                         customer_data_path = os.path.join(script_dir, 'data', 'filtered_customers.csv')
                         if os.path.exists(customer_data_path):
@@ -355,10 +409,10 @@ def main():
                             if not email_df.empty:
                                 st.markdown("### Recipients")
                                 st.dataframe(email_df[['full_name', 'email']].head(10))
-                                if len(email_df) > 7:
+                                if len(email_df) > 10:
                                     st.caption(f"Showing first 10 of {len(email_df)} recipients")
-                                else:
-                                    st.warning("No valid email addresses found.")
+                            else:
+                                st.warning("No valid email addresses found.")
 
                         # Show email templates (if previously generated)
                         st.markdown("### Email Templates")
@@ -366,28 +420,32 @@ def main():
                             for i, template in enumerate(initial_state.email_templates):
                                 with st.expander(f"Template {i+1}"):
                                     st.markdown(template.get('content', 'No content available'))
-
                         else:
                             st.info("Templates will be generated once emails are sent.")
 
                         if st.button("📧 Send Campaign Emails", key="send_emails_btn"):
                             with st.spinner("Sending emails..."):
                                 if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
+                                    # Direct function call instead of using AGENT_REGISTRY
                                     updated_state = send_campaign_emails(st.session_state.state)
+                                    
+                                    # Update session state
                                     st.session_state.state = updated_state
 
-                                if hasattr(updated_state, "email_status") and "Email Campaign Summary" in updated_state.email_status:
-                                    st.success("✅ Emails sent successfully!")
-                                    st.markdown(updated_state.email_status)
-                                    # ✅ Update Tab Content after sending emails
-                                    st.session_state.tab_contents[6] = {
-                                        "node": "send_campaign_emails",
-                                        "content": updated_state.email_status
-                                        }
-                                    st.session_state.active_tab = 6
+                                    if hasattr(updated_state, "email_status"):
+                                        if "failed" in updated_state.email_status.lower():
+                                            st.error("❌ " + updated_state.email_status)
+                                        else:
+                                            st.success("✅ Emails sent successfully!")
+                                            st.markdown(updated_state.email_status)
+                                            # Update Tab Content after sending emails
+                                            st.session_state.tab_contents[6] = {
+                                                "node": "send_campaign_emails",
+                                                "content": updated_state.email_status
+                                            }
                                 else:
-                                    st.error("❌ Email sending failed.")
-                                    st.markdown(updated_state.email_status or "No additional info available.")
+                                    st.error("❌ Campaign data not available. Please generate a campaign first.")
+                        st.markdown("</div>", unsafe_allow_html=True)
 
                 except Exception as e:
                     logger.error(f"Workflow error: {str(e)}\n{traceback.format_exc()}")
