@@ -230,4 +230,4 @@ def send_campaign_emails(state: CampaignState) -> CampaignState:
     except Exception as e:
         state.email_status = f"Email sending failed: {str(e)}"
     
-    return state
+    return state, failed_count

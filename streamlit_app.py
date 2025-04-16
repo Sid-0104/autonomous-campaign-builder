@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+from io import BytesIO
 import os
 import re
 import pandas as pd
@@ -46,13 +47,40 @@ logger = setup_logging()
 def strip_emojis(content):
     return re.sub(r'[^\x00-\x7F]+', '', content)
 
+# Custom PDF class with logo header and watermark
+# class PDFWithLogo(FPDF):
+#     def header(self):
+#         logo_path = os.path.join(script_dir, "assets", "info.png")
+#         if os.path.exists(logo_path):
+#             self.image(logo_path, x=180, y=10, w=10)  # top-right logo
+#         self.set_y(30)  # Move content down to avoid overlapping
+
+#     def footer(self):
+#         # Optional: Add footer text or page number
+#         self.set_y(-15)
+#         self.set_font("Helvetica", "I", 8)
+#         self.cell(0, 10, f'Page {self.page_no()}', 0, 0, 'C')
+
+#     def watermark(self, logo_path):
+#         # Called after content added
+#         if os.path.exists(logo_path):
+            
+#             self.image(logo_path, x=60, y=100, w=90)
+            
+
 def generate_pdf(section_title, content):
     clean_content = strip_emojis(content)
-    pdf = FPDF()
+    pdf = PDFWithLogo()
     pdf.add_page()
-    pdf.set_font("Arial", size=12)
+    pdf.set_font("Helvetica", size=12)
     pdf.multi_cell(0, 10, txt=f"{section_title}\n\n{clean_content}")
+
+    # # Add watermark after writing content
+    # logo_path = os.path.join(script_dir, "assets", "info.png")
+    # pdf.watermark(logo_path)
+
     return pdf.output(dest='S').encode('latin-1')
+
 
 # ===== Section Renderer + Feedback =====
 def render_section(title, content, filename, node_name, key_prefix, state_obj):
@@ -71,7 +99,7 @@ def render_section(title, content, filename, node_name, key_prefix, state_obj):
     st.markdown("#### 🗳️ How would you rate this section?")
     feedback_key = f"{node_name}_recorded"
 
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([1, 3.5], gap="small")
     if feedback_key not in st.session_state:
         if col1.button("👍", key=f"{key_prefix}_positive"):
             msg = save_node_feedback(node_name, "Positive Feedback")
@@ -173,32 +201,68 @@ st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter
 
 # Custom CSS
 st.markdown("""
-    <style>
-        .st-emotion-cache-t1wise {
-            width: 100%;
-            padding: 1rem 1rem 10rem;
-            max-width: initial;
-            min-width: auto;
-        }
-        :root {--background-color: rgba(255, 255, 255, 1.0); --text-color: #1c1c1c; --card-bg: white; --border-color: #e6e6e6; --heading-color: #2c3e50; --shadow-color: rgba(0, 0, 0, 0.1); --tab-bg: #f1f5f9; --tab-selected-bg: white;}
-        @media (prefers-color-scheme: dark) {:root {--background-color: rgba(30, 30, 30, 0.95); --text-color: #f1f1f1; --card-bg: #2d2d2d; --border-color: #444444; --heading-color: #8ab4f8; --shadow-color: rgba(0, 0, 0, 0.3); --tab-bg: #383838; --tab-selected-bg: #2d2d2d;}}
-        body {background: linear-gradient(var(--background-color), var(--background-color)), url('https://images.unsplash.com/photo-1551836022-4c4c79ecde16?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed; background-size: cover; color: var(--text-color); font-family: 'Segoe UI', sans-serif;}
-        #MainMenu, footer, header, .stDeployButton {visibility: hidden;}
-        .stApp {background-color: var(--background-color); padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; max-width: 100% !important; margin: 0 !important;}
-        .stTabs [role="tab"] {font-size: 16px; padding: 10px 20px; margin-right: 5px; border: 1px solid var(--border-color); background-color: var(--tab-bg); border-radius: 6px 6px 0 0; color: var(--text-color);}
-        .stTabs [aria-selected="true"] {background-color: var(--tab-selected-bg); border-bottom: none; font-weight: bold;}
-        .tab-content {animation: fadein 0.6s ease-in; background-color: var(--card-bg); padding: 20px; border-radius: 0 0 10px 10px; box-shadow: 0 2px 4px var(--shadow-color); margin-top: -1px; border: 1px solid var(--border-color); border-top: none;}
-        .stTextArea textarea {border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; font-size: 16px; background-color: var(--card-bg); color: var(--text-color);}
-        .stButton button {border-radius: 8px; font-weight: 500; transition: all 0.3s ease;}
-        .stButton button:hover {transform: translateY(-2px); box-shadow: 0 4px 8px var(--shadow-color);}
-        h1, h2, h3 {color: var(--heading-color); font-weight: 600;}
-        .stTabs [data-baseweb="tab-panel"] {background-color: var(--card-bg); padding: 15px; border-radius: 0 0 10px 10px; border: 1px solid var(--border-color); border-top: none; color: var(--text-color);}
-        .stProgress > div > div {background-color: #4CAF50;}
-        @keyframes fadein {from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);}}
-        /* Custom style for feedback section */
-        .feedback-header {font-size: 14px !important;} /* Reduced font size for "Was this section helpful?" */
-    </style>
-""", unsafe_allow_html=True)
+        <style>
+            .st-emotion-cache-t1wise {
+                width: 100%;
+                padding: 0rem 6rem 10px 6rem;
+                max-width: initial;
+                min-width: auto;
+            }
+            .st-emotion-cache-1779v62{
+                background-color: #ED9121;
+                border: #ED9121;!important
+            }
+            .st-emotion-cache-1779v62:hover{
+                background-color: #B9755A;
+                border-color: #B9755A;!important
+            }
+            .st-emotion-cache-qsto9u:hover{
+                color: #ED9121;
+                border-color: #ED9121;!important
+            }
+            .st-emotion-cache-iyz50i:hover{
+                color: #ED9121;
+                border-color: #ED9121;!important
+            }
+            .st-emotion-cache-iyz50i:active{
+                background-color: #ED9121;
+            }
+            .st-emotion-cache-iyz50i:focus:not(:active){
+                color: #ED9121;
+                border-color: #ED9121;
+            }
+            .st-emotion-cache-iyz50i{
+                width: 40%;
+                margin-left: 25%;
+                justify-content: normal;
+            }
+            .st-emotion-cache-kgpedg {
+                display: flex;
+                -webkit-box-pack: justify;
+                justify-content: space-between;
+                -webkit-box-align: start;
+                align-items: start;
+                padding: calc(7.375rem) 1.5rem 1.5rem;
+            }
+            :root {--background-color: rgba(255, 255, 255, 1.0); --text-color: #1C1C1C; --card-bg: white; --border-color: #E6E6E6; --heading-color: #2C3E50; --shadow-color: rgba(0, 0, 0, 0.1); --tab-bg: #F1F5F9; --tab-selected-bg: white;}
+            @media (prefers-color-scheme: dark) {:root {--background-color: rgba(30, 30, 30, 0.95); --text-color: #F1F1F1; --card-bg: #2D2D2D; --border-color: #444444; --heading-color: #8AB4F8; --shadow-color: rgba(0, 0, 0, 0.3); --tab-bg: #383838; --tab-selected-bg: #2D2D2D;}}
+            body {background: linear-gradient(var(--background-color), var(--background-color)), url('https://images.unsplash.com/photo-1551836022-4c4c79ecde16?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed; background-size: cover; color: var(--text-color); font-family: 'Segoe UI', sans-serif;}
+            #MainMenu, footer, header, .stDeployButton {visibility: hidden;}
+            .stApp {background-color: var(--background-color); padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; max-width: 100% !important; margin: 0 !important;}
+            .stTabs [role="tab"] {font-size: 16px; padding: 10px 20px; margin-right: 5px; border: 1px solid var(--border-color); background-color: var(--tab-bg); border-radius: 6px 6px 0 0; color: var(--text-color);}
+            .stTabs [aria-selected="true"] {background-color: var(--tab-selected-bg); border-bottom: none; font-weight: bold;}
+            .tab-content {animation: fadein 0.6s ease-in; background-color: var(--card-bg); padding: 20px; border-radius: 0 0 10px 10px; box-shadow: 0 2px 4px var(--shadow-color); margin-top: -1px; border: 1px solid var(--border-color); border-top: none;}
+            .stTextArea textarea {border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; font-size: 16px; background-color: var(--card-bg); color: var(--text-color);}
+            .stButton button {border-radius: 8px; font-weight: 500; transition: all 0.3s ease;}
+            .stButton button:hover {transform: translateY(-2px); box-shadow: 0 4px 8px var(--shadow-color);}
+            h1, h2, h3 {color: var(--heading-color); font-weight: 600;}
+            .stTabs [data-baseweb="tab-panel"] {background-color: var(--card-bg); padding: 15px; border-radius: 0 0 10px 10px; border: 1px solid var(--border-color); border-top: none; color: var(--text-color);}
+            .stProgress > div > div {background-color: #4CAF50;}
+            @keyframes fadein {from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);}}
+            /* Custom style for feedback section */
+            .feedback-header {font-size: 14px !important;} /* Reduced font size for "Was this section helpful?" */
+        </style>
+    """, unsafe_allow_html=True)
 
 def render_email_tab():
     """Function to render the email tab content"""
@@ -220,7 +284,7 @@ def render_email_tab():
     st.markdown("### Email Templates")
     if st.session_state.state and hasattr(st.session_state.state, 'email_templates') and st.session_state.state.email_templates:
         for i, template in enumerate(st.session_state.state.email_templates):
-            with st.expander(f"Template {i+1}"):
+            with st.expander(f"Previous Template {i+1}"):
                 st.markdown(template.get('content', 'No content available'))
     else:
         st.info("Templates will be generated once emails are sent.")
@@ -229,23 +293,23 @@ def render_email_tab():
         with st.spinner("Sending emails..."):
             if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
                 # Direct function call instead of using AGENT_REGISTRY
-                updated_state = send_campaign_emails(st.session_state.state)
+                updated_state, failed_count = send_campaign_emails(st.session_state.state)
                 
                 # Update session state
                 st.session_state.state = updated_state
 
                 if hasattr(updated_state, "email_status"):
-                    if "failed" in updated_state.email_status.lower():
-                        st.error("❌ " + updated_state.email_status)
+                    if failed_count!=0:
+                        st.error("❌" + updated_state.email_status)
                     else:
-                        st.success("✅ Emails sent successfully!")
-                        st.markdown(updated_state.email_status)
+                        st.success("✅ Emails sent successfully!"+ updated_state.email_status)
+                        # st.markdown(updated_state.email_status)
                         # Update Tab Content after sending emails
-                        st.session_state.tab_contents[6] = {
-                            "node": "send_campaign_emails",
-                            "content": updated_state.email_status
-                        }
-                        st.rerun()  # Rerun to refresh the display
+                        # st.session_state.tab_contents[6] = {
+                        #     "node": "send_campaign_emails",
+                        #     "content": updated_state.email_status
+                        # }
+                        # st.rerun()  # Rerun to refresh the display
             else:
                 st.error("❌ Campaign data not available. Please generate a campaign first.")
     st.markdown("</div>", unsafe_allow_html=True)
@@ -272,9 +336,7 @@ def main():
 
         # Input
         col1, col2 = st.columns([1, 15], gap="small")
-
         image_path = os.path.join(script_dir, "assets", "info.png")
-
         with col1:
             if os.path.exists(image_path):
                 with open(image_path, "rb") as img_file:
@@ -288,8 +350,7 @@ def main():
                     unsafe_allow_html=True
                 )
             else:
-                st.write("🤖")
-
+                st.write(":robot_face:")
         with col2:
             st.markdown(
                 """
@@ -301,9 +362,8 @@ def main():
                 """,
                 unsafe_allow_html=True
             )
-
         st.markdown("---")
-        col1, col2 = st.columns([2, 3])
+        col1, col2 = st.columns([6, 3])
         with col1:
             DEFAULT_PROMPTS = {
                     "automotives": "Boost Q2 SUV sales in the Western region by 15%",
@@ -316,27 +376,43 @@ def main():
             goal = st.text_area(
                 label="Campaign Goal",
                 placeholder="Enter your request",
-                height=68,
+                height=180,
                 key="goal_input",
                 value=st.session_state.get("goal_input", default_goal)
             )
         with col2:
             st.markdown("<br>", unsafe_allow_html=True)
-            if st.button("Generate", use_container_width=True, key="generate_button"):
+            st.markdown("""
+                <style>
+                .stButton > button {
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    gap: 8px !important; /* space between emoji and text */
+                    font-size: 16px !important;
+                    padding: 8px 44px !important;
+                    min-width: 200px !important; /* Ensures all buttons align from same start */
+                }
+                </style>
+            """, unsafe_allow_html=True)
+            generate_clicked = st.button(":arrows_counterclockwise:  Generate", use_container_width=True, key="generate_button")
+            stop_clicked = st.button(":black_square_for_stop:   Stop", use_container_width=True, key="stop_button")
+            back_clicked = st.button(":back:  Back", use_container_width=True, key="back_button")
+            if generate_clicked:
                 st.session_state.generated = True
                 st.session_state.stop_requested = False
                 st.session_state.tab_contents = {}
                 st.rerun()
-            if st.button("Stop", use_container_width=True, key="stop_button"):
+            if stop_clicked:
                 st.session_state.stop_requested = True
                 st.rerun()
-            if st.button("Back", use_container_width=True, key="back_button"):
+            if back_clicked:
                 st.session_state.generated = False
                 st.session_state.stop_requested = False
                 st.session_state.tab_contents = {}
                 st.session_state.active_tab = 0
                 st.session_state.feedback = {}
                 st.rerun()
+
 
         # ✅ If feedback or reloaded state already exists, show only once
         if st.session_state.generated and st.session_state.tab_contents:
