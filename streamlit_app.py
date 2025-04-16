@@ -85,25 +85,16 @@ def render_section(title, content, filename, node_name, key_prefix, state_obj):
         st.info("✅ Feedback already recorded.")
 
     # --- Regenerate Section ---
-    st.markdown("#### 🔄 Want to improve this section?")
+    st.markdown("#### 🔄 Want to regenerate the entire campaign?")
     if st.button("♻️ Regenerate", key=f"{key_prefix}_regen"):
-        with st.spinner("Regenerating..."):
-            new_state = AGENT_REGISTRY[node_name](state_obj)
-            node_to_content = {
-                "research_market_trends": "market_analysis",
-                "segment_audience": "audience_segments",
-                "create_campaign_strategy": "campaign_strategy",
-                "generate_content": "campaign_content",
-                "simulate_campaign": "simulation_results",
-                "generate_final_report": "final_report",
-                "send_campaign_emails": "email_status"
-            }
-            if node_name in node_to_content:
-                content_key = node_to_content[node_name]
-                if content_key in new_state:
-                    st.session_state.tab_contents[st.session_state.active_tab]["content"] = new_state[content_key]
-                    st.session_state.state = new_state  # persist
-                    st.success("✅ Section regenerated!")
+        # Reset session state to force complete regeneration
+        st.session_state.tab_contents = {}
+        # Keep the goal and generated flag
+        current_goal = st.session_state.state.goal if st.session_state.state else ""
+        st.session_state.generated = True
+        st.session_state.stop_requested = False
+        # Force rerun to trigger complete regeneration
+        st.rerun()
         
 # Function for vector db initialization with caching
 @st.cache_resource
@@ -237,7 +228,25 @@ def main():
         st.markdown("---")
         col1, col2 = st.columns([2, 3])
         with col1:
-            goal = st.text_area("Campaign Goal", placeholder="Enter your request", height=68, key="goal_input")
+            DEFAULT_PROMPTS = {
+                    "automotives": "Boost Q2 SUV sales in the Western region by 15%",
+                    "healthcare": "Increase patient enrollment in our preventative care program by 25% in Q3",
+                    "powerenergy": "Increase residential solar panel installations by 35% in the Southern region this summer"
+                    }
+            # Preserve the goal input between regenerations
+            # default_goal = st.session_state.state.goal if st.session_state.state else ""
+            default_goal = DEFAULT_PROMPTS.get(st.session_state.selected_domain, "")
+            # Add variable assignment here
+            goal = st.text_area(
+                label="Campaign Goal",
+                placeholder="Enter your request",
+                height=68,
+                key="goal_input",
+                value=st.session_state.get("goal_input", default_goal)
+            )
+            
+            
+            # goal = st.text_area("Campaign Goal", value=default_goal, placeholder="Enter your request", height=68, key="goal_input")
         with col2:
             st.markdown("<br>", unsafe_allow_html=True)
             if st.button("Generate", use_container_width=True, key="generate_button"):
@@ -363,9 +372,6 @@ def main():
 
                         if st.button("📧 Send Campaign Emails", key="send_emails_btn"):
                             with st.spinner("Sending emails..."):
-                                # from agents.send_emails import send_campaign_emails
-                                # updated_state = send_campaign_emails(initial_state)
-                                # st.session_state.state = updated_state
                                 if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
                                     updated_state = send_campaign_emails(st.session_state.state)
                                     st.session_state.state = updated_state
@@ -382,10 +388,6 @@ def main():
                                 else:
                                     st.error("❌ Email sending failed.")
                                     st.markdown(updated_state.email_status or "No additional info available.")
-
-
-
-                    
 
                 except Exception as e:
                     logger.error(f"Workflow error: {str(e)}\n{traceback.format_exc()}")
@@ -414,4 +416,3 @@ def main():
 if __name__ == "__main__":
     main()
     st.markdown("")
-    
