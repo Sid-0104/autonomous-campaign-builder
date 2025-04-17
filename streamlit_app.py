@@ -391,6 +391,15 @@ def handle_zombie_logic():
             st.toast("Zombie button triggered!")  # for testing
             st.session_state.zombie_trigger = False
 
+def render_footer():
+    st.markdown(
+        """<hr style="margin-top: 50px;"/>
+        <div style="text-align: center; color: gray; font-size: 0.9em;">
+            © 2025 InfoObjects Software Pvt Ltd
+        </div>""",
+        unsafe_allow_html=True
+    )
+
 def main():
     logger.info("Starting Streamlit application")
     handle_zombie_logic()
@@ -412,6 +421,7 @@ def main():
                     st.session_state.selected_domain = domain_value
                     st.rerun()
             st.markdown(f"**Industry: {st.session_state.selected_domain.upper()}**")
+            render_footer()
 
         # Input
         col1, col2 = st.columns([1, 15], gap="small")
@@ -581,7 +591,7 @@ def main():
                     progress_bar.progress(1.0)
                     time.sleep(0.5)
                     status_text.text("Campaign generation complete!")
-                    time.sleep(1.1)
+                    time.sleep(2.0)
                     st.session_state.zombie_trigger = True  # 🔥 Trigger zombie on next run
                     st.rerun()
                     
@@ -612,7 +622,10 @@ def main():
     except Exception as e:
         logger.error(f"Error in main application: {str(e)}\n{traceback.format_exc()}")
         st.error("An error occurred. Please check the logs.")
+    
+    
 
 if __name__ == "__main__":
     main()
     st.markdown("")
+    

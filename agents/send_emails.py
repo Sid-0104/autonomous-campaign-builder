@@ -155,7 +155,7 @@ def send_campaign_emails(state: CampaignState) -> tuple[CampaignState, int]:
         
         # For testing/development, limit to first few customers
         # Remove this line in production
-        customer_data = customer_data.head(4)
+        customer_data = customer_data.head(1)
         
         # Connect to SMTP server
         with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
