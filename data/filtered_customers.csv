@@ -1,0 +1,10 @@
+customer_id,full_name,email,age,gender
+CUST008,Rahul Patel,nikhil.kumawat@infoobjects.com,60,Male
+CUST006,John Das,sagar.sambhwani@infoobjects.com,56,Male
+CUST001,Sneha Nair,mayuresh.pawashe@infoobjects.com,30,Male
+CUST002,Manav Das,chinnu.kurian@infoobjects.com,61,Female
+CUST003,Nikita Verma,sirisha.allarapu@infoobjects.com,68,Female
+CUST004,Priya Bose,mohith.gowda@infoobjects.com,68,Male
+CUST005,John Bose,ashutosh.tiwari@infoobjects.com,47,Male
+CUST007,Amit Mehta,priyansh.mathur@infoobjects.com,49,Male
+CUST009,John Mehta,user009@example.com,46,Male

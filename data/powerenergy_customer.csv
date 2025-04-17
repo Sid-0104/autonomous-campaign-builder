@@ -1,0 +1,101 @@
+customer_id,name,email,segment,location,connection_type,join_date,smart_meter
+CUST001,Stephen Davis,aaronsanchez@hotmail.com,Residential,East Carlberg,Single Phase,2022-10-07,Yes
+CUST002,Nicholas Martin,huntermendoza@yahoo.com,Industrial,Johnsonfurt,Single Phase,2022-05-17,No
+CUST003,Andrew Hill,whitekelsey@turner.com,Commercial,New Vincent,Three Phase,2020-07-23,No
+CUST004,Ronald Gaines,samuel68@hess.org,Residential,New Lorihaven,Single Phase,2021-04-27,No
+CUST005,Sherry Williams,regina88@walton-wright.com,Residential,Ginaview,Single Phase,2025-02-16,No
+CUST006,Ashley Lambert,samuel02@bond-robertson.com,Industrial,South Albert,Single Phase,2020-12-07,Yes
+CUST007,Nancy Melendez,laurie62@ford.com,Residential,Allenview,Single Phase,2024-10-23,No
+CUST008,Tony Soto,rogersmaureen@hotmail.com,Industrial,West Juliashire,Single Phase,2021-12-05,No
+CUST009,Kevin Hunter,caitlin89@howell.org,Commercial,Beltranshire,Single Phase,2020-05-14,No
+CUST010,Bradley Douglas PhD,danielle25@curry-hinton.com,Commercial,Lisaton,Three Phase,2020-08-16,Yes
+CUST011,James Fernandez,ramirezjessica@hardin-weaver.com,Industrial,East Eric,Three Phase,2024-06-10,Yes
+CUST012,Jason Ingram,larry72@gmail.com,Industrial,Schneiderburgh,Three Phase,2020-04-18,Yes
+CUST013,Julie Wood,smithdana@yahoo.com,Industrial,South Mitchellfurt,Three Phase,2023-05-31,Yes
+CUST014,Dalton Frederick,lisadavis@brown.com,Residential,Carterton,Single Phase,2020-08-19,No
+CUST015,Lisa Taylor,rebeccaschroeder@hotmail.com,Commercial,Williamshaven,Three Phase,2021-07-03,Yes
+CUST016,Hannah Patel DVM,jyoung@gmail.com,Residential,Carmenmouth,Three Phase,2023-07-16,No
+CUST017,Mrs. Jessica Watson MD,jfrazier@yahoo.com,Commercial,Wandahaven,Single Phase,2022-03-07,No
+CUST018,Michael Arias,bryan55@crawford.net,Commercial,Dianeland,Three Phase,2022-03-01,Yes
+CUST019,Jeremy Rivas,kimberlygomez@yahoo.com,Commercial,Simsmouth,Single Phase,2021-08-28,No
+CUST020,Larry Serrano,heatherwood@gmail.com,Residential,Brightport,Single Phase,2021-04-18,No
+CUST021,Jennifer Wilson,john81@santos.com,Industrial,East Jasonville,Three Phase,2020-06-09,Yes
+CUST022,Tiffany Rosales,tiffany32@brown-drake.com,Residential,Maryville,Single Phase,2021-09-16,Yes
+CUST023,Rachael Alvarado,shawnwilliams@yahoo.com,Commercial,Hammondborough,Single Phase,2022-09-09,No
+CUST024,Brandi Cox,kristina23@ramirez.com,Industrial,Shaneton,Single Phase,2022-06-08,No
+CUST025,Brittany Hester,garciakrystal@johns-jordan.net,Residential,West Bryanhaven,Single Phase,2020-12-25,Yes
+CUST026,Shawn Martinez,patriciarobinson@parker.org,Industrial,Marshallton,Single Phase,2021-09-14,Yes
+CUST027,Daniel Jimenez,wilsontiffany@martin.com,Residential,South Devinfurt,Three Phase,2023-10-07,Yes
+CUST028,Shannon Hernandez,bfrancis@hotmail.com,Residential,North Sierra,Single Phase,2021-12-26,No
+CUST029,Lauren Mcbride,jordan78@wilson-williams.com,Industrial,Brownland,Three Phase,2021-08-15,No
+CUST030,Linda Chen,harrelljulie@hotmail.com,Industrial,Christianview,Three Phase,2022-04-30,No
+CUST031,David Evans,kingmeghan@ford-abbott.com,Industrial,Tinaland,Three Phase,2024-05-01,No
+CUST032,David Mitchell,christopher41@gmail.com,Commercial,East Michaelview,Three Phase,2021-08-10,No
+CUST033,Theodore Mosley,hroberson@nixon.net,Commercial,South Annashire,Single Phase,2024-12-17,Yes
+CUST034,Eileen Brandt,brittany62@hotmail.com,Commercial,North Shannon,Three Phase,2025-03-15,Yes
+CUST035,Amber Ray,alvarezrichard@gmail.com,Industrial,Vazquezburgh,Three Phase,2021-10-27,No
+CUST036,Rachel Schwartz,eday@yahoo.com,Commercial,New Jasmine,Three Phase,2025-02-16,Yes
+CUST037,William Stephenson,phernandez@hotmail.com,Commercial,Port Brandon,Single Phase,2022-03-16,No
+CUST038,Alan Patton,shanecoleman@cline.com,Industrial,Martinezton,Single Phase,2025-03-22,Yes
+CUST039,Evan Smith,isullivan@hotmail.com,Commercial,Hortonport,Three Phase,2024-09-29,Yes
+CUST040,Dana Garcia,nicholasmcclure@yahoo.com,Residential,West Justinhaven,Three Phase,2021-07-28,No
+CUST041,Tracy Wright,charlesyoung@bullock.com,Industrial,South John,Single Phase,2022-11-20,Yes
+CUST042,Melvin Hughes,bwells@gmail.com,Commercial,West Monicaview,Three Phase,2024-09-04,Yes
+CUST043,Michelle Wilson,joseph16@yahoo.com,Commercial,Port Mary,Single Phase,2023-03-23,Yes
+CUST044,Bruce Wade,davisdean@hubbard-sexton.info,Residential,Kristahaven,Single Phase,2024-11-06,No
+CUST045,Shari Johnson,lee33@moses.net,Commercial,West Theodoremouth,Single Phase,2021-05-21,No
+CUST046,Sean Coleman,robbinsbob@gmail.com,Residential,Stephanieville,Single Phase,2024-11-01,No
+CUST047,Jeff Frederick,maryward@johnson-hernandez.org,Industrial,Spencerbury,Single Phase,2023-07-15,No
+CUST048,Hannah Massey,josephclark@hotmail.com,Commercial,Reevesbury,Single Phase,2021-11-29,No
+CUST049,Heather Buchanan,wescobar@russell-christensen.com,Industrial,Port Stevenbury,Single Phase,2025-01-09,Yes
+CUST050,Haley Colon,juliesutton@gmail.com,Residential,Portershire,Single Phase,2022-12-16,No
+CUST051,Lisa Cisneros,rrivera@wolfe.net,Commercial,Erikafurt,Three Phase,2021-11-15,Yes
+CUST052,Darryl Hendricks,pagecarly@anderson.info,Industrial,New Melissa,Three Phase,2020-04-09,No
+CUST053,Duane Pierce,fbyrd@hotmail.com,Residential,South Jeremy,Three Phase,2023-08-10,No
+CUST054,Jonathan Ramirez,ryan44@simpson.com,Commercial,Escobarbury,Single Phase,2020-08-13,No
+CUST055,Sean Sanders,garciagina@morris-kelley.info,Industrial,North Vanessa,Single Phase,2021-12-01,No
+CUST056,Sandra Ramirez,sean55@snyder.com,Commercial,Danielfurt,Single Phase,2020-05-28,No
+CUST057,Ashley Casey,brandi48@hotmail.com,Industrial,Lake Brittanyland,Single Phase,2022-07-02,No
+CUST058,Judy Dunn,kimberly68@martin.com,Residential,Port Jackhaven,Three Phase,2022-08-11,Yes
+CUST059,Ryan Vasquez,dickersonbethany@gmail.com,Residential,Smithberg,Single Phase,2023-12-30,No
+CUST060,Kevin Holmes,bensonerika@richmond.com,Commercial,Markfort,Single Phase,2023-11-28,No
+CUST061,Regina Mckee,nealethan@gmail.com,Residential,Chenside,Three Phase,2020-09-01,Yes
+CUST062,Robert Moore,ijensen@gmail.com,Residential,Lake Nancyland,Three Phase,2020-04-29,No
+CUST063,Andrew White,joshua10@yahoo.com,Residential,North Lauren,Single Phase,2024-06-27,Yes
+CUST064,Adam Johnson,galvanchristopher@hotmail.com,Residential,Cummingsborough,Three Phase,2022-05-09,Yes
+CUST065,Joseph Yang,ryan55@gmail.com,Commercial,Carlsonton,Three Phase,2021-10-04,No
+CUST066,Lisa Phillips,wallerkimberly@yahoo.com,Residential,Arianafort,Single Phase,2021-09-30,Yes
+CUST067,Stephen Hunt,dorisconley@williams-hart.com,Commercial,Port Mason,Three Phase,2023-12-23,Yes
+CUST068,Lisa Farley,marythomas@adams.info,Residential,Maryland,Single Phase,2022-08-19,Yes
+CUST069,Christine Malone,nwilliams@hotmail.com,Commercial,New Jesus,Single Phase,2023-05-25,Yes
+CUST070,Jennifer Rogers,juanhuffman@gmail.com,Commercial,North Jennifer,Three Phase,2021-11-25,Yes
+CUST071,Joseph Taylor,leelindsey@hotmail.com,Commercial,South Robert,Three Phase,2021-07-04,Yes
+CUST072,Ryan Jones,jacksondaniel@brock-doyle.com,Residential,Port Michelle,Single Phase,2021-11-17,No
+CUST073,Kelsey Harris,jasmine21@thomas.net,Residential,Goodmanmouth,Single Phase,2024-01-22,No
+CUST074,Sabrina Jacobs,caroline73@yahoo.com,Residential,South Christymouth,Single Phase,2022-02-07,No
+CUST075,Daniel Allen,jparker@yahoo.com,Commercial,Hughesport,Three Phase,2020-10-25,Yes
+CUST076,Richard Palmer,washingtonsavannah@schmitt-chen.com,Commercial,West Yesenialand,Single Phase,2021-03-29,No
+CUST077,Jennifer Humphrey,daniellecowan@nunez.com,Commercial,Reesestad,Single Phase,2021-03-15,Yes
+CUST078,Madeline Miller,dylan24@hayden-petersen.com,Industrial,South Brittany,Three Phase,2021-08-11,Yes
+CUST079,Carrie Harris,calvin86@tucker.info,Industrial,Wilsonbury,Three Phase,2022-07-15,No
+CUST080,Aaron Ford,sotomelissa@hotmail.com,Residential,Tommyfurt,Three Phase,2022-08-13,No
+CUST081,Stephen Powell,mcintyrevictoria@yahoo.com,Industrial,West Lori,Three Phase,2024-11-05,Yes
+CUST082,Diane Schneider,patrickkim@reynolds.com,Residential,Lake Brent,Three Phase,2020-12-28,No
+CUST083,Stephanie Clements,jonathan15@little-lewis.com,Industrial,Valerieland,Single Phase,2022-11-05,Yes
+CUST084,Tyler Mcguire,ecoleman@gmail.com,Commercial,Christyshire,Single Phase,2024-05-15,Yes
+CUST085,Nicholas Espinoza,imeza@yahoo.com,Residential,West Tiffany,Three Phase,2022-07-18,No
+CUST086,Michele Richardson,sherri41@yahoo.com,Industrial,Michaeltown,Single Phase,2023-05-08,No
+CUST087,Richard Silva,aromero@avila.com,Commercial,Vaughanstad,Three Phase,2020-09-01,No
+CUST088,Sean Gray,youngtamara@stokes.com,Commercial,Casebury,Three Phase,2024-03-22,Yes
+CUST089,Jack Green,escobarmelissa@gmail.com,Residential,Manuelfort,Single Phase,2022-06-04,No
+CUST090,Katherine Jackson,yvette45@garrett.com,Commercial,North Aaron,Three Phase,2024-04-01,Yes
+CUST091,Timothy Robinson,ritacuevas@hotmail.com,Commercial,Robbinsview,Three Phase,2024-05-18,Yes
+CUST092,Jill Hudson,anthony40@gmail.com,Residential,Taylorport,Three Phase,2022-10-01,No
+CUST093,Christopher Green,mgonzales@harris.com,Commercial,West David,Single Phase,2021-05-10,Yes
+CUST094,Raymond Hart,tina19@yahoo.com,Industrial,East Lori,Single Phase,2024-12-11,No
+CUST095,April Lyons,anthony20@hotmail.com,Industrial,Lake Alexanderland,Single Phase,2023-04-17,No
+CUST096,Michael Hogan,jonathangould@yahoo.com,Residential,Port Ericatown,Single Phase,2021-12-07,Yes
+CUST097,Justin Frazier,imontes@yahoo.com,Residential,East Daniel,Three Phase,2021-08-13,Yes
+CUST098,Clifford Moore,vnolan@hotmail.com,Commercial,Bennettshire,Three Phase,2022-12-30,Yes
+CUST099,Caitlin Vaughn,matthew22@ware.com,Residential,Lake Williamberg,Three Phase,2023-06-04,No
+CUST100,Mrs. Stephanie Collins,donaldwiggins@gmail.com,Industrial,South Lauraburgh,Single Phase,2021-06-26,No
