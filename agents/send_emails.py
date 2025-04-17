@@ -124,7 +124,7 @@ def generate_personalized_email(state: CampaignState, customer_data: dict) -> st
         print(f"Error generating email content: {str(e)}")
         return ""
 
-def send_campaign_emails(state: CampaignState) -> CampaignState:
+def send_campaign_emails(state: CampaignState) -> tuple[CampaignState, int]:
     """Send personalized emails to customers using campaign state and customer data"""
     # Email configuration
     smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")
@@ -221,7 +221,7 @@ def send_campaign_emails(state: CampaignState) -> CampaignState:
                     failed_count += 1
             
             state.sent_emails = sent_emails
-            state.email_status = f"""Email Campaign Summary:
+            state.email_status = f"""  Summary:
             - Total recipients: {len(customer_data)}
             - Successfully sent: {sent_count}
             - Failed to send: {failed_count}
@@ -230,4 +230,4 @@ def send_campaign_emails(state: CampaignState) -> CampaignState:
     except Exception as e:
         state.email_status = f"Email sending failed: {str(e)}"
     
-    return state, failed_count
+    return state
