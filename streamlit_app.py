@@ -45,42 +45,48 @@ logger = setup_logging()
 
 # --- PDF Generator ---
 def strip_emojis(content):
+    # Replace curly quotes and em-dashes with ASCII equivalents
+    content = re.sub(r"[‘’]", "'", content)
+    content = re.sub(r"[“”]", '"', content)
+    content = content.replace("–", "-").replace("—", "-")
+    # Remove remaining non-ASCII characters
     return re.sub(r'[^\x00-\x7F]+', '', content)
 
-# Custom PDF class with logo header and watermark
-# class PDFWithLogo(FPDF):
-#     def header(self):
-#         logo_path = os.path.join(script_dir, "assets", "info.png")
-#         if os.path.exists(logo_path):
-#             self.image(logo_path, x=180, y=10, w=10)  # top-right logo
-#         self.set_y(30)  # Move content down to avoid overlapping
-
-#     def footer(self):
-#         # Optional: Add footer text or page number
-#         self.set_y(-15)
-#         self.set_font("Helvetica", "I", 8)
-#         self.cell(0, 10, f'Page {self.page_no()}', 0, 0, 'C')
-
-#     def watermark(self, logo_path):
-#         # Called after content added
-#         if os.path.exists(logo_path):
-            
-#             self.image(logo_path, x=60, y=100, w=90)
-            
+# Custom PDF class with logo header, footer, and watermark
+class PDFWithLogo(FPDF):
+    def header(self):
+        # Dynamically get the absolute path of the image
+        base_path = os.path.dirname(__file__)  # directory where script is located
+        logo_path = os.path.join(base_path, "assets", "info.png")
+        
+        # Check if the logo file exists
+        if os.path.exists(logo_path):
+            self.image(logo_path, x=180, y=10, w=10)  # Adjust the logo size and position as needed
+        else:
+            print(f"Warning: Logo file not found at {logo_path}")
+        
+        self.set_y(40)  # Adjust the position after the header
 
 def generate_pdf(section_title, content):
     clean_content = strip_emojis(content)
+    
+    # Use the custom class with the logo
     pdf = PDFWithLogo()
     pdf.add_page()
+    
+    # Use Helvetica font instead of Arial
     pdf.set_font("Helvetica", size=12)
-    pdf.multi_cell(0, 10, txt=f"{section_title}\n\n{clean_content}")
-
-    # # Add watermark after writing content
-    # logo_path = os.path.join(script_dir, "assets", "info.png")
-    # pdf.watermark(logo_path)
-
-    return pdf.output(dest='S').encode('latin-1')
-
+    
+    # Update 'txt' to 'text' as per the new version
+    pdf.multi_cell(0, 10, text=f"{section_title}\n\n{clean_content}")
+    
+    # Write the PDF to a BytesIO object
+    pdf_output = BytesIO()
+    pdf.output(pdf_output)
+    
+    # Get the byte content of the PDF
+    pdf_output.seek(0)  # Ensure we're reading from the start
+    return pdf_output.getvalue()  # Return as byte data
 
 # ===== Section Renderer + Feedback =====
 def render_section(title, content, filename, node_name, key_prefix, state_obj):
