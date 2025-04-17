@@ -42,10 +42,11 @@ def setup_logging():
 logger = setup_logging()
 
 # --- PDF Generator ---
-import os
 import re
+import os
 from fpdf import FPDF
 
+# Function to clean text by stripping emojis and replacing certain characters
 def strip_emojis(content):
     # Replace curly quotes and em-dashes with ASCII equivalents
     content = re.sub(r"[‘’]", "'", content)
@@ -53,7 +54,22 @@ def strip_emojis(content):
     content = content.replace("–", "-").replace("—", "-")
     # Remove remaining non-ASCII characters
     return re.sub(r'[^\x00-\x7F]+', '', content)
-import os
+
+# Custom PDF class with logo header, footer, and watermark
+class PDFWithLogo(FPDF):
+    def header(self):
+        # Dynamically get the absolute path of the image
+        base_path = os.path.dirname(__file__)  # directory where script is located
+        logo_path = os.path.join(base_path, "assets", "info.png")
+        
+        # Check if the logo file exists
+        if os.path.exists(logo_path):
+            self.image(logo_path, x=180, y=10, w=10)  # Adjust the logo size and position as needed
+        else:
+            print(f"Warning: Logo file not found at {logo_path}")
+        
+        self.set_y(40)  # Adjust the position after the header
+
 from io import BytesIO
 
 def clean_markdown(text):
@@ -69,10 +85,6 @@ def clean_markdown(text):
 
     return text.strip()
 
-# --- Your existing emoji stripper (assumed to be defined) ---
-def strip_emojis(text):
-    return re.sub(r'[\U00010000-\U0010ffff]', '', text)
-
 # --- PDF Generator with cleaned content ---
 def generate_pdf(section_title, content):
     clean_content = strip_emojis(content)
@@ -85,8 +97,19 @@ def generate_pdf(section_title, content):
     pdf.multi_cell(0, 10, f"{section_title}\n\n{clean_content}")
 
     # Return PDF as bytes for download
-    pdf_bytes = pdf.output(dest='S').encode('latin1')
-    return pdf_bytes
+    try:
+        pdf_bytes = pdf.output(dest='S').encode('latin1')  # Ensure 'latin1' encoding
+        return pdf_bytes
+    except UnicodeEncodeError:
+        # Handle potential encoding issues and log them
+        print("Unicode encoding error: Some characters are unsupported.")
+        clean_content = clean_content.encode('latin1', 'ignore').decode('latin1')  # Ignore unsupported characters
+        pdf = PDFWithLogo()
+        pdf.add_page()
+        pdf.set_font("Helvetica", size=12)
+        pdf.multi_cell(0, 10, f"{section_title}\n\n{clean_content}")
+        pdf_bytes = pdf.output(dest='S').encode('latin1')
+        return pdf_bytes
 
 
 # ===== Section Renderer + Feedback =====
