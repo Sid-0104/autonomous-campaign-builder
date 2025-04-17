@@ -43,6 +43,7 @@ def setup_logging():
 
 logger = setup_logging()
 
+
 # --- PDF Generator ---
 def strip_emojis(content):
     # Replace curly quotes and em-dashes with ASCII equivalents
@@ -58,35 +59,43 @@ class PDFWithLogo(FPDF):
         # Dynamically get the absolute path of the image
         base_path = os.path.dirname(__file__)  # directory where script is located
         logo_path = os.path.join(base_path, "assets", "info.png")
-        
         # Check if the logo file exists
         if os.path.exists(logo_path):
             self.image(logo_path, x=180, y=10, w=10)  # Adjust the logo size and position as needed
         else:
             print(f"Warning: Logo file not found at {logo_path}")
-        
         self.set_y(40)  # Adjust the position after the header
 
+
+def clean_markdown(text):
+    # Remove Markdown headers (e.g. ####, ###, ##, #)
+    text = re.sub(r'#+\s*', '', text)
+    # Remove bold and italic markdown (e.g., **text**, *text*)
+    text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+    text = re.sub(r'\*(.*?)\*', r'\1', text)
+    # Standardize bullet points
+    text = re.sub(r'^\s*[-*]\s+', '- ', text, flags=re.MULTILINE)
+    return text.strip()
+# --- Your existing emoji stripper ---
+
+def strip_emojis_and_unicode(text):
+    # Remove emojis
+    text = re.sub(r'[\U00010000-\U0010ffff]', '', text)
+    # Remove characters not supported by latin-1
+    text = ''.join(c for c in text if ord(c) < 256)
+    return text
+# --- PDF Generator with cleaned content ---
 def generate_pdf(section_title, content):
-    clean_content = strip_emojis(content)
-    
-    # Use the custom class with the logo
+    clean_content = strip_emojis_and_unicode(content)
+    clean_content = clean_markdown(clean_content)
     pdf = PDFWithLogo()
     pdf.add_page()
-    
-    # Use Helvetica font instead of Arial
     pdf.set_font("Helvetica", size=12)
-    
-    # Update 'txt' to 'text' as per the new version
-    pdf.multi_cell(0, 10, text=f"{section_title}\n\n{clean_content}")
-    
-    # Write the PDF to a BytesIO object
+    pdf.multi_cell(0, 10, f"{section_title}\n\n{clean_content}")
     pdf_output = BytesIO()
-    pdf.output(pdf_output)
-    
-    # Get the byte content of the PDF
-    pdf_output.seek(0)  # Ensure we're reading from the start
-    return pdf_output.getvalue()  # Return as byte data
+    pdf_output.write(pdf.output(dest='S').encode('latin1'))
+    pdf_output.seek(0)
+    return pdf_output.getvalue()
 
 # ===== Section Renderer + Feedback =====
 def render_section(title, content, filename, node_name, key_prefix, state_obj):
@@ -207,68 +216,96 @@ st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter
 
 # Custom CSS
 st.markdown("""
-        <style>
-            .st-emotion-cache-t1wise {
-                width: 100%;
-                padding: 0rem 6rem 10px 6rem;
-                max-width: initial;
-                min-width: auto;
-            }
-            .st-emotion-cache-1779v62{
-                background-color: #ED9121;
-                border: #ED9121;!important
-            }
-            .st-emotion-cache-1779v62:hover{
-                background-color: #B9755A;
-                border-color: #B9755A;!important
-            }
-            .st-emotion-cache-qsto9u:hover{
-                color: #ED9121;
-                border-color: #ED9121;!important
-            }
-            .st-emotion-cache-iyz50i:hover{
-                color: #ED9121;
-                border-color: #ED9121;!important
-            }
-            .st-emotion-cache-iyz50i:active{
-                background-color: #ED9121;
-            }
-            .st-emotion-cache-iyz50i:focus:not(:active){
-                color: #ED9121;
-                border-color: #ED9121;
-            }
-            .st-emotion-cache-iyz50i{
-                width: 40%;
-                margin-left: 25%;
-                justify-content: normal;
-            }
-            .st-emotion-cache-kgpedg {
-                display: flex;
-                -webkit-box-pack: justify;
-                justify-content: space-between;
-                -webkit-box-align: start;
-                align-items: start;
-                padding: calc(7.375rem) 1.5rem 1.5rem;
-            }
-            :root {--background-color: rgba(255, 255, 255, 1.0); --text-color: #1C1C1C; --card-bg: white; --border-color: #E6E6E6; --heading-color: #2C3E50; --shadow-color: rgba(0, 0, 0, 0.1); --tab-bg: #F1F5F9; --tab-selected-bg: white;}
-            @media (prefers-color-scheme: dark) {:root {--background-color: rgba(30, 30, 30, 0.95); --text-color: #F1F1F1; --card-bg: #2D2D2D; --border-color: #444444; --heading-color: #8AB4F8; --shadow-color: rgba(0, 0, 0, 0.3); --tab-bg: #383838; --tab-selected-bg: #2D2D2D;}}
-            body {background: linear-gradient(var(--background-color), var(--background-color)), url('https://images.unsplash.com/photo-1551836022-4c4c79ecde16?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed; background-size: cover; color: var(--text-color); font-family: 'Segoe UI', sans-serif;}
-            #MainMenu, footer, header, .stDeployButton {visibility: hidden;}
-            .stApp {background-color: var(--background-color); padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; max-width: 100% !important; margin: 0 !important;}
-            .stTabs [role="tab"] {font-size: 16px; padding: 10px 20px; margin-right: 5px; border: 1px solid var(--border-color); background-color: var(--tab-bg); border-radius: 6px 6px 0 0; color: var(--text-color);}
-            .stTabs [aria-selected="true"] {background-color: var(--tab-selected-bg); border-bottom: none; font-weight: bold;}
-            .tab-content {animation: fadein 0.6s ease-in; background-color: var(--card-bg); padding: 20px; border-radius: 0 0 10px 10px; box-shadow: 0 2px 4px var(--shadow-color); margin-top: -1px; border: 1px solid var(--border-color); border-top: none;}
-            .stTextArea textarea {border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; font-size: 16px; background-color: var(--card-bg); color: var(--text-color);}
-            .stButton button {border-radius: 8px; font-weight: 500; transition: all 0.3s ease;}
-            .stButton button:hover {transform: translateY(-2px); box-shadow: 0 4px 8px var(--shadow-color);}
-            h1, h2, h3 {color: var(--heading-color); font-weight: 600;}
-            .stTabs [data-baseweb="tab-panel"] {background-color: var(--card-bg); padding: 15px; border-radius: 0 0 10px 10px; border: 1px solid var(--border-color); border-top: none; color: var(--text-color);}
-            .stProgress > div > div {background-color: #4CAF50;}
-            @keyframes fadein {from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);}}
-            /* Custom style for feedback section */
-            .feedback-header {font-size: 14px !important;} /* Reduced font size for "Was this section helpful?" */
-        </style>
-    """, unsafe_allow_html=True)
+    <style>
+        .st-emotion-cache-t1wise {
+            width: 100%;
+            padding: 0rem 6rem 10px 6rem;
+            max-width: initial;
+            min-width: auto;
+        }
+        .st-emotion-cache-1779v62{
+            background-color: #ED9121;
+            border: #ED9121;!important
+        }
+        .st-emotion-cache-1779v62:hover{
+            background-color: #B9755A;
+            border-color: #B9755A;!important
+        }
+        .st-emotion-cache-qsto9u:hover{
+            color: #ED9121;
+            border-color: #ED9121;!important
+        }
+        .st-emotion-cache-iyz50i:hover{
+            color: #ED9121;
+            border-color: #ED9121;!important
+        }
+        .st-emotion-cache-iyz50i:active{
+            background-color: #ED9121;
+        }
+        .st-emotion-cache-iyz50i:focus:not(:active){
+            color: #ED9121;
+            border-color: #ED9121;
+        }
+        .st-emotion-cache-iyz50i{
+            width: 40%;
+            margin-left: 25%;
+            justify-content: normal;
+        }
+        .st-emotion-cache-kgpedg {
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: start;
+            align-items: start;
+            padding: calc(7.375rem) 1.5rem 1.5rem;
+        }
+        .st-emotion-cache-1bd5s7o{
+             background-color: #ED9121;
+            border: #ED9121;!important
+        }
+        .st-emotion-cache-1bd5s7o:hover{
+            background-color: #B9755A;
+            border-color: #B9755A;!important
+        }
+        .st-emotion-cache-m2qe7r:hover{
+            color: #ED9121;
+            border-color: #ED9121;!important
+        }
+        .st-emotion-cache-f03grt:hover{
+            color: #ED9121;
+            border-color: #ED9121;!important
+        }
+        .st-emotion-cache-f03grt:active{
+            background-color: #ED9121;!important
+        }
+        .st-emotion-cache-f03grt:focus:not(:active){
+            color: #ED9121;
+            border-color: #ED9121;!important
+        }
+        .st-emotion-cache-f03grt{
+            width: 40%;
+            margin-left: 25%;
+            justify-content: normal;
+        }
+        :root {--background-color: rgba(255, 255, 255, 1.0); --text-color: #1C1C1C; --card-bg: white; --border-color: #E6E6E6; --heading-color: #2C3E50; --shadow-color: rgba(0, 0, 0, 0.1); --tab-bg: #F1F5F9; --tab-selected-bg: white;}
+        @media (prefers-color-scheme: dark) {:root {--background-color: rgba(30, 30, 30, 0.95); --text-color: #F1F1F1; --card-bg: #2D2D2D; --border-color: #444444; --heading-color: #8AB4F8; --shadow-color: rgba(0, 0, 0, 0.3); --tab-bg: #383838; --tab-selected-bg: #2D2D2D;}}
+        body {background: linear-gradient(var(--background-color), var(--background-color)), url('https://images.unsplash.com/photo-1551836022-4c4c79ecde16?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed; background-size: cover; color: var(--text-color); font-family: 'Segoe UI', sans-serif;}
+        #MainMenu, footer, header, .stDeployButton {visibility: hidden;}
+        .stApp {background-color: var(--background-color); padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; max-width: 100% !important; margin: 0 !important;}
+        .stTabs [role="tab"] {font-size: 16px; padding: 10px 20px; margin-right: 5px; border: 1px solid var(--border-color); background-color: var(--tab-bg); border-radius: 6px 6px 0 0; color: var(--text-color);}
+        .stTabs [aria-selected="true"] {background-color: var(--tab-selected-bg); border-bottom: none; font-weight: bold;}
+        .tab-content {animation: fadein 0.6s ease-in; background-color: var(--card-bg); padding: 20px; border-radius: 0 0 10px 10px; box-shadow: 0 2px 4px var(--shadow-color); margin-top: -1px; border: 1px solid var(--border-color); border-top: none;}
+        .stTextArea textarea {border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; font-size: 16px; background-color: var(--card-bg); color: var(--text-color);}
+        .stButton button {border-radius: 8px; font-weight: 500; transition: all 0.3s ease;}
+        .stButton button:hover {transform: translateY(-2px); box-shadow: 0 4px 8px var(--shadow-color);}
+        h1, h2, h3 {color: var(--heading-color); font-weight: 600;}
+        .stTabs [data-baseweb="tab-panel"] {background-color: var(--card-bg); padding: 15px; border-radius: 0 0 10px 10px; border: 1px solid var(--border-color); border-top: none; color: var(--text-color);}
+        .stProgress > div > div {background-color: #4CAF50;}
+        @keyframes fadein {from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);}}
+        /* Custom style for feedback section */
+        .feedback-header {font-size: 14px !important;} /* Reduced font size for "Was this section helpful?" */
+    </style>
+""", unsafe_allow_html=True)
 
 def render_email_tab():
     """Function to render the email tab content"""
@@ -295,27 +332,30 @@ def render_email_tab():
     else:
         st.info("Templates will be generated once emails are sent.")
 
+    # Modified version of the code in render_email_tab()
     if st.button("📧 Send Campaign Emails", key="send_emails_btn"):
         with st.spinner("Sending emails..."):
             if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
-                # Direct function call instead of using AGENT_REGISTRY
-                updated_state, failed_count = send_campaign_emails(st.session_state.state)
+                # Fix: Capture just the updated state - don't try to unpack multiple values
+                updated_state = send_campaign_emails(st.session_state.state)
                 
                 # Update session state
                 st.session_state.state = updated_state
 
                 if hasattr(updated_state, "email_status"):
-                    if failed_count!=0:
+                    # Parse the failed_count from the email_status if needed
+                    failed_count = 0
+                    if "Failed to send:" in updated_state.email_status:
+                        try:
+                            failed_part = updated_state.email_status.split("Failed to send:")[1].strip()
+                            failed_count = int(failed_part.split()[0])
+                        except:
+                            pass
+                    
+                    if failed_count != 0:
                         st.error("❌" + updated_state.email_status)
                     else:
-                        st.success("✅ Emails sent successfully!"+ updated_state.email_status)
-                        # st.markdown(updated_state.email_status)
-                        # Update Tab Content after sending emails
-                        # st.session_state.tab_contents[6] = {
-                        #     "node": "send_campaign_emails",
-                        #     "content": updated_state.email_status
-                        # }
-                        # st.rerun()  # Rerun to refresh the display
+                        st.success("✅ Emails sent successfully!" + updated_state.email_status)
             else:
                 st.error("❌ Campaign data not available. Please generate a campaign first.")
     st.markdown("</div>", unsafe_allow_html=True)
@@ -407,6 +447,7 @@ def main():
                 st.session_state.generated = True
                 st.session_state.stop_requested = False
                 st.session_state.tab_contents = {}
+                # st.session_state.show_tabs = False 
                 st.rerun()
             if stop_clicked:
                 st.session_state.stop_requested = True
