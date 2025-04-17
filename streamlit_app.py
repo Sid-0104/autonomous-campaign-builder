@@ -55,42 +55,38 @@ def strip_emojis(content):
     return re.sub(r'[^\x00-\x7F]+', '', content)
 import os
 from io import BytesIO
-from fpdf import FPDF
 
-class PDFWithLogo(FPDF):
-    def header(self):
-        # Dynamically get the absolute path of the image
-        base_path = os.path.dirname(__file__)  # directory where script is located
-        logo_path = os.path.join(base_path, "assets", "info.png")
-        
-        # Check if the logo file exists
-        if os.path.exists(logo_path):
-            self.image(logo_path, x=180, y=10, w=10)  # Adjust the logo size and position as needed
-        else:
-            print(f"Warning: Logo file not found at {logo_path}")
-        
-        self.set_y(40)  # Adjust the position after the header
+def clean_markdown(text):
+    # Remove Markdown headers (e.g. ####, ###, ##, #)
+    text = re.sub(r'#+\s*', '', text)
 
+    # Remove bold and italic markdown (e.g., **text**, *text*)
+    text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+    text = re.sub(r'\*(.*?)\*', r'\1', text)
+
+    # Standardize bullet points
+    text = re.sub(r'^\s*[-*]\s+', '- ', text, flags=re.MULTILINE)
+
+    return text.strip()
+
+# --- Your existing emoji stripper (assumed to be defined) ---
+def strip_emojis(text):
+    return re.sub(r'[\U00010000-\U0010ffff]', '', text)
+
+# --- PDF Generator with cleaned content ---
 def generate_pdf(section_title, content):
     clean_content = strip_emojis(content)
-    
-    # Use the custom class with the logo
+    clean_content = clean_markdown(clean_content)
+
+    # Use the custom class with the logo (assuming it's already defined)
     pdf = PDFWithLogo()
     pdf.add_page()
-    
-    # Use Helvetica font instead of Arial
     pdf.set_font("Helvetica", size=12)
-    
-    # Update 'txt' to 'text' as per the new version
-    pdf.multi_cell(0, 10, text=f"{section_title}\n\n{clean_content}")
-    
-    # Write the PDF to a BytesIO object
-    pdf_output = BytesIO()
-    pdf.output(pdf_output)
-    
-    # Get the byte content of the PDF
-    pdf_output.seek(0)  # Ensure we're reading from the start
-    return pdf_output.getvalue()  # Return as byte data
+    pdf.multi_cell(0, 10, f"{section_title}\n\n{clean_content}")
+
+    # Return PDF as bytes for download
+    pdf_bytes = pdf.output(dest='S').encode('latin1')
+    return pdf_bytes
 
 
 # ===== Section Renderer + Feedback =====
