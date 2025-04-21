@@ -11,6 +11,7 @@ from core.vector_db import initialize_vector_db, load_documents_by_domain
 from core.state import CampaignState
 from workflows.campaign_workflow import build_campaign_workflow
 from fpdf import FPDF
+from fpdf.enums import XPos, YPos
 import logging
 from logging.handlers import RotatingFileHandler
 from agents.send_emails import send_campaign_emails
@@ -59,7 +60,7 @@ class PDFWithLogo(FPDF):
     def header(self):
         # Dynamically get the absolute path of the image
         base_path = os.path.dirname(__file__)  # directory where script is located
-        logo_path = os.path.join(base_path, "assets", "info.png")
+        logo_path = os.path.join(base_path, "assets", "infologo1.png")
         # Check if the logo file exists
         if os.path.exists(logo_path):
             self.image(logo_path, x=180, y=10, w=10)  # Adjust the logo size and position as needed
@@ -100,6 +101,16 @@ def generate_pdf(section_title, content):
 
     pdf = PDFWithLogo()
     pdf.add_page()
+
+    pdf.set_font("Helvetica", style='B', size=16)
+    pdf.cell(0, 10, "Autonomous Campaign Builder", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
+    pdf.ln(10)
+
+    pdf.set_font("Helvetica", style='B', size=13)
+    pdf.set_text_color(80)  # Slight gray
+    pdf.cell(0, 10, f"Report: {section_title}", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
+    pdf.ln(6)
+
     pdf.set_font("Helvetica", size=12)
     
     # Split content into lines
@@ -108,15 +119,15 @@ def generate_pdf(section_title, content):
     for line in lines:
         line = line.strip()
         # Check if the line is a section heading (starts with number and a dot)
-        if re.match(r'^\d+\.\s+[A-Z ]+:?$', line):
+        if re.match(r'^\d+\.\s+[A-Z \-]+:?$', line):
             pdf.set_font("Helvetica", style='B', size=12)
         else:
             pdf.set_font("Helvetica", size=12)
-        pdf.multi_cell(0, 10, line)
+        pdf.multi_cell(0, 10, line[:100], new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
     # Write PDF to BytesIO
     pdf_output = BytesIO()
-    pdf_output.write(pdf.output(dest='S').encode('latin1'))
+    pdf_output.write(pdf.output())
     pdf_output.seek(0)
     return pdf_output.getvalue()
 
