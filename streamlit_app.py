@@ -1,5 +1,4 @@
 import streamlit as st
-st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter:", layout="wide")
 import time
 from io import BytesIO
 import os
@@ -252,7 +251,7 @@ if 'generated' not in st.session_state:
     st.session_state.generated = False
 
 # Page configuration
-
+st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter:", layout="wide")
 
 # Custom CSS
 st.markdown("""
@@ -277,31 +276,31 @@ st.markdown("""
         }
 
         .stTabs [data-baseweb="tab-panel"] {
-    background-color: var(--card-bg);
-    padding: 15px;
-    border-radius: 0 0 10px 10px;
-    border: 1px solid var(--border-color);
-    border-top: none;
-    color: var(--text-color);
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            color: var(--text-color);
 
-    max-height: 65vh;         /* Enable scrolling within fixed height */
-    overflow-y: auto;         /* Activate vertical scrollbar */
-    padding-right: 10px;      /* Space for scrollbar */
-}
+            max-height: 65vh;         /* Enable scrolling within fixed height */
+            overflow-y: auto;         /* Activate vertical scrollbar */
+            padding-right: 10px;      /* Space for scrollbar */
+        }
 
-/* Custom Scrollbar Styling */
-.stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar {
-    width: 8px;
-}
+        /* Custom Scrollbar Styling */
+        .stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar {
+            width: 8px;
+        }
 
-.stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-}
+        .stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
 
-.stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-}
+        .stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
         .st-emotion-cache-iyz50i:hover{
             color: #ED9121;
             border-color: #ED9121;!important
