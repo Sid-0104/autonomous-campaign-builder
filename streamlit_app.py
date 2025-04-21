@@ -1,4 +1,5 @@
 import streamlit as st
+st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter:", layout="wide")
 import time
 from io import BytesIO
 import os
@@ -18,6 +19,12 @@ from agents.send_emails import send_campaign_emails
 from core.feedback import save_node_feedback
 from agents import AGENT_REGISTRY
 from datetime import datetime
+
+import json
+
+# Load section titles from JSON
+with open(r"assets\\pdf_titles.json", "r") as f:
+    SECTION_TITLES = json.load(f)
 
 # Load environment variables
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -95,7 +102,9 @@ def strip_emojis_and_unicode(text):
     text = ''.join(c for c in text if ord(c) < 256)
     return text
 # --- PDF Generator with cleaned content ---
-def generate_pdf(section_title, content):
+def generate_pdf(title, content, node_name):
+    section_title = SECTION_TITLES.get(node_name, node_name.replace("_", " ").title())
+
     clean_content = strip_emojis_and_unicode(content)
     clean_content = clean_markdown(clean_content)
 
@@ -107,25 +116,21 @@ def generate_pdf(section_title, content):
     pdf.ln(10)
 
     pdf.set_font("Helvetica", style='B', size=13)
-    pdf.set_text_color(80)  # Slight gray
-    pdf.cell(0, 10, f"Report: {section_title}", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
+    pdf.set_text_color(80)
+    pdf.cell(0, 10, f"{section_title}", new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
     pdf.ln(6)
 
     pdf.set_font("Helvetica", size=12)
-    
-    # Split content into lines
+
     lines = clean_content.split('\n')
-    
     for line in lines:
         line = line.strip()
-        # Check if the line is a section heading (starts with number and a dot)
         if re.match(r'^\d+\.\s+[A-Z \-]+:?$', line):
             pdf.set_font("Helvetica", style='B', size=12)
         else:
             pdf.set_font("Helvetica", size=12)
         pdf.multi_cell(0, 10, line[:100], new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
-    # Write PDF to BytesIO
     pdf_output = BytesIO()
     pdf_output.write(pdf.output())
     pdf_output.seek(0)
@@ -135,11 +140,12 @@ def generate_pdf(section_title, content):
 def render_section(title, content, filename, node_name, key_prefix, state_obj):
     st.markdown(f"### {title}")
     st.write(content)
+    
 
     # Download PDF
     st.download_button(
         label="📥 Download PDF",
-        data=generate_pdf(title, content),
+        data=generate_pdf(title, content,node_name=node_name),
         file_name=filename,
         key=f"download_{key_prefix}_{node_name}"
     )
@@ -173,7 +179,7 @@ def render_section(title, content, filename, node_name, key_prefix, state_obj):
         st.session_state.stop_requested = False
         # Force rerun to trigger complete regeneration
         st.rerun()
-        
+
 # Function for vector db initialization with caching
 @st.cache_resource
 def cached_initialize_vector_db(domain, model_provider):
@@ -246,7 +252,7 @@ if 'generated' not in st.session_state:
     st.session_state.generated = False
 
 # Page configuration
-st.set_page_config(page_title="Autonomous Campaign Builder", page_icon=":scooter:", layout="wide")
+
 
 # Custom CSS
 st.markdown("""
@@ -269,6 +275,33 @@ st.markdown("""
             color: #ED9121;
             border-color: #ED9121;!important
         }
+
+        .stTabs [data-baseweb="tab-panel"] {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    color: var(--text-color);
+
+    max-height: 65vh;         /* Enable scrolling within fixed height */
+    overflow-y: auto;         /* Activate vertical scrollbar */
+    padding-right: 10px;      /* Space for scrollbar */
+}
+
+/* Custom Scrollbar Styling */
+.stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar {
+    width: 8px;
+}
+
+.stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.stTabs [data-baseweb="tab-panel"]::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
         .st-emotion-cache-iyz50i:hover{
             color: #ED9121;
             border-color: #ED9121;!important
@@ -285,14 +318,7 @@ st.markdown("""
             margin-left: 25%;
             justify-content: normal;
         }
-        .st-emotion-cache-kgpedg {
-            display: flex;
-            -webkit-box-pack: justify;
-            justify-content: space-between;
-            -webkit-box-align: start;
-            align-items: start;
-            padding: calc(7.375rem) 1.5rem 1.5rem;
-        }
+        
         .st-emotion-cache-1bd5s7o{
              background-color: #ED9121;
             border: #ED9121;!important
