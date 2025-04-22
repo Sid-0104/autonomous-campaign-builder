@@ -150,7 +150,7 @@ def render_section(title, content, filename, node_name, key_prefix, state_obj):
     )
 
     # --- Feedback Section ---
-    st.markdown("#### 🗳️ How would you rate this section?")
+    st.markdown("#### 🗳️ Submit your feedback for this output?")
     feedback_key = f"{node_name}_recorded"
 
     col1, col2 = st.columns([1, 3.5], gap="small")
