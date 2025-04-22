@@ -79,7 +79,7 @@ class PDFWithLogo(FPDF):
         self.set_font("Helvetica", size=8)
         self.set_text_color(100)  # Light gray
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        footer_text = f"© 2025 InfoObjects Software Pvt Ltd | Generated on: {timestamp}"
+        footer_text = f"© 2025 InfoObjects Inc Software Pvt Ltd | Generated on: {timestamp}"
         self.cell(0, 10, footer_text, align="C")
 
 
@@ -150,7 +150,7 @@ def render_section(title, content, filename, node_name, key_prefix, state_obj):
     )
 
     # --- Feedback Section ---
-    st.markdown("#### 🗳️ Submit your feedback for this output?")
+    st.markdown("#### Submit your feedback for this output?")
     feedback_key = f"{node_name}_recorded"
 
     col1, col2 = st.columns([1, 3.5], gap="small")
@@ -168,8 +168,8 @@ def render_section(title, content, filename, node_name, key_prefix, state_obj):
         st.info("✅ Feedback already recorded.")
 
     # --- Regenerate Section ---
-    st.markdown("#### 🔄 Want to regenerate the entire campaign?")
-    if st.button("♻️ Regenerate", key=f"{key_prefix}_regen"):
+    st.markdown("#### Want to regenerate the entire campaign?")
+    if st.button("♻️ Re-generate", key=f"{key_prefix}_regen"):
         # Reset session state to force complete regeneration
         st.session_state.tab_contents = {}
         # Keep the goal and generated flag
@@ -273,6 +273,31 @@ st.markdown("""
         .st-emotion-cache-qsto9u:hover{
             color: #ED9121;
             border-color: #ED9121;!important
+        }
+        .st-dn {
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Scrollbar hidden */
+        .st-dn::-webkit-scrollbar {
+            display: none;
+        }
+        .st-dn {
+            -ms-overflow-style: none; /* IE/Edge */
+            scrollbar-width: thin;     /* Firefox */
+        }
+
+        /* Enable scroll only on hover */
+        .st-dn:not(:hover) {
+            overflow-x: hidden;
+        }
+
+        /* Optional: cursor feedback */
+        .st-dn:hover {
+            cursor: ew-resize;
         }
 
         .stTabs [data-baseweb="tab-panel"] {
@@ -430,7 +455,7 @@ def render_footer():
     st.markdown(
         """<hr style="margin-top: 50px;"/>
         <div style="text-align: center; color: gray; font-size: 0.9em;">
-            © 2025 InfoObjects Software Pvt Ltd
+            © 2025 InfoObjects Inc Software Pvt Ltd
         </div>""",
         unsafe_allow_html=True
     )
@@ -450,7 +475,7 @@ def main():
                     st.rerun()
             st.markdown(f"**Using: {st.session_state.selected_llm.upper()}**")
             st.subheader("Select Industry")
-            for industry in ["Automotives", "Healthcare", "Powerenergy"]:
+            for industry in ["Automotives", "Healthcare", "PowerEnergy"]:
                 domain_value = industry.lower()
                 if st.button(industry, type="primary" if st.session_state.selected_domain == domain_value else "secondary", use_container_width=True):
                     st.session_state.selected_domain = domain_value
