@@ -490,9 +490,9 @@ def main():
         col1, col2 = st.columns([6, 3])
         with col1:
             DEFAULT_PROMPTS = {
-                    "automotives": "Boost Q2 SUV sales in the Western region by 15%",
-                    "healthcare": "Increase patient enrollment in our preventative care program by 25% in Q3",
-                    "powerenergy": "Increase residential solar panel installations by 35% in the Southern region this summer"
+                    "automotives": "Boost Q2 Honda City sales in the Western region by 15%",
+                    "healthcare": "Increase patient enrollment in our Hypertension Awareness program by 25% in Q3",
+                    "powerenergy": "Promote Efficient Power Campaign by 35% in the Southern region this summer"
                     }
             # Preserve the goal input between regenerations
             default_goal = DEFAULT_PROMPTS.get(st.session_state.selected_domain, "")
