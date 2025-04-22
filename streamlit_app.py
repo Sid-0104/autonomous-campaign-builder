@@ -397,7 +397,6 @@ def render_email_tab():
             if st.session_state.state and hasattr(st.session_state.state, 'campaign_strategy'):
                 # Fix: Capture just the updated state - don't try to unpack multiple values
                 updated_state = send_campaign_emails(st.session_state.state)
-                
                 # Update session state
                 st.session_state.state = updated_state
 

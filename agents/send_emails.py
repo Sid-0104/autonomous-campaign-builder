@@ -1,9 +1,12 @@
 import os
 import smtplib
 import time
+import re
 import pandas as pd
 from dotenv import load_dotenv
 from email.message import EmailMessage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from core.llm import get_llm, safe_llm_invoke
 from core.state import CampaignState
 from typing import Dict
@@ -99,30 +102,108 @@ def generate_personalized_email(state: CampaignState, customer_data: dict) -> st
             - Gender: {customer_data.get('gender', 'Unknown')}
 
             The email should:
-            1. Include a personalized greeting using the customer's name
+            1. Include a personalized greeting using the customer's name in the body ONLY
             2. Reference their demographic information appropriately
             3. Highlight campaign benefits relevant to their demographic
             4. Include a clear call-to-action
             5. Be professional yet engaging
+            6. Use this format exactly:
 
-            Format:
-            SUBJECT: Personalized Offer for {customer_name} - {state.goal}
+            SUBJECT: <Write a compelling subject line here>
 
-            Hi {customer_name},
-
-            [Body: Create compelling content that aligns with campaign goals and customer demographics]
-
-            [CTA Button]
-
-            Best regards,
-            [Company Name]
-        """
+            BODY:
+            <Start with a greeting using the customer's first name. Then provide engaging, benefit-driven content tailored to the demographics. Include a clear CTA. Do NOT wrap anything in asterisks. Do NOT repeat the subject line in the body.>
+            """
         
         # Use the retry-enabled function with state parameter
         return generate_content_with_retry(prompt, state)
     except Exception as e:
         print(f"Error generating email content: {str(e)}")
         return ""
+
+def process_email_formatting(content: str, customer_data: dict) -> str:
+    """
+    Process email formatting:
+    1. Replace asterisk-wrapped text with appropriate formatting
+    2. Replace custom variables with customer data
+    """
+    # First handle any customer data variables that might need substitution
+    variables = {
+        'CUSTOMER_NAME': customer_data.get('full_name', 'Valued Customer'),
+        'FIRST_NAME': customer_data.get('full_name', '').split()[0] if customer_data.get('full_name') else 'Valued Customer',
+        'EMAIL': customer_data.get('email', ''),
+        'AGE': str(customer_data.get('age', '')),
+        'GENDER': customer_data.get('gender', '')
+    }
+    
+    # Replace variables in content
+    for var, value in variables.items():
+        content = content.replace(f"%{var}%", value)
+    
+    # Process text between double asterisks for HTML email
+    # In HTML email, we'll convert **text** to <strong>text</strong>
+    if '**' in content:
+        content = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', content)
+    
+    return content
+
+def parse_email_content(email_content: str) -> tuple[str, str]:
+    """Parse LLM output into a subject and body, and remove extra markers from the body."""
+    subject = "Special Offer"
+    body = email_content.strip()
+
+    # Match subject line only
+    subject_match = re.search(r"^SUBJECT:\s*(.+)$", body, re.MULTILINE)
+    if subject_match:
+        subject = subject_match.group(1).strip()
+        # Remove the subject line from the body completely
+        body = re.sub(r"^SUBJECT:.*$", "", body, flags=re.MULTILINE).strip()
+
+    # Match only what's after BODY:
+    body_match = re.search(r"^BODY:\s*(.*)", body, re.DOTALL | re.IGNORECASE)
+    if body_match:
+        body = body_match.group(1).strip()
+    
+    # Remove any accidental embedded SUBJECT or BODY tags in the body content
+    body = re.sub(r"^SUBJECT:.*$", "", body, flags=re.MULTILINE)
+    body = re.sub(r"^BODY:\s*", "", body, flags=re.MULTILINE)
+    
+    # Additional check to ensure we don't duplicate the subject in the body
+    if body.startswith(subject):
+        body = body[len(subject):].strip()
+    
+    # Remove any "Subject:" text from the beginning of the body
+    body = re.sub(r'^Subject:.*?\n', '', body, flags=re.IGNORECASE | re.MULTILINE)
+        
+    return subject, body.strip()
+
+def convert_bullet_points_to_html(content):
+    """Convert bullet points to proper HTML lists"""
+    # Check if we have bullet points (lines starting with - or • or *)
+    bullet_pattern = r'(^|\n)[-•*]\s+(.*?)(?=(\n[-•*]|\n\n|\n$|$))'
+    if re.search(bullet_pattern, content, re.DOTALL):
+        # Start a list
+        content = re.sub(r'(?:^|\n)(Exclusive Offer Just for You:)(\s*?)(?=\n[-•*])', r'\1\2\n<ul class="offer-list">', content)
+        
+        # Convert each bullet point to a list item
+        content = re.sub(bullet_pattern, r'\1<li class="offer-item">\2</li>', content, flags=re.DOTALL)
+        
+        # Close the list before "Key Features" section
+        content = re.sub(r'(</li>)(\s*?)(?=\nKey Features)', r'\1\n</ul>\2', content)
+        
+        # Handle Key Features section if it has bullet points too
+        if re.search(r'\nKey Features.*?\n[-•*]', content, re.DOTALL):
+            content = re.sub(r'(\nKey Features.*?)(\s*?)(?=\n[-•*])', r'\1\2\n<ul class="features-list">', content)
+            # Convert feature bullet points and close list
+            feature_bullets = re.findall(r'(\n[-•*]\s+.*?)(?=(\n\n|\n$|$))', content[content.find('Key Features'):], re.DOTALL)
+            for bullet, _ in feature_bullets:
+                content = content.replace(bullet, f'<li class="feature-item">{bullet.strip()[2:].strip()}</li>')
+            
+            # Close features list if not already closed
+            if '<ul class="features-list">' in content and '</ul>' not in content[content.find('<ul class="features-list">'):]:
+                content += '\n</ul>'
+    
+    return content
 
 def send_campaign_emails(state: CampaignState) -> tuple[CampaignState, int]:
     """Send personalized emails to customers using campaign state and customer data"""
@@ -174,20 +255,48 @@ def send_campaign_emails(state: CampaignState) -> tuple[CampaignState, int]:
                         failed_count += 1
                         continue
                     
-                    # Parse subject and body
-                    if "SUBJECT:" in email_content:
-                        parts = email_content.split("SUBJECT:", 1)
-                        subject_body = parts[1].strip()
-                        subject, body = subject_body.split("\n", 1)
-                        subject = subject.strip()
-                        body = body.strip()
-                    else:
-                        subject = f"Special Offer: {state.goal}"
-                        body = email_content
+                    # Parse subject and body using the dedicated function
+                    subject, body = parse_email_content(email_content)
                     
-                    # Create email message
-                    msg = EmailMessage()
-                    msg.set_content(body)
+                    # Process formatting in the email body
+                    processed_body = process_email_formatting(body, customer.to_dict())
+                    
+                    # Always use HTML for better formatting
+                    msg = MIMEMultipart('alternative')
+                    
+                    # Add plain text version - better removal of HTML tags
+                    plain_text = re.sub(r'<[^>]+>', '', processed_body)
+                    part1 = MIMEText(plain_text, 'plain')
+                    msg.attach(part1)
+                    
+                    # Convert bullet points to proper HTML
+                    html_body = convert_bullet_points_to_html(processed_body)
+                    
+                    # Improved HTML version with proper styling
+                    html_content = f"""
+                    <html>
+                    <head>
+                        <style>
+                            body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }}
+                            .offer-list, .features-list {{ list-style-type: disc; margin-left: 20px; padding-left: 0; }}
+                            .offer-item, .feature-item {{ margin-bottom: 10px; }}
+                            strong {{ font-weight: bold; }}
+                            h3, h4 {{ margin-top: 20px; margin-bottom: 10px; }}
+                            .cta {{ margin-top: 20px; font-weight: bold; }}
+                        </style>
+                    </head>
+                    <body>
+                        <div>
+                            {html_body.replace('\n', '<br>')}
+                        </div>
+                    </body>
+                    </html>
+                    """
+                    
+                    part2 = MIMEText(html_content, 'html')
+                    msg.attach(part2)
+                    
+                    # Set message headers
                     msg['Subject'] = subject
                     msg['From'] = sender_email
                     msg['To'] = customer['email']
@@ -204,7 +313,7 @@ def send_campaign_emails(state: CampaignState) -> tuple[CampaignState, int]:
                     if not state.email_templates:
                         state.email_templates.append({
                             'subject': subject,
-                            'content': body
+                            'content': processed_body
                         })
                     
                     # Track sent emails
